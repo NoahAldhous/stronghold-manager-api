@@ -118,4 +118,6 @@ def get_all_users():
             cursor.execute(GET_ALL_USERS)
             rows = cursor.fetchall()
     return {"message": "success!", "data": rows}, 200
-            
+
+if __name__ == "__main__":
+    app.run()
