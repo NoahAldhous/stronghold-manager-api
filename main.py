@@ -41,7 +41,7 @@ CREATE_STRONGHOLD_SUBTYPES_TABLE = (
 )
 
 CREATE_STRONGHOLD_TYPES_TABLE = (
-    "CREATE TABLE IF NOT EXISTS stronghold_types (id SERIAL PRIMARY KEY, type_name TEXT);"
+    "CREATE TABLE IF NOT EXISTS stronghold_types (id SERIAL PRIMARY KEY, type_name TEXT UNIQUE);"
 )
 
 CREATE_STRONGHOLD_TYPE_FEATURES_TABLE = (
@@ -52,11 +52,15 @@ CREATE_STRONGHOLDS_TABLE = (
     "CREATE TABLE IF NOT EXISTS strongholds (id SERIAL PRIMARY KEY, FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE, stronghold_name TEXT, stronghold_level INTEGER, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), FOREIGN KEY(stronghold_subtype_id) REFERENCES stronghold_subtypes(id), FOREIGN KEY(stronghold_class_id) REFERENCES stronghold_classes(id),  created_at TIMESTAMP);"
 )
 
+INSERT_STRONGHOLD_TYPES = "INSERT INTO stronghold_types (type_name) VALUES ('keep'),('tower'),('temple'),('establishment'),('castle') RETURNING *;"
+
 INSERT_USER_RETURN_ID = "INSERT INTO users (user_name, email, user_password, account_created) VALUES (%s, %s, %s, %s) RETURNING id;"
 
 INSERT_STRONGHOLD = "INSERT INTO strongholds (stronghold_name, created_at) VALUES (%s, %s);"
 
 GET_ALL_USERS = "SELECT * FROM users;"
+
+GET_ALL_STRONGHOLD_TYPES = "SELECT * FROM stronghold_types;"
 
 #Parse .env file and load all variables found within
 load_dotenv()
@@ -70,6 +74,25 @@ connection = psycopg2.connect(dburl)
 @app.get("/")
 def default_route():
     return "hello world!"
+
+#create and populate stronghold_types table
+@app.post("/stronghold_types/")
+def create_stronghold_types():
+    with connection:
+        with connection.cursor() as cursor:
+            cursor.execute(CREATE_STRONGHOLD_TYPES_TABLE)
+            cursor.execute(INSERT_STRONGHOLD_TYPES)
+            data = cursor.fetchall()
+    return data, 201
+
+#get all stronghold types
+@app.get("/stronghold_types/")
+def get_all_stronghold_types():
+    with connection:
+        with connection.cursor() as cursor:
+            cursor.execute(GET_ALL_STRONGHOLD_TYPES)
+            rows = cursor.fetchall()
+    return {"message": "success!", "data": rows}, 200
 
 #create new user endpoint
 @app.post("/users/")
