@@ -1,13 +1,6 @@
-import os
-import psycopg2
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
-from datetime import date
 from routes.users_bp import users_bp
-
-# CREATE_USERS_TABLE = (
-#     "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, user_name TEXT, email TEXT UNIQUE, user_password TEXT, account_created DATE);"
-# )
 
 # CREATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
 #     "CREATE TABLE IF NOT EXISTS stronghold_construction_levels (id SERIAL PRIMARY KEY, stronghold_level INTEGER, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), cost_to_build INTEGER, time_to_build INTEGER, fortification_morale_bonus INTEGER);"
@@ -55,11 +48,8 @@ from routes.users_bp import users_bp
 
 # INSERT_STRONGHOLD_TYPES = "INSERT INTO stronghold_types (type_name) VALUES ('keep'),('tower'),('temple'),('establishment'),('castle') RETURNING *;"
 
-# INSERT_USER_RETURN_ID = "INSERT INTO users (user_name, email, user_password, account_created) VALUES (%s, %s, %s, %s) RETURNING id;"
 
 # INSERT_STRONGHOLD = "INSERT INTO strongholds (stronghold_name, created_at) VALUES (%s, %s);"
-
-# GET_ALL_USERS = "SELECT * FROM users;"
 
 # GET_ALL_STRONGHOLD_TYPES = "SELECT * FROM stronghold_types;"
 
@@ -67,7 +57,7 @@ from routes.users_bp import users_bp
 # load_dotenv()
 
 app = Flask(__name__)
-#This CANNOT be called url, it takes the env from smartpantry for some reason.
+
 # dburl = os.getenv("STRONGHOLD_DATABASE_URL")
 # connection = psycopg2.connect(dburl)
 
@@ -95,32 +85,7 @@ def default_route():
 #             rows = cursor.fetchall()
 #     return {"message": "success!", "data": rows}, 200
 
-#create new user endpoint
-# @app.post("/users/")
-# def create_user():
-#     data = request.get_json()
-#     name = data["name"]
-#     email = data["email"]
-#     password = data["password"]
-#     account_created = date.today()
-    
-#     with connection:
-#         with connection.cursor() as cursor:
-#             cursor.execute(CREATE_USERS_TABLE)
-#             cursor.execute(INSERT_USER_RETURN_ID, (name, email, password, account_created,))
-#             user_id = cursor.fetchone()[0]
-#     return {"id": user_id, "message": f"User {name} created with email {email} and password {password} on {account_created}"}, 201
-
-#get all users endpoint
 app.register_blueprint(users_bp, url_prefix='/users')
-
-# @app.route("/users/getall/", methods=['GET'])
-# def get_all_users():
-#     with connection:
-#         with connection.cursor() as cursor:
-#             cursor.execute(GET_ALL_USERS)
-#             rows = cursor.fetchall()
-#     return {"message": "success!", "data": rows}, 200
 
 if __name__ == "__main__":
     app.run()
