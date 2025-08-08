@@ -11,5 +11,5 @@ INSERT_USER_RETURN_ID = (
 )
 
 GET_USER_BY_ID = (
-    "SELECT DISTINCT FROM users WHERE id == %s;"
+    "SELECT * FROM users WHERE id = %s;"
 )
