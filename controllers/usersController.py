@@ -1,4 +1,4 @@
-from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER_RETURN_ID, GET_USER_BY_ID, DELETE_USER_BY_ID
+from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER_RETURN_ID, GET_USER_BY_ID, UPDATE_USER_NAME_BY_ID, UPDATE_USER_PASSWORD_BY_ID, DELETE_USER_BY_ID
 from utils.db import query, connection, execute
 from flask import request
 from datetime import date
@@ -35,10 +35,29 @@ def get_user_by_id(user_id):
     else: 
         return {"message": "User not found"}, 404
     
+# UPDATE PASSWORD BY ID
+def update_user_password_by_id(user_id):
+    data = request.get_json()
+    newPassword = data["password"]
+    res = execute(UPDATE_USER_PASSWORD_BY_ID, (newPassword, user_id,))
+    
+    if res:
+        return {"message": "Password updated in " + str(res) + " user"}, 200
+    else: return {"message": "User not found"}, 404
+    
+def update_user_name_by_id(user_id):
+    data = request.get_json()
+    newUsername = data["username"]
+    res = execute(UPDATE_USER_NAME_BY_ID, (newUsername, user_id))
+    
+    if res:
+        return {"message": "Username updated in " + str(res) + " user"}, 200
+    else: return {"message": "User not found"}, 404
+    
 # DELETE USER BY ID
 def delete_user_by_id(user_id):
     res = execute(DELETE_USER_BY_ID, (user_id,))
     
     if res:
         return {"message": "User deleted", "number of rows deleted": res}, 200
-    else: {"message": "User not found"}, 404
+    else: return {"message": "User not found"}, 404
