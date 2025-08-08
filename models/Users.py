@@ -13,3 +13,7 @@ INSERT_USER_RETURN_ID = (
 GET_USER_BY_ID = (
     "SELECT * FROM users WHERE id = %s;"
 )
+
+DELETE_USER_BY_ID = (
+    "DELETE FROM users WHERE id = %s;"
+)

@@ -1,8 +1,7 @@
-import os
 from dotenv import load_dotenv
-import psycopg2
+import os
 
+# parse .env file and load environment variables
 load_dotenv()
 #This CANNOT be called url, it takes the env from smartpantry for some reason.
-dburl = os.getenv("STRONGHOLD_DATABASE_URL")
-connection = psycopg2.connect(dburl)
+DB_URL = os.getenv("STRONGHOLD_DATABASE_URL")
