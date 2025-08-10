@@ -44,7 +44,8 @@ def update_user_password_by_id(user_id):
     if res:
         return {"message": "Password updated in " + str(res) + " user"}, 200
     else: return {"message": "User not found"}, 404
-    
+
+# UPDATE USER NAME BY ID    
 def update_user_name_by_id(user_id):
     data = request.get_json()
     newUsername = data["username"]
