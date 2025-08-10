@@ -1,0 +1,53 @@
+from models.Stronghold_types import CREATE_STRONGHOLD_TYPES_TABLE, INSERT_STRONGHOLD_TYPES, GET_ALL_STRONGHOLD_TYPES, UPDATE_STRONGHOLD_TYPE_BY_ID, DELETE_STRONGHOLD_TYPE_BY_ID
+from utils.db import query, connection, execute
+from flask import request 
+
+# CREATE STRONGHOLD TYPES
+def create_stronghold_types_table():
+    res = execute(CREATE_STRONGHOLD_TYPES_TABLE)
+    
+    if res:
+        return {"message" : "Table created"}, 200
+    else: 
+        return {"message" : "Oops, an error occured"}, 404
+    
+# POPULATE STRONGHOLD TYPES
+def populate_stronghold_types_table():
+    execute(CREATE_STRONGHOLD_TYPES_TABLE)
+    res = execute(INSERT_STRONGHOLD_TYPES)
+    
+    if res:
+        return {"message" : "Success! Table populated"}, 200
+    else:
+        return {"message" : "An error occured"}, 404
+
+# GET ALL STRONGHOLD TYPES
+def get_all_stronghold_types():
+    data = query(GET_ALL_STRONGHOLD_TYPES)
+    
+    if data:
+        return {"message" : "Success!", "data": data}, 201
+    else:
+        return {"message" : "Something went wrong"}, 404
+    
+# GET STRONGHOLD TYPE + INFO BY ID
+
+# UPDATE STRONGHOLD TYPE
+def update_stronghold_type_by_id(type_id):
+    data = request.get_json()
+    newTypeName = data["name"]
+    res = execute(UPDATE_STRONGHOLD_TYPE_BY_ID, (newTypeName, type_id,))
+    
+    if res:
+        return {"message" : "Item updated successfully"}, 200
+    else:
+        return {"message" : "Could not find item"}, 404
+
+# DELETE STRONGHOLD TYPE
+def delete_stronghold_type_by_id(type_id):
+    res = execute(DELETE_STRONGHOLD_TYPE_BY_ID, (type_id,))
+    
+    if res:
+        return {"message" : "Item deleted successfuly"}, 200
+    else:
+        return {"message" : "Could not find item"}, 404
