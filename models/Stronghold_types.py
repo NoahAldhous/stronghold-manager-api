@@ -6,6 +6,10 @@ INSERT_STRONGHOLD_TYPES = (
     "INSERT INTO stronghold_types (type_name) VALUES ('keep'),('tower'),('temple'),('establishment'),('castle') RETURNING *;"
 )
 
+ADD_NEW_STRONGHOLD_TYPE = (
+    "INSERT INTO stronghold_types (type_name) VALUES (%s) RETURNING *"
+)
+
 GET_ALL_STRONGHOLD_TYPES = (
     "SELECT * FROM stronghold_types;"
 )

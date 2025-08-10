@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.strongholdTypesController import create_stronghold_types_table, populate_stronghold_types_table, get_all_stronghold_types, update_stronghold_type_by_id, delete_stronghold_type_by_id
+from controllers.strongholdTypesController import create_stronghold_types_table, populate_stronghold_types_table, add_new_stronghold_type, get_all_stronghold_types, update_stronghold_type_by_id, delete_stronghold_type_by_id
 
 stronghold_types_bp = Blueprint("stronghold_typs", __name__)
 
@@ -10,6 +10,10 @@ def create_stronghold_types_table_route():
 @stronghold_types_bp.route("/populate", methods=["POST"])
 def populate_stronghold_types_table_route():
     return populate_stronghold_types_table()
+
+@stronghold_types_bp.route("/add", methods=["POST"])
+def add_new_stronghold_type_route():
+    return add_new_stronghold_type()
 
 @stronghold_types_bp.route("/", methods=["GET"])
 def get_all_stronghold_types_route():

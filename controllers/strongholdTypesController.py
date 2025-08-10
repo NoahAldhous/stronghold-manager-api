@@ -1,4 +1,4 @@
-from models.Stronghold_types import CREATE_STRONGHOLD_TYPES_TABLE, INSERT_STRONGHOLD_TYPES, GET_ALL_STRONGHOLD_TYPES, UPDATE_STRONGHOLD_TYPE_BY_ID, DELETE_STRONGHOLD_TYPE_BY_ID
+from models.Stronghold_types import CREATE_STRONGHOLD_TYPES_TABLE, INSERT_STRONGHOLD_TYPES, ADD_NEW_STRONGHOLD_TYPE, GET_ALL_STRONGHOLD_TYPES, UPDATE_STRONGHOLD_TYPE_BY_ID, DELETE_STRONGHOLD_TYPE_BY_ID
 from utils.db import query, connection, execute
 from flask import request 
 
@@ -20,6 +20,17 @@ def populate_stronghold_types_table():
         return {"message" : "Success! Table populated"}, 200
     else:
         return {"message" : "An error occured"}, 404
+    
+# ADD NEW STRONGHOLD TYPE
+def add_new_stronghold_type():
+    data = request.get_json()
+    typeName = data["name"]
+    newType = query(ADD_NEW_STRONGHOLD_TYPE, (typeName,), fetchone=True)
+
+    if newType:
+        return {"message": "Success!", "New type added": newType}
+    else:
+        return {"message": "Something went wrong"}
 
 # GET ALL STRONGHOLD TYPES
 def get_all_stronghold_types():
