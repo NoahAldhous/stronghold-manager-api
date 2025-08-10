@@ -35,18 +35,6 @@ from routes.strongholds_bp import strongholds_bp
 #     "CREATE TABLE IF NOT EXISTS stronghold_subtypes (id SERIAL PRIMARY KEY, subtype_name TEXT);"
 # )
 
-# CREATE_STRONGHOLD_TYPES_TABLE = (
-#     "CREATE TABLE IF NOT EXISTS stronghold_types (id SERIAL PRIMARY KEY, type_name TEXT UNIQUE);"
-# )
-
-# CREATE_STRONGHOLD_TYPE_FEATURES_TABLE = (
-#     "CREATE TABLE IF NOT EXISTS stronghold_type_features (id SERIAL PRIMARY KEY, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), feature_name TEXT, feature_description TEXT);"
-# )
-
-# INSERT_STRONGHOLD_TYPES = "INSERT INTO stronghold_types (type_name) VALUES ('keep'),('tower'),('temple'),('establishment'),('castle') RETURNING *;"
-
-# GET_ALL_STRONGHOLD_TYPES = "SELECT * FROM stronghold_types;"
-
 app = Flask(__name__)
 
 #root route
