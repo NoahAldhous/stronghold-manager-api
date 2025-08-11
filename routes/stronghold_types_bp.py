@@ -23,7 +23,7 @@ def get_all_stronghold_types_route():
 def get_stronghold_type_and_features_by_id_route(id):
     return get_stronghold_type_and_features_by_id(id)
 
-@stronghold_types_bp.route("/<id>", methods=["UPDATE"])
+@stronghold_types_bp.route("/<id>", methods=["PATCH"])
 def update_stronghold_type_by_id_route(id):
     return update_stronghold_type_by_id(id)
 

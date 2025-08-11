@@ -27,7 +27,7 @@ def add_new_stronghold_type_feature():
     strongholdType = data["stronghold_type"]
     featureName = data["feature_name"]
     featureDecription = data["feature_description"]
-    res = execute(ADD_NEW_STRONGHOLD_TYPE_FEATURE, (strongholdType, featureName, featureDecription))
+    res = execute(ADD_NEW_STRONGHOLD_TYPE_FEATURE, (strongholdType, featureName, featureDecription,))
     
     if res: 
         return {"message" : "new feature added successfully!"}, 201
@@ -43,8 +43,8 @@ def get_all_stronghold_type_features():
         return{"message" : "Could not fetch data"}, 404
     
 # GET STRONGHOLD TYPE FEATURE BY ID
-def get_stronghold_type_feature_by_id(id):
-    data = query(GET_STRONGHOLD_TYPE_FEATURE_BY_ID, (id,), fetchone = True)
+def get_stronghold_type_feature_by_id(feature_id):
+    data = query(GET_STRONGHOLD_TYPE_FEATURE_BY_ID, (feature_id,), fetchone = True)
 
     if data:
             return{"message" : "Success!", "data" : data}, 200
@@ -52,11 +52,11 @@ def get_stronghold_type_feature_by_id(id):
         return{"message" : "Could not fetch data"}, 404
     
 # UPDATE STRONGHOLD TYPE FEATURE BY ID
-def update_stronghold_type_feature_by_id(id):
+def update_stronghold_type_feature_by_id(feature_id):
     data = request.get_json()
     newFeatureName = data["name"]
     newFeatureDescription = data["description"]
-    res = execute(UPDATE_STRONGHOLD_TYPE_FEATURE_BY_ID, (id, newFeatureName, newFeatureDescription,))
+    res = execute(UPDATE_STRONGHOLD_TYPE_FEATURE_BY_ID, (newFeatureName, newFeatureDescription, feature_id,))
     
     if res:
         return {"message" : "Item updated successfully"}, 200
@@ -64,8 +64,8 @@ def update_stronghold_type_feature_by_id(id):
         return {"message" : "Could not find item"}, 404
 
 # DELETE STRONGHOLD TYPE FEATURE BY ID
-def delete_stronghold_type_feature_by_id(id):
-    res = execute(DELETE_STRONGHOLD_TYPE_FEATURE_BY_ID, (id,))
+def delete_stronghold_type_feature_by_id(feature_id):
+    res = execute(DELETE_STRONGHOLD_TYPE_FEATURE_BY_ID, (feature_id,))
     
     if res:
         return {"message" : "Item deleted successfuly"}, 200

@@ -29,7 +29,7 @@ GET_STRONGHOLD_TYPE_AND_FEATURES = (
         ) AS features
         FROM stronghold_types st
         LEFT JOIN stronghold_type_features f
-            ON st.id = f.type_id
+            ON st.id = f.stronghold_type_id
         WHERE st.id = %s 
         GROUP BY st.id, st.type_name;
     """

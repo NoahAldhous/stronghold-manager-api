@@ -21,9 +21,9 @@ def get_all_stronghold_type_features_route():
 
 @stronghold_type_features_bp.route("/<id>", methods=["GET"])
 def get_stronghold_type_feature_by_id_route(id):
-    return get_all_stronghold_type_features(id)
+    return get_stronghold_type_feature_by_id(id)
 
-@stronghold_type_features_bp.route("/<id>", methods=["UPDATE"])
+@stronghold_type_features_bp.route("/<id>", methods=["PATCH"])
 def update_stronghold_type_feature_by_id_route(id):
     return update_stronghold_type_feature_by_id(id)
 

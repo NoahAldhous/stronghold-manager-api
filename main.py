@@ -2,6 +2,8 @@ from flask import Flask
 from routes.users_bp import users_bp
 from routes.strongholds_bp import strongholds_bp
 from routes.stronghold_types_bp import stronghold_types_bp
+from routes.stronghold_type_features_bp import stronghold_type_features_bp
+from routes.stronghold_toughness_levels_bp import stronghold_toughness_levels_bp
 
 # CREATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
 #     "CREATE TABLE IF NOT EXISTS stronghold_construction_levels (id SERIAL PRIMARY KEY, stronghold_level INTEGER, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), cost_to_build INTEGER, time_to_build INTEGER, fortification_morale_bonus INTEGER);"
@@ -23,10 +25,6 @@ from routes.stronghold_types_bp import stronghold_types_bp
 #     "CREATE TABLE IF NOT EXISTS class_feature_improvements (id SERIAL PRIMARY KEY, FOREIGN KEY(stronghold_class_id) REFERENCES stronghold_classes(id), improvement_name TEXT, improvement_description TEXT);"
 # )
 
-# CREATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE = (
-#     "CREATE TABLE IF NOT EXISTS stronghold_toughness_levels (id SERIAL PRIMARY KEY, level INTEGER, FOREIGN KEY(stronghold_class_id) REFERENCES stronghold_classes(id), stronghold_toughness INTEGER);"
-# )
-
 # CREATE_STRONGHOLD_CLASSES_TABLE = (
 #     "CREATE TABLE IF NOT EXISTS stronghold_classes (id SERIAL PRIMARY KEY, class_name TEXT, class_stronghold_name TEXT);"
 # )
@@ -46,6 +44,8 @@ def default_route():
 app.register_blueprint(users_bp, url_prefix="/users")
 app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
 app.register_blueprint(stronghold_types_bp, url_prefix="/stronghold_types")
+app.register_blueprint(stronghold_type_features_bp, url_prefix="/stronghold_type_features")
+app.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/stronghold_toughness_levels")
 
 if __name__ == "__main__":
     app.run()
