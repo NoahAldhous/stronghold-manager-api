@@ -1,7 +1,7 @@
 from flask import Blueprint
 from controllers.strongholdTypesController import create_stronghold_types_table, populate_stronghold_types_table, add_new_stronghold_type, get_all_stronghold_types, get_stronghold_type_and_features_by_id, update_stronghold_type_by_id, delete_stronghold_type_by_id
 
-stronghold_types_bp = Blueprint("stronghold_typs", __name__)
+stronghold_types_bp = Blueprint("stronghold_types", __name__)
 
 @stronghold_types_bp.route("/", methods=["POST"])
 def create_stronghold_types_table_route():

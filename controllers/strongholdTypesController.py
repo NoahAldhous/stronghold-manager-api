@@ -1,5 +1,5 @@
 from models.Stronghold_types import CREATE_STRONGHOLD_TYPES_TABLE, INSERT_STRONGHOLD_TYPES, ADD_NEW_STRONGHOLD_TYPE, GET_ALL_STRONGHOLD_TYPES, GET_STRONGHOLD_TYPE_AND_FEATURES, UPDATE_STRONGHOLD_TYPE_BY_ID, DELETE_STRONGHOLD_TYPE_BY_ID
-from utils.db import query, connection, execute
+from utils.db import query, execute
 from flask import request 
 
 # CREATE STRONGHOLD TYPES
