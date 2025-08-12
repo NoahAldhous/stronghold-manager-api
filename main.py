@@ -6,10 +6,6 @@ from routes.stronghold_type_features_bp import stronghold_type_features_bp
 from routes.stronghold_toughness_levels_bp import stronghold_toughness_levels_bp
 from routes.stronghold_construction_levels_bp import stronghold_construction_levels_bp
 
-# CREATE_STRONGHOLD_SIZE_LEVELS_TABLE = (
-#     "CREATE TABLE IF NOT EXISTS stronghold_size_levels (id SERIAL PRIMARY KEY, stronghold_level INTEGER, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), stronghold_size INTEGER);"
-# )
-
 # CREATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
 #     "CREATE TABLE IF NOT EXISTS class_stronghold_actions (id SERIAL PRIMARY KEY, FOREIGN KEY(stronghold_class_id) REFERENCES stronghold_classes(id), action_description TEXT);"
 # )
