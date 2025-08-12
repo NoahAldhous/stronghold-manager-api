@@ -4,10 +4,7 @@ from routes.strongholds_bp import strongholds_bp
 from routes.stronghold_types_bp import stronghold_types_bp
 from routes.stronghold_type_features_bp import stronghold_type_features_bp
 from routes.stronghold_toughness_levels_bp import stronghold_toughness_levels_bp
-
-# CREATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
-#     "CREATE TABLE IF NOT EXISTS stronghold_construction_levels (id SERIAL PRIMARY KEY, stronghold_level INTEGER, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), cost_to_build INTEGER, time_to_build INTEGER, fortification_morale_bonus INTEGER);"
-# )
+from routes.stronghold_construction_levels_bp import stronghold_construction_levels_bp
 
 # CREATE_STRONGHOLD_SIZE_LEVELS_TABLE = (
 #     "CREATE TABLE IF NOT EXISTS stronghold_size_levels (id SERIAL PRIMARY KEY, stronghold_level INTEGER, FOREIGN KEY(stronghold_type_id) REFERENCES stronghold_types(id), stronghold_size INTEGER);"
@@ -46,6 +43,7 @@ app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
 app.register_blueprint(stronghold_types_bp, url_prefix="/stronghold_types")
 app.register_blueprint(stronghold_type_features_bp, url_prefix="/stronghold_type_features")
 app.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/stronghold_toughness_levels")
+app.register_blueprint(stronghold_construction_levels_bp, url_prefix="/stronghold_construction_levels")
 
 if __name__ == "__main__":
     app.run()

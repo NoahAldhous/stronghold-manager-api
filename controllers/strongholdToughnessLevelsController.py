@@ -44,7 +44,7 @@ def get_stronghold_toughness_levels_by_type_id(type_id):
 
 # GET TOUGHNESS BY LEVEL
 def get_stronghold_toughness_by_level(level):
-    data = query(GET_STRONGHOLD_TOUGHNESS_BY_LEVEL, (level), fetchone=False)
+    data = query(GET_STRONGHOLD_TOUGHNESS_BY_LEVEL, (level,), fetchone=False)
     
     if data:
             return{"message" : "Success!", "data" : data}, 200
