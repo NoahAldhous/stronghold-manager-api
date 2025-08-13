@@ -49,7 +49,7 @@ def get_stronghold_by_id(id):
     
 #GET STRONGHOLD BY ID, RETURN ALL STRONGHOLD DATA
 def get_stronghold_by_id_return_all_stronghold_data(id):
-    data = query(GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA, (id,))
+    data = query(GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA, (id,), fetchone=True)
     
     if data:
         return {"message" : "Success!", "data" : data}, 200

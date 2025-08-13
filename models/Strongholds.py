@@ -20,8 +20,44 @@ GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA = (
         s.stronghold_name,
         s.owner_name,
         s.stronghold_level,
-        (SELECT type_name AS stronghold_type from stronghold_types WHERE id = s.stronghold_type_id)
-        FROM strongholds s;
+        c.cost_to_build as upgrade_cost,
+        (
+            SELECT type_name AS stronghold_type 
+            FROM stronghold_types 
+            WHERE id = s.stronghold_type_id
+        ),
+        (
+            SELECT stronghold_size
+            FROM stronghold_size_levels
+            WHERE stronghold_type_id = s.stronghold_type_id
+            AND stronghold_level = s.stronghold_level
+        ),
+        json_build_object(
+            'toughness', (
+                SELECT toughness FROM stronghold_toughness_levels 
+                WHERE stronghold_level = s.stronghold_level 
+                AND stronghold_type_id = s.stronghold_type_id
+            ),
+            'morale_bonus', (
+                SELECT fortification_morale_bonus FROM stronghold_construction_levels
+                WHERE stronghold_level = s.stronghold_level
+                AND stronghold_type_id = s.stronghold_type_id
+            )
+        ) AS stats,
+        json_agg(
+            json_build_object(
+                'title', f.feature_name,
+                'description', f.feature_description
+            )
+        ) AS features 
+        FROM strongholds s
+        LEFT JOIN stronghold_type_features f
+            ON s.stronghold_type_id = f.stronghold_type_id
+        LEFT JOIN stronghold_construction_levels c
+            ON s.stronghold_type_id = c.stronghold_type_id
+            AND s.stronghold_level + 1 = c.stronghold_level 
+        WHERE s.id = %s
+        GROUP BY s.id, c.cost_to_build;
     """
 )
 
