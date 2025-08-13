@@ -7,7 +7,7 @@ def create_stronghold_construction_levels_table():
     res = execute(CREATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE)
     
     if res:
-            return{"message" : "Table created"}, 200
+        return{"message" : "Table created"}, 200
     else:
         return{"message" : "Oops, an error occured"}, 404
 
@@ -24,34 +24,35 @@ def insert_new_stronghold_construction_level():
     
     if res: 
         return {"message" : "new construction level added successfully!"}, 201
-    else: return {"message" : "could not add construction level"}, 404
+    else: 
+        return {"message" : "could not add construction level"}, 404
     
 #GET ALL STRONGHOLD CONSTRUCTION LEVELS
 def get_all_stronghold_construction_levels():
     data = query(GET_ALL_STRONGHOLD_CONSTRUCTION_LEVELS, fetchone=False)
     
     if data:
-            return{"message" : "Success!", "data" : data}, 200
+        return {"message" : "Success!", "data" : data}, 200
     else:
-        return{"message" : "Could not fetch data"}, 404  
+        return {"message" : "Could not fetch data"}, 404  
 
 #GET CONSTRUCTION LEVEL BY TYPE ID
 def get_stronghold_construction_levels_by_type_id(type_id):
     data = query(GET_STRONGHOLD_CONSTRUCTION_LEVELS_BY_TYPE_ID, (type_id,), fetchone=False)
     
     if data:
-            return{"message" : "Success!", "data" : data}, 200
+        return {"message" : "Success!", "data" : data}, 200
     else:
-        return{"message" : "Could not fetch data"}, 404     
+        return {"message" : "Could not fetch data"}, 404     
 
 #GET CONSTRUCTION BY LEVEL
 def get_stronghold_construction_by_level(level):
     data = query(GET_STRONGHOLD_CONSTRUCTION_BY_LEVEL, (level,), fetchone=False)
     
     if data:
-        return{"message" : "Success!", "data" : data}, 200
+        return {"message" : "Success!", "data" : data}, 200
     else:
-        return{"message" : "Could not fetch data"}, 404
+        return {"message" : "Could not fetch data"}, 404
     
 #UPDATE CONSTRUCTION LEVEL BY ID
 def update_stronghold_construction_level_by_id(level_id):
@@ -62,7 +63,7 @@ def update_stronghold_construction_level_by_id(level_id):
     res = execute(UPDATE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID, (costToBuild, timeToBuild, moraleBonus, level_id,))
     
     if res:
-            return {"message" : "Item updated successfully"}, 200
+        return {"message" : "Item updated successfully"}, 200
     else:
         return {"message" : "Could not find item"}, 404
     
@@ -71,6 +72,6 @@ def delete_stronghold_construction_level_by_id(level_id):
     res = execute(DELETE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID, (level_id,))
     
     if res:
-            return {"message" : "Item deleted successfuly"}, 200
+        return {"message" : "Item deleted successfuly"}, 200
     else:
         return {"message" : "Could not find item"}, 404 

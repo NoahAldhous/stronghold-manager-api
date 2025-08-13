@@ -5,6 +5,7 @@ from routes.stronghold_types_bp import stronghold_types_bp
 from routes.stronghold_type_features_bp import stronghold_type_features_bp
 from routes.stronghold_toughness_levels_bp import stronghold_toughness_levels_bp
 from routes.stronghold_construction_levels_bp import stronghold_construction_levels_bp
+from routes.stronghold_size_levels_bp import stronghold_size_levels_bp
 
 # CREATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
 #     "CREATE TABLE IF NOT EXISTS class_stronghold_actions (id SERIAL PRIMARY KEY, FOREIGN KEY(stronghold_class_id) REFERENCES stronghold_classes(id), action_description TEXT);"
@@ -40,6 +41,7 @@ app.register_blueprint(stronghold_types_bp, url_prefix="/stronghold_types")
 app.register_blueprint(stronghold_type_features_bp, url_prefix="/stronghold_type_features")
 app.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/stronghold_toughness_levels")
 app.register_blueprint(stronghold_construction_levels_bp, url_prefix="/stronghold_construction_levels")
+app.register_blueprint(stronghold_size_levels_bp, url_prefix="/stronghold_size_levels")
 
 if __name__ == "__main__":
     app.run()

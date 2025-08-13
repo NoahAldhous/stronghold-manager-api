@@ -19,7 +19,7 @@ GET_STRONGHOLD_SIZE_BY_LEVEL = (
 )
 
 UPDATE_STRONGHOLD_SIZE_LEVEL_BY_ID = (
-    "UPDATE stronghold_size_levels SET stronghold_size WHERE id = %s;"
+    "UPDATE stronghold_size_levels SET stronghold_size = %s WHERE id = %s;"
 )
 
 DELETE_STRONGHOLD_SIZE_LEVEL_BY_ID = (

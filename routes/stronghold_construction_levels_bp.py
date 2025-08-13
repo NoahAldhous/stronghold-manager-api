@@ -1,7 +1,7 @@
 from flask import Blueprint
 from controllers.strongholdConstructionLevelsController import create_stronghold_construction_levels_table, insert_new_stronghold_construction_level, get_all_stronghold_construction_levels, get_stronghold_construction_by_level, get_stronghold_construction_levels_by_type_id, update_stronghold_construction_level_by_id, delete_stronghold_construction_level_by_id
 
-stronghold_construction_levels_bp = Blueprint("Stronghold_construction_levels", __name__)
+stronghold_construction_levels_bp = Blueprint("stronghold_construction_levels", __name__)
 
 @stronghold_construction_levels_bp.route("/", methods=["POST"])
 def create_stronghold_construction_levels_table_route():
