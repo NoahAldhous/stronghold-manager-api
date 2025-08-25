@@ -1,4 +1,6 @@
 from flask import Flask
+from flask_jwt_extended import JWTManager
+from utils import config
 from routes.users_bp import users_bp
 from routes.strongholds_bp import strongholds_bp
 from routes.stronghold_types_bp import stronghold_types_bp
@@ -8,7 +10,8 @@ from routes.stronghold_construction_levels_bp import stronghold_construction_lev
 from routes.stronghold_size_levels_bp import stronghold_size_levels_bp
 
 app = Flask(__name__)
-
+app.config["JWT_SECRET_KEY"] = config.JWT_SECRET_KEY
+jwt = JWTManager(app)
 # Root route
 @app.get("/")
 def default_route():
