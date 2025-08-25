@@ -1,9 +1,9 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-from flask_jwt_extended import verify_jwt_in_request, get_jwt
+from flask_jwt_extended import get_jwt, jwt_required
 from flask import jsonify
 
-# Converts password into randomised string/hash
+# Converts password into randomised string/hash for storing in db
 def hash_password(plain):
     return generate_password_hash(plain, method="pbkdf2:sha256", salt_length=16)
 
@@ -12,16 +12,17 @@ def verify_password(pw, pw_hash):
     return check_password_hash(pw_hash, pw)
 
 # Decorator for endpoints that creates role-based restrictions
-def admin_required(fn):
-    @wraps(fn)
-    def wrapper(*args, **kwargs):
-        # check there is a valid JWT
-        verify_jwt_in_request()
-        # pull decoded claims out of token
-        claims = get_jwt()
-        # get 'role' and check if equals 'admin' - if not, stop and return 403
-        if claims.get("role") != "admin":
-            return jsonify(msg="Permission not authorised, admins only"), 403
-        # if all good (admin logged in) run endpoint code
-        return fn(*args, **kwargs)
-    return wrapper
+def roles_required(*roles):
+    def decorator(fn):    
+        @wraps(fn)
+        @jwt_required()
+        def wrapper(*args, **kwargs):
+            # pull decoded role out of token
+            role = get_jwt().get("role")
+            # get 'role' and check if equal to at least one of the roles provided - if not, stop and return 403
+            if role not in roles:
+                return jsonify(msg="Permission not authorised, admins only"), 403
+            # if all good (authenticated and authorised) run endpoint code
+            return fn(*args, **kwargs)
+        return wrapper
+    return decorator

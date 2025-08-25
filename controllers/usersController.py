@@ -1,4 +1,4 @@
-from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER, GET_USER_BY_ID, GET_USER_BY_EMAIL, UPDATE_USER_NAME_BY_ID, UPDATE_USER_PASSWORD_BY_ID, DELETE_USER_BY_ID, DELETE_USERS_TABLE
+from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER, GET_USER_BY_ID, GET_USER_BY_EMAIL, UPDATE_USER_NAME_BY_ID, UPDATE_USER_ROLE_BY_ID, UPDATE_USER_PASSWORD_BY_ID, DELETE_USER_BY_ID, DELETE_USERS_TABLE
 from utils.db import query, execute
 from flask_jwt_extended import create_access_token, get_jwt
 from utils.auth import hash_password, verify_password
@@ -82,6 +82,12 @@ def update_user_password_by_id(user_id):
     if res:
         return {"message": "Password updated in " + str(res) + " user"}, 200
     else: return {"message": "User not found"}, 404
+
+# UPDATE USER ROLE BY ID
+def update_user_permission_by_id(user_id):
+    data = request.get_json()
+    newRole = data["role"]
+    res = execute(UPDATE_USER_ROLE_BY_ID, (newRole, user_id))
 
 # UPDATE USER NAME BY ID    
 def update_user_name_by_id(user_id):

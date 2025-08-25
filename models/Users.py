@@ -39,11 +39,15 @@ GET_USER_BY_EMAIL = (
 )
 
 UPDATE_USER_PASSWORD_BY_ID = (
-    "UPDATE users SET user_password = %s WHERE id = %s;"
+    "UPDATE users SET password_hash = %s WHERE id = %s;"
 )
 
 UPDATE_USER_NAME_BY_ID = (
     "UPDATE users SET user_name = %s WHERE id = %s;"
+)
+
+UPDATE_USER_ROLE_BY_ID = (
+    "UPDATE users SET role = %s WHERE id = %s;"
 )
 
 DELETE_USER_BY_ID = (

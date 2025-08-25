@@ -1,6 +1,7 @@
 from flask import Blueprint
-from controllers.usersController import create_users_table, register_user, login_user, whoami, get_all_users, get_user_by_id, delete_user_by_id, update_user_password_by_id, update_user_name_by_id, delete_users_table
+from controllers.usersController import create_users_table, register_user, login_user, whoami, get_all_users, get_user_by_id, delete_user_by_id, update_user_password_by_id, update_user_permission_by_id, update_user_name_by_id, delete_users_table
 from flask_jwt_extended import jwt_required
+from utils.auth import roles_required
 
 users_bp = Blueprint("users", __name__)
 
@@ -22,6 +23,7 @@ def whoami_route():
     return whoami()
 
 @users_bp.route("/", methods=["GET"])
+@roles_required("admin")
 def get_all_users_route():
     return get_all_users()
 
@@ -32,6 +34,10 @@ def get_user_route(user_id):
 @users_bp.route("/update/password/<user_id>", methods=["PATCH"])
 def update_user_password_route(user_id):
     return update_user_password_by_id(user_id)
+
+@users_bp.route("/update/permissions/<user_id>", methods=["PATCH"])
+def update_user_permission_route(user_id):
+    return update_user_permission_by_id(user_id)
 
 @users_bp.route("/delete/<user_id>", methods=["DELETE"])
 def delete_user_route(user_id):
