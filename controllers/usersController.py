@@ -1,4 +1,4 @@
-from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER_RETURN_ID, GET_USER_BY_ID, UPDATE_USER_NAME_BY_ID, UPDATE_USER_PASSWORD_BY_ID, DELETE_USER_BY_ID
+from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER_RETURN_ID, GET_USER_BY_ID, UPDATE_USER_NAME_BY_ID, UPDATE_USER_PASSWORD_BY_ID, DELETE_USER_BY_ID, DELETE_USERS_TABLE
 from utils.db import query, connection, execute
 from flask import request
 from datetime import date
@@ -62,3 +62,12 @@ def delete_user_by_id(user_id):
     if res:
         return {"message": "User deleted", "number of rows deleted": res}, 200
     else: return {"message": "User not found"}, 404
+    
+#DELETE USERS TABLE
+def delete_users_table():
+    res = execute(DELETE_USERS_TABLE)
+    
+    if res: 
+        return {"message" : "table deleted"}, 200
+    else:
+        return {"message" : "table not found"}, 404

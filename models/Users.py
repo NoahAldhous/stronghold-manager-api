@@ -25,3 +25,7 @@ UPDATE_USER_NAME_BY_ID = (
 DELETE_USER_BY_ID = (
     "DELETE FROM users WHERE id = %s;"
 )
+
+DELETE_USERS_TABLE = (
+    "DROP TABLE users;"
+)
