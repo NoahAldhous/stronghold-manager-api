@@ -88,6 +88,10 @@ def update_user_permission_by_id(user_id):
     data = request.get_json()
     newRole = data["role"]
     res = execute(UPDATE_USER_ROLE_BY_ID, (newRole, user_id))
+    
+    if res:
+        return {"message": "Permission updated in " + str(res) + " user"}, 200
+    else: return {"message": "User not found"}, 404
 
 # UPDATE USER NAME BY ID    
 def update_user_name_by_id(user_id):
