@@ -34,14 +34,17 @@ app = Flask(__name__)
 def default_route():
     return "hello world!"
 
-# Blueprint routes
-app.register_blueprint(users_bp, url_prefix="/users")
+# BLUEPRINT ROUTES
+# Strongholds
+stronghold_types_bp.register_blueprint(stronghold_type_features_bp, url_prefix="/features")
+strongholds_bp.register_blueprint(stronghold_types_bp, url_prefix="/types")
+strongholds_bp.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/toughness")
+strongholds_bp.register_blueprint(stronghold_construction_levels_bp, url_prefix="/construction")
+strongholds_bp.register_blueprint(stronghold_size_levels_bp, url_prefix="/size")
 app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
-app.register_blueprint(stronghold_types_bp, url_prefix="/stronghold_types")
-app.register_blueprint(stronghold_type_features_bp, url_prefix="/stronghold_type_features")
-app.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/stronghold_toughness_levels")
-app.register_blueprint(stronghold_construction_levels_bp, url_prefix="/stronghold_construction_levels")
-app.register_blueprint(stronghold_size_levels_bp, url_prefix="/stronghold_size_levels")
+
+# Users
+app.register_blueprint(users_bp, url_prefix="/users")
 
 if __name__ == "__main__":
     app.run()
