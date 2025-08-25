@@ -1,9 +1,29 @@
 CREATE_USERS_TABLE = (
-    "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, user_name TEXT, email TEXT UNIQUE, user_password TEXT, account_created DATE);"
+    """CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY, 
+        user_name TEXT UNIQUE NOT NULL, 
+        email TEXT UNIQUE NOT NULL, 
+        password_hash TEXT NOT NULL,
+        role TEXT NOT NULL DEFAULT 'user',
+        created_at TIMESTAMPTZ DEFAULT now()
+        is_active BOOLEAN DEFAULT TRUE
+    );"""
 )
 
-INSERT_USER_RETURN_ID = (
-    "INSERT INTO users (user_name, email, user_password, account_created) VALUES (%s, %s, %s, %s) RETURNING id;"
+INSERT_USER = (
+    """INSERT INTO 
+        users (
+            user_name, 
+            email, 
+            password_hash
+        ) 
+        VALUES (%s, %s, %s) 
+        RETURNING 
+            id, 
+            user_name, 
+            email, 
+            role
+    ;"""
 )
 
 GET_ALL_USERS = (
@@ -12,6 +32,10 @@ GET_ALL_USERS = (
 
 GET_USER_BY_ID = (
     "SELECT * FROM users WHERE id = %s;"
+)
+
+GET_USER_BY_EMAIL = (
+    "SELECT id, email, role, password_hash FROM users WHERE email = %s;"
 )
 
 UPDATE_USER_PASSWORD_BY_ID = (

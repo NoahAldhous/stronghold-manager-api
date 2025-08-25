@@ -1,11 +1,15 @@
 from flask import Blueprint
-from controllers.usersController import get_all_users, create_user, get_user_by_id, delete_user_by_id, update_user_password_by_id, update_user_name_by_id, delete_users_table
+from controllers.usersController import create_users_table, register_user, get_all_users, create_user, get_user_by_id, delete_user_by_id, update_user_password_by_id, update_user_name_by_id, delete_users_table
 
 users_bp = Blueprint("users", __name__)
 
 @users_bp.route("/", methods=["POST"])
-def create_user_route():
-    return create_user()
+def create_users_table_route():
+    return create_users_table()
+
+@users_bp.route("/register", methods=["POST"])
+def register_user_route():
+    return register_user()
 
 @users_bp.route("/", methods=["GET"])
 def get_all_users_route():
