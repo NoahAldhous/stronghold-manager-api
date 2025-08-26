@@ -54,7 +54,7 @@ def login_user():
     
     # add claims like 'role'
     token = create_access_token(identity=str(user["id"]), additional_claims={"role": user["role"], "user_name": user["user_name"]})
-    return {"access token" : token}, 200
+    return {"access_token" : token}, 200
 
 # WHO AM I
 def whoami():
