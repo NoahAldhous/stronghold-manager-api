@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from utils import config
 from routes.users_bp import users_bp
@@ -10,8 +11,15 @@ from routes.stronghold_construction_levels_bp import stronghold_construction_lev
 from routes.stronghold_size_levels_bp import stronghold_size_levels_bp
 
 app = Flask(__name__)
+#set up JWT for auth
 app.config["JWT_SECRET_KEY"] = config.JWT_SECRET_KEY
 jwt = JWTManager(app)
+#Allow cross-origin requests
+CORS(app, origins=[
+    "http://localhost:3000",
+    "https://my-frontend-deployed.com" #TODO: update this with deployed url!
+])
+
 # Root route
 @app.get("/")
 def default_route():
