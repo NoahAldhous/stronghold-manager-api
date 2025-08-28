@@ -37,7 +37,8 @@ def register_user():
     user = query(INSERT_USER, (name, email, password_hash))
     
     if user:
-        return {"message": "Success!", "data": user}, 201
+        token = create_access_token(identity=str(user["id"]), additional_claims={"role": user["role"], "user_name": user["user_name"]})
+        return {"access_token": token}, 201
     else:
         return {"message": "Error, could not create user"}, 400
 
