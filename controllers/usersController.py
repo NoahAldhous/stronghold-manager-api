@@ -34,7 +34,7 @@ def register_user():
     if existing:
         return {"message" : "Email already in use"}, 409
     
-    user = query(INSERT_USER, (name, email, password_hash))
+    user = query(INSERT_USER, (name, email, password_hash), fetchone=True)
     
     if user:
         token = create_access_token(identity=str(user["id"]), additional_claims={"role": user["role"], "user_name": user["user_name"]})
