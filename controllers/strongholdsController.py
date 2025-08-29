@@ -33,11 +33,11 @@ def insert_stronghold():
 def get_strongholds_by_user_id(id):
     data = query(GET_STRONGHOLDS_BY_USER_ID, (id,), fetchone=False)
     
-    if data:
-        return {"message" : "Success!", "data" : data}, 200
-    else:
+    if data is None: # Only respond with 404 if request failed - if empty array, respond with success
         return {"message" : "Could not fetch data"}, 404
-    
+    else:
+        return {"message" : "Success!", "data" : data}, 200
+        
 #GET STRONGHOLD BY ID
 def get_stronghold_by_id(id):
     data = query(GET_STRONGHOLD_BY_ID, (id,), fetchone=True)
