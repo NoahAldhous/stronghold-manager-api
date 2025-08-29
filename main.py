@@ -17,7 +17,7 @@ jwt = JWTManager(app)
 #Allow cross-origin requests
 CORS(app, origins=[
     "http://localhost:3000",
-    "https://my-frontend-deployed.com" #TODO: update this with deployed url!
+    config.CLIENT_URL 
 ])
 
 # Root route
