@@ -7,7 +7,7 @@ strongholds_bp = Blueprint("strongholds", __name__)
 def create_strongholds_table_route():
     return create_strongholds_table()
 
-@strongholds_bp.route("/add", methods=["POST"])
+@strongholds_bp.route("/create", methods=["POST"])
 def insert_stronghold_route():
     return insert_stronghold()
 
