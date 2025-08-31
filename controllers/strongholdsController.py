@@ -25,7 +25,7 @@ def insert_stronghold():
     res = query(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, createdAt,), fetchone=True)
     
     if res:
-        return {"message" : "Success! Stronghold added", "id" : res}, 201
+        return {"message" : "Success! Stronghold added", "id" : res["id"]}, 201
     else:
         return {"message" : "An error occured"}, 404
 
