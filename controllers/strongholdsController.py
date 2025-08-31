@@ -22,7 +22,7 @@ def insert_stronghold():
     strongholdType = data["stronghold_type"]
     createdAt = date.today()
     execute(CREATE_STRONGHOLDS_TABLE)
-    res = execute(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, createdAt,))
+    res = query(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, createdAt,), fetchone=True)
     
     if res:
         return {"message" : "Success! Stronghold added", "id" : res}, 201
@@ -36,14 +36,14 @@ def get_strongholds_by_user_id(id):
     if data is None: # Only respond with 404 if request failed - if empty array, respond with success
         return {"message" : "Could not fetch data"}, 404
     else:
-        return {"message" : "Success!", "data" : data}, 200
+        return {"message" : "Success!", "strongholds" : data}, 200
         
 #GET STRONGHOLD BY ID
 def get_stronghold_by_id(id):
     data = query(GET_STRONGHOLD_BY_ID, (id,), fetchone=True)
     
     if data:
-        return {"message" : "Success!", "data" : data}, 200
+        return {"message" : "Success!", "stronghold" : data}, 200
     else:
         return {"message" : "Could not fetch data"}, 404
     
@@ -52,7 +52,7 @@ def get_stronghold_by_id_return_all_stronghold_data(id):
     data = query(GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA, (id,), fetchone=True)
     
     if data:
-        return {"message" : "Success!", "data" : data}, 200
+        return {"message" : "Success!", "stronghold" : data}, 200
     else:
         return {"message" : "Could not fetch data"}, 404
     
