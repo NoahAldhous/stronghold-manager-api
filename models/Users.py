@@ -51,7 +51,7 @@ UPDATE_USER_ROLE_BY_ID = (
 )
 
 DELETE_USER_BY_ID = (
-    "DELETE FROM users WHERE id = %s CASCADE;"
+    "DELETE FROM users WHERE id = %s;"
 )
 
 DELETE_USERS_TABLE = (
