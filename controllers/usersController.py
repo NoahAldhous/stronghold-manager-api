@@ -110,7 +110,8 @@ def delete_user_by_id(user_id):
     
     if res:
         return {"message": "User deleted", "number of rows deleted": res}, 200
-    else: return {"message": "User not found"}, 404
+    else: 
+        return {"message": "User not found"}, 404
     
 #DELETE USERS TABLE
 def delete_users_table():
