@@ -36,6 +36,6 @@ def delete_stronghold_toughness_level_by_id(id):
     return delete_stronghold_toughness_level_by_id(id)
 
 @stronghold_toughness_levels_bp.route("/clear", methods=["DELETE"])
-def clear_stronghold_toughness_levels_table():
+def clear_stronghold_toughness_levels_table_route():
     return clear_stronghold_toughness_levels_table()
     
