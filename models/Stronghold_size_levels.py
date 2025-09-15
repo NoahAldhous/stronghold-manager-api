@@ -18,28 +18,68 @@ POPULATE_STRONGHOLD_SIZE_LEVELS_TABLE = (
     FROM (
         VALUES
             (
-                1, 'keep', 6    
-                2, 'keep', 8    
-                3, 'keep', 10    
-                4, 'keep', 12   
-                5, 'keep', 20   
-                1, 'tower', 4    
-                2, 'tower', 6    
-                3, 'tower', 8    
-                4, 'tower', 10   
-                5, 'tower', 12   
-                1, 'temple', 4    
-                2, 'temple', 6    
-                3, 'temple', 8    
-                4, 'temple', 10   
-                5, 'temple', 12   
-                1, 'establishment', 0    
-                2, 'establishment', 0    
-                3, 'establishment', 0    
-                4, 'establishment', 0   
-                5, 'establishment', 0   
+                1, 'keep', 6
             ),
-    )
+            ( 
+                2, 'keep', 8
+            ),    
+            (
+                3, 'keep', 10
+            ),    
+            (
+                4, 'keep', 12
+            ), 
+            (
+                5, 'keep', 20
+            ), 
+            (
+                1, 'tower', 4
+            ),    
+            (
+                2, 'tower', 6
+            ),   
+            (
+                3, 'tower', 8
+            ),    
+            (
+                4, 'tower', 10
+            ),   
+            (
+                5, 'tower', 12
+            ),
+            (
+                1, 'temple', 4
+            ),   
+            (
+                2, 'temple', 6
+            ),
+            (
+                3, 'temple', 8
+            ),    
+            (
+                4, 'temple', 10
+            ),  
+            (
+                5, 'temple', 12
+            ),  
+            (
+                1, 'establishment', 0
+            ),   
+            (
+                2, 'establishment', 0
+            ),  
+            (
+                3, 'establishment', 0
+            ),  
+            (
+                4, 'establishment', 0
+            ),
+            (
+                5, 'establishment', 0
+            )  
+    ) AS levels(level, size)
+    JOIN stronghold_types AS types
+        ON types.type_name = levels.type_name
     """
 )
 
