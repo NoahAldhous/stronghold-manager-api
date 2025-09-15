@@ -1,4 +1,4 @@
-from models.Stronghold_size_levels import CREATE_STRONGHOLD_SIZE_LEVELS_TABLE, INSERT_STRONGHOLD_SIZE_LEVEL, GET_ALL_STRONGHOLD_SIZE_LEVELS, GET_STRONGHOLD_SIZE_LEVEL_BY_TYPE_ID, GET_STRONGHOLD_SIZE_BY_LEVEL, UPDATE_STRONGHOLD_SIZE_LEVEL_BY_ID, DELETE_STRONGHOLD_SIZE_LEVEL_BY_ID
+from models.Stronghold_size_levels import CREATE_STRONGHOLD_SIZE_LEVELS_TABLE, INSERT_STRONGHOLD_SIZE_LEVEL, POPULATE_STRONGHOLD_SIZE_LEVELS_TABLE, GET_ALL_STRONGHOLD_SIZE_LEVELS, GET_STRONGHOLD_SIZE_LEVEL_BY_TYPE_ID, GET_STRONGHOLD_SIZE_BY_LEVEL, UPDATE_STRONGHOLD_SIZE_LEVEL_BY_ID, DELETE_STRONGHOLD_SIZE_LEVEL_BY_ID, CLEAR_STRONGHOLD_SIZE_LEVELS_TABLE
 from utils.db import query, execute
 from flask import request
 
@@ -25,6 +25,14 @@ def insert_new_stronghold_size_level():
     else: 
         return {"message" : "could not add size level"}, 404
     
+#POPULATE SIZE LEVELS TABLE
+def populate_stronghold_size_levels_table():
+    res = execute(POPULATE_STRONGHOLD_SIZE_LEVELS_TABLE)
+    
+    if res:
+        return {"message" : "table populated"}, 201
+    else: return {"message" : "something went wrong"}, 404
+
 #GET ALL SIZE LEVELS
 def get_all_stronghold_size_levels():
     data = query(GET_ALL_STRONGHOLD_SIZE_LEVELS, fetchone=False)
@@ -71,3 +79,12 @@ def delete_stronghold_size_level_by_id(level_id):
         return {"message" : "Item deleted successfuly"}, 200
     else: 
         return {"message" : "Could not find item"}, 404
+    
+#CLEAR TABLE
+def clear_stronghold_size_levels_table():
+    res = execute(CLEAR_STRONGHOLD_SIZE_LEVELS_TABLE)
+    
+    if res:
+        return {"message" : "all rows deleted"}, 200
+    else:
+        return {"message" : "something went wrong"}, 404
