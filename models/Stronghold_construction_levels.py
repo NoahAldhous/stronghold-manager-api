@@ -98,5 +98,5 @@ DELETE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID = (
 )
 
 CLEAR_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
-    "DELETE * FROM stronghold_construction_levels;"
+    "DELETE FROM stronghold_construction_levels;"
 )
