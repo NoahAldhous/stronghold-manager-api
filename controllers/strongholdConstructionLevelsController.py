@@ -1,4 +1,4 @@
-from models.Stronghold_construction_levels import CREATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE, INSERT_STRONGHOLD_CONSTRUCTION_LEVEL, GET_ALL_STRONGHOLD_CONSTRUCTION_LEVELS, GET_STRONGHOLD_CONSTRUCTION_LEVELS_BY_TYPE_ID, GET_STRONGHOLD_CONSTRUCTION_BY_LEVEL, UPDATE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID, DELETE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID
+from models.Stronghold_construction_levels import CREATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE, INSERT_STRONGHOLD_CONSTRUCTION_LEVEL, POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE, GET_ALL_STRONGHOLD_CONSTRUCTION_LEVELS, GET_STRONGHOLD_CONSTRUCTION_LEVELS_BY_TYPE_ID, GET_STRONGHOLD_CONSTRUCTION_BY_LEVEL, UPDATE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID, DELETE_STRONGHOLD_CONSTRUCTION_LEVEL_BY_ID, CLEAR_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE
 from utils.db import query, execute
 from flask import request
 
@@ -10,6 +10,15 @@ def create_stronghold_construction_levels_table():
         return{"message" : "Table created"}, 200
     else:
         return{"message" : "Oops, an error occured"}, 404
+    
+#POPULATE CONSTRUCTION LEVELS TABLE
+def populate_stronghold_levels_table():
+    res = execute(POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE)
+    
+    if res:
+        return {"message" "table populated"}, 201
+    else:
+        return {"message" : "something went wrong"}, 404
 
 #INSERT A CONSTRUCTION LEVEL
 def insert_new_stronghold_construction_level():
@@ -75,3 +84,12 @@ def delete_stronghold_construction_level_by_id(level_id):
         return {"message" : "Item deleted successfuly"}, 200
     else:
         return {"message" : "Could not find item"}, 404 
+    
+#DELETE ALL ROWS
+def clear_stronghold_construction_levels_table():
+    res = execute(CLEAR_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE)
+    
+    if res: 
+        return {"message" : "All rows deleted"}, 200
+    else:
+        return {"message" : "Something went wrong"}, 404
