@@ -77,9 +77,9 @@ POPULATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE = (
             (
                 5, 'establishment', 0
             ),
-    ) AS level(level, type_name, toughness)
+    ) AS levels(level, type_name, toughness)
     JOIN stronghold_types AS types
-        ON types.type_name = level.type_name
+        ON types.type_name = levels.type_name
     """
 )
 
