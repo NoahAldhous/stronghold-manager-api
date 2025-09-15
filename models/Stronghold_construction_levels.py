@@ -13,71 +13,70 @@ POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
         levels.level,
         types.id,
         levels.cost,
-        level.time,
+        levels.time,
         levels.morale_bonus
     FROM (
-        
-    VALUES
-        (
-            1, 'keep', 10000, 150, 2
-        ),
-        (
-            2, 'keep', 5000, 50, 4
-        ),
-        (
-            3, 'keep', 10000, 100, 6
-        ),
-        (
-            4, 'keep', 15000, 150, 8
-        ),
-        (
-            5, 'keep', 20000, 200, 10
-        ),
-        (
-            1, 'tower', 8000, 120, 1
-        ),
-        (
-            2, 'tower', 3000, 40, 2
-        ),
-        (
-            3, 'tower', 6000, 80, 3
-        ),
-        (
-            4, 'tower', 12000, 120, 4
-        ),
-        (
-            5, 'tower', 18000, 160, 5
-        ),
-        (
-            1, 'temple', 8000, 120, 1
-        ),
-        (
-            2, 'temple', 3000, 40, 2
-        ),
-        (
-            3, 'temple', 6000, 80, 3
-        ),
-        (
-            4, 'temple', 12000, 120, 4
-        ),
-        (
-            5, 'temple', 18000, 160, 5
-        ),
-        (
-            1, 'establishment', 6000, 90, 0
-        ),
-        (
-            2, 'establishment', 2000, 30, 0
-        ),
-        (
-            3, 'establishment', 4000, 60, 0
-        ),
-        (
-            4, 'establishment', 6000, 90, 0
-        ),
-        (
-            5, 'establishment', 8000, 120, 0
-        )
+        VALUES
+            (
+                1, 'keep', 10000, 150, 2
+            ),
+            (
+                2, 'keep', 5000, 50, 4
+            ),
+            (
+                3, 'keep', 10000, 100, 6
+            ),
+            (
+                4, 'keep', 15000, 150, 8
+            ),
+            (
+                5, 'keep', 20000, 200, 10
+            ),
+            (
+                1, 'tower', 8000, 120, 1
+            ),
+            (
+                2, 'tower', 3000, 40, 2
+            ),
+            (
+                3, 'tower', 6000, 80, 3
+            ),
+            (
+                4, 'tower', 12000, 120, 4
+            ),
+            (
+                5, 'tower', 18000, 160, 5
+            ),
+            (
+                1, 'temple', 8000, 120, 1
+            ),
+            (
+                2, 'temple', 3000, 40, 2
+            ),
+            (
+                3, 'temple', 6000, 80, 3
+            ),
+            (
+                4, 'temple', 12000, 120, 4
+            ),
+            (
+                5, 'temple', 18000, 160, 5
+            ),
+            (
+                1, 'establishment', 6000, 90, 0
+            ),
+            (
+                2, 'establishment', 2000, 30, 0
+            ),
+            (
+                3, 'establishment', 4000, 60, 0
+            ),
+            (
+                4, 'establishment', 6000, 90, 0
+            ),
+            (
+                5, 'establishment', 8000, 120, 0
+            )
     ) AS levels(level, type_name, cost, time, morale_bonus)
     JOIN stronghold_types AS types
         ON types.type_name = levels.type_name
