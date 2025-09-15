@@ -10,7 +10,7 @@ POPULATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE = (
     """INSERT INTO stronghold_toughness_levels (
         stronghold_level,
         stronghold_type_id,
-        stronghold_toughness
+        toughness
     ) SELECT 
         level.level,
         types.id,
