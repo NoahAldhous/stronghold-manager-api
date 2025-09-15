@@ -77,7 +77,7 @@ POPULATE_STRONGHOLD_SIZE_LEVELS_TABLE = (
             (
                 5, 'establishment', 0
             )  
-    ) AS levels(level, size)
+    ) AS levels(level, type_name, size)
     JOIN stronghold_types AS types
         ON types.type_name = levels.type_name
     """
