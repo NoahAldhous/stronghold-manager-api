@@ -12,7 +12,7 @@ def create_stronghold_construction_levels_table():
         return{"message" : "Oops, an error occured"}, 404
     
 #POPULATE CONSTRUCTION LEVELS TABLE
-def populate_stronghold_levels_table():
+def populate_stronghold_construction_levels_table():
     res = execute(POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE)
     
     if res:
