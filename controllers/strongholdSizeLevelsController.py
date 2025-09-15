@@ -85,6 +85,6 @@ def clear_stronghold_size_levels_table():
     res = execute(CLEAR_STRONGHOLD_SIZE_LEVELS_TABLE)
     
     if res:
-        return {"message" : "all rows deleted"}, 200
+        return {"message" : "All rows deleted"}, 200
     else:
         return {"message" : "something went wrong"}, 404

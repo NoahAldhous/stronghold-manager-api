@@ -37,4 +37,4 @@ def delete_stronghold_size_level_by_id_route(id):
 
 @stronghold_size_levels_bp.route("/clear", methods=["DELETE"])
 def clear_stronghold_size_levels_table_route():
-    return clear_stronghold_size_levels_table
+    return clear_stronghold_size_levels_table()
