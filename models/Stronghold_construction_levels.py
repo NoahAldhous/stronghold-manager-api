@@ -11,64 +11,64 @@ POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
         fortification_morale_bonus    
     ) VALUES
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = "keep"), 10000, 150, 2
+            1, (SELECT id FROM stronghold_types WHERE type_name = keep), 10000, 150, 2
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = "keep"), 5000, 50, 4
+            2, (SELECT id FROM stronghold_types WHERE type_name = keep), 5000, 50, 4
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = "keep"), 10000, 100, 6
+            3, (SELECT id FROM stronghold_types WHERE type_name = keep), 10000, 100, 6
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = "keep"), 15000, 150, 8
+            4, (SELECT id FROM stronghold_types WHERE type_name = keep), 15000, 150, 8
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = "keep"), 20000, 200, 10
+            5, (SELECT id FROM stronghold_types WHERE type_name = keep), 20000, 200, 10
         ),
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = "tower"), 8000, 120, 1
+            1, (SELECT id FROM stronghold_types WHERE type_name = tower), 8000, 120, 1
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = "tower"), 3000, 40, 2
+            2, (SELECT id FROM stronghold_types WHERE type_name = tower), 3000, 40, 2
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = "tower"), 6000, 80, 3
+            3, (SELECT id FROM stronghold_types WHERE type_name = tower), 6000, 80, 3
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = "tower"), 12000, 120, 4
+            4, (SELECT id FROM stronghold_types WHERE type_name = tower), 12000, 120, 4
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = "tower"), 18000, 160, 5
+            5, (SELECT id FROM stronghold_types WHERE type_name = tower), 18000, 160, 5
         ),
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = "temple"), 8000, 120, 1
+            1, (SELECT id FROM stronghold_types WHERE type_name = temple), 8000, 120, 1
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = "temple"), 3000, 40, 2
+            2, (SELECT id FROM stronghold_types WHERE type_name = temple), 3000, 40, 2
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = "temple"), 6000, 80, 3
+            3, (SELECT id FROM stronghold_types WHERE type_name = temple), 6000, 80, 3
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = "temple"), 12000, 120, 4
+            4, (SELECT id FROM stronghold_types WHERE type_name = temple), 12000, 120, 4
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = "temple"), 18000, 160, 5
+            5, (SELECT id FROM stronghold_types WHERE type_name = temple), 18000, 160, 5
         ),
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = "establishment"), 6000, 90, 0
+            1, (SELECT id FROM stronghold_types WHERE type_name = establishment), 6000, 90, 0
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = "establishment"), 2000, 30, 0
+            2, (SELECT id FROM stronghold_types WHERE type_name = establishment), 2000, 30, 0
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = "establishment"), 4000, 60, 0
+            3, (SELECT id FROM stronghold_types WHERE type_name = establishment), 4000, 60, 0
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = "establishment"), 6000, 90, 0
+            4, (SELECT id FROM stronghold_types WHERE type_name = establishment), 6000, 90, 0
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = "establishment"), 8000, 120, 0
+            5, (SELECT id FROM stronghold_types WHERE type_name = establishment), 8000, 120, 0
         );
     """
 )
