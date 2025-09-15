@@ -12,7 +12,7 @@ POPULATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE = (
         stronghold_type_id,
         toughness
     ) SELECT 
-        level.level,
+        levels.level,
         types.id,
         levels.toughness
     FROM (
