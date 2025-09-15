@@ -9,72 +9,83 @@ POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
         cost_to_build,
         time_to_build,
         fortification_morale_bonus    
-    ) VALUES
+    ) SELECT
+        levels.level,
+        types.id,
+        levels.cost,
+        level.time,
+        levels.morale_bonus
+    FROM (
+        
+    VALUES
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = keep), 10000, 150, 2
+            1, 'keep', 10000, 150, 2
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = keep), 5000, 50, 4
+            2, 'keep', 5000, 50, 4
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = keep), 10000, 100, 6
+            3, 'keep', 10000, 100, 6
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = keep), 15000, 150, 8
+            4, 'keep', 15000, 150, 8
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = keep), 20000, 200, 10
+            5, 'keep', 20000, 200, 10
         ),
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = tower), 8000, 120, 1
+            1, 'tower', 8000, 120, 1
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = tower), 3000, 40, 2
+            2, 'tower', 3000, 40, 2
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = tower), 6000, 80, 3
+            3, 'tower', 6000, 80, 3
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = tower), 12000, 120, 4
+            4, 'tower', 12000, 120, 4
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = tower), 18000, 160, 5
+            5, 'tower', 18000, 160, 5
         ),
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = temple), 8000, 120, 1
+            1, 'temple', 8000, 120, 1
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = temple), 3000, 40, 2
+            2, 'temple', 3000, 40, 2
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = temple), 6000, 80, 3
+            3, 'temple', 6000, 80, 3
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = temple), 12000, 120, 4
+            4, 'temple', 12000, 120, 4
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = temple), 18000, 160, 5
+            5, 'temple', 18000, 160, 5
         ),
         (
-            1, (SELECT id FROM stronghold_types WHERE type_name = establishment), 6000, 90, 0
+            1, 'establishment', 6000, 90, 0
         ),
         (
-            2, (SELECT id FROM stronghold_types WHERE type_name = establishment), 2000, 30, 0
+            2, 'establishment', 2000, 30, 0
         ),
         (
-            3, (SELECT id FROM stronghold_types WHERE type_name = establishment), 4000, 60, 0
+            3, 'establishment', 4000, 60, 0
         ),
         (
-            4, (SELECT id FROM stronghold_types WHERE type_name = establishment), 6000, 90, 0
+            4, 'establishment', 6000, 90, 0
         ),
         (
-            5, (SELECT id FROM stronghold_types WHERE type_name = establishment), 8000, 120, 0
-        );
+            5, 'establishment', 8000, 120, 0
+        )
+    ) AS levels(level, type_name, cost, time, morale_bonus)
+    JOIN stronghold_types AS types
+        ON types.type_name = levels.type_name
     """
 )
 
 INSERT_STRONGHOLD_CONSTRUCTION_LEVEL = (
-    "INSERT INTO stronghold_construction_levels (stronghold_level, stronghold_type_id, cost_to_build, time_to_build, fortification_morale_bonus) VALUES (%s, (SELECT id FROM stronghold_types WHERE type_name = %s), %s, %s, %s);"
+    "INSERT INTO stronghold_construction_levels (stronghold_level, stronghold_type_id, cost_to_build, time_to_build, fortification_morale_bonus) VALUES (%s, ('%s), %s, '%s, %s);"
 )
 
 GET_ALL_STRONGHOLD_CONSTRUCTION_LEVELS = (
