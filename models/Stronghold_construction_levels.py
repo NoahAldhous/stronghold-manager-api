@@ -69,7 +69,7 @@ POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
         ),
         (
             5, (SELECT id FROM stronghold_types WHERE type_name = "establishment"), 8000, 120, 0
-        ),
+        );
     """
 )
 
