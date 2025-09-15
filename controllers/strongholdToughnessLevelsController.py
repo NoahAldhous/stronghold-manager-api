@@ -1,4 +1,4 @@
-from models.Stronghold_toughness_levels import CREATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE, INSERT_STRONGHOLD_TOUGHNESS_LEVEL, GET_ALL_STRONGHOLD_TOUGHNESS_LEVELS, GET_STRONGHOLD_TOUGHNESS_BY_LEVEL, GET_STRONGHOLD_TOUGHNESS_LEVELS_BY_TYPE_ID, UPDATE_STRONGHOLD_TOUGHNESS_LEVEL_BY_ID, DELETE_STRONGHOLD_TOUGHNESS_LEVEL_BY_ID
+from models.Stronghold_toughness_levels import CREATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE, POPULATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE, INSERT_STRONGHOLD_TOUGHNESS_LEVEL, GET_ALL_STRONGHOLD_TOUGHNESS_LEVELS, GET_STRONGHOLD_TOUGHNESS_BY_LEVEL, GET_STRONGHOLD_TOUGHNESS_LEVELS_BY_TYPE_ID, UPDATE_STRONGHOLD_TOUGHNESS_LEVEL_BY_ID, DELETE_STRONGHOLD_TOUGHNESS_LEVEL_BY_ID, CLEAR_STRONGHOLD_TOUGHNESS_LEVELS_TABLE
 from utils.db import query, execute
 from flask import request
 
@@ -10,6 +10,15 @@ def create_stronghold_toughness_levels_table():
         return{"message" : "Table created"}, 200
     else:
         return{"message" : "Oops, an error occured"}, 404
+
+# POPULATE TOUGHNESS LEVELS TABLE
+def populate_stronghold_toughness_levels_table():
+    res = execute(POPULATE_STRONGHOLD_TOUGHNESS_LEVELS_TABLE)
+    
+    if res:
+        return {"message" : "Table populated"}, 200
+    else:
+        return {"message" : "Something went wrong"}, 404
 
 # INSERT A TOUGHNESS LEVEL
 def insert_new_stronghold_toughness_level():
@@ -67,6 +76,15 @@ def delete_stronghold_toughness_level_by_id(level_id):
     res = execute(DELETE_STRONGHOLD_TOUGHNESS_LEVEL_BY_ID, (level_id,))
     
     if res:
-            return {"message" : "Item deleted successfuly"}, 200
+        return {"message" : "Item deleted successfuly"}, 200
     else:
         return {"message" : "Could not find item"}, 404
+
+# CLEAR TOUGHNESS LEVELS TABLE
+def clear_stronghold_toughness_levels_table():
+    res = execute(CLEAR_STRONGHOLD_TOUGHNESS_LEVELS_TABLE)
+    
+    if res: 
+        return {"message" : "All rows deleted"}, 200
+    else:
+        return {"message": "Something went wrong"}, 404
