@@ -16,7 +16,7 @@ def populate_stronghold_construction_levels_table():
     res = execute(POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE)
     
     if res:
-        return {"message" "table populated"}, 201
+        return {"message" : "table populated"}, 201
     else:
         return {"message" : "something went wrong"}, 404
 

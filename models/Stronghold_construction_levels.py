@@ -79,7 +79,7 @@ POPULATE_STRONGHOLD_CONSTRUCTION_LEVELS_TABLE = (
             )
     ) AS levels(level, type_name, cost, time, morale_bonus)
     JOIN stronghold_types AS types
-        ON types.type_name = levels.type_name
+        ON types.type_name = levels.type_name;
     """
 )
 
