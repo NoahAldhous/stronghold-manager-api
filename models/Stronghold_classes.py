@@ -3,7 +3,7 @@ CREATE_STRONGHOLD_CLASSES_TABLE = (
 )
 
 POPULATE_STRONGHOLD_CLASSES_TABLE = (
-    """ INSERT INTO TABLE stronghold_classes (
+    """INSERT INTO stronghold_classes (
         class_name, 
         class_stronghold_name, 
         class_stronghold_description
