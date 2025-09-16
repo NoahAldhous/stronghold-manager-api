@@ -1,5 +1,5 @@
 CREATE_STRONGHOLD_CLASSES_TABLE = (
-    "CREATE TABLE IF NOT EXISTS stronghold_classes (id SERIAL PRIMARY KEY, class_name TEXT UNIQUE, class_stronghold_name TEXT UNIQUE, class_stronghold_description TEXT;)"
+    "CREATE TABLE IF NOT EXISTS stronghold_classes (id SERIAL PRIMARY KEY, class_name TEXT UNIQUE, class_stronghold_name TEXT UNIQUE, class_stronghold_description TEXT);"
 )
 
 POPULATE_STRONGHOLD_CLASSES_TABLE = (
