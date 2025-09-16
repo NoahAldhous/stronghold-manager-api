@@ -165,7 +165,7 @@ POPULATE_CLASS_DEMESNE_EFFECTS_TABLE = (
             )
     ) AS effects(class, description)
         JOIN stronghold_classes AS classes
-            ON classes.class_name = effects.class
+            ON classes.class_name = effects.class;
     """
 )
 
