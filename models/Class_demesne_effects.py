@@ -125,7 +125,7 @@ POPULATE_CLASS_DEMESNE_EFFECTS_TABLE = (
             ),
             (
                 'sorcerer',
-                'Curses, blessings, and oaths pronounced within the sorcerer''s demesne have a 15% chance of causing the speaker to roll on the Wild Magic table.'
+                'Curses, blessings, and oaths pronounced within the sorcerer''s demesne have a 15%% chance of causing the speaker to roll on the Wild Magic table.'
             ),
             (
                 'sorcerer',
