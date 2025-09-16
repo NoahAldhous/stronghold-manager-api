@@ -1,5 +1,5 @@
 CREATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
-    "CREATE TABLE IF NOT EXISTS class_stronghold_actions (id SERIAL PRIMARY KEY, stronghold_class_id INT, action_name TEXT UNIQUE, action_description TEXT, FOREIGN KEY(stronghold_class_id) REFERENCES strongold_classes(id) ON DELETE CASCADE);"
+    "CREATE TABLE IF NOT EXISTS class_stronghold_actions (id SERIAL PRIMARY KEY, stronghold_class_id INT, action_name TEXT UNIQUE, action_description TEXT, FOREIGN KEY(stronghold_class_id) REFERENCES stronghold_classes(id) ON DELETE CASCADE);"
 )
 
 POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
