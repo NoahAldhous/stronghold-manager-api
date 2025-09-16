@@ -85,7 +85,7 @@ POPULATE_CLASS_DEMESNE_EFFECTS_TABLE = (
             ),
             (
                 'monk',
-                'Violence of any kind in the demesne has a 15% chance of summoning a Source of Earth, who immediately uses Back to Earth to end the violence. The monk can reverse these effects.'
+                'Violence of any kind in the demesne has a 15%% chance of summoning a Source of Earth, who immediately uses Back to Earth to end the violence. The monk can reverse these effects.'
             ),
             (
                 'paladin',
