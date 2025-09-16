@@ -28,23 +28,17 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'barbarian',
                 'herald the storm',
-                'You cast chain lightning with a DC equal to 8 plus your proficiency modifier, plus your
-                Constitution modifier. You may do this even while raging, and this does not end your rage.'
+                'You cast chain lightning with a DC equal to 8 plus your proficiency modifier, plus your Constitution modifier. You may do this even while raging, and this does not end your rage.'
             ),
             (
                 'bard',
                 'harmonise',
-                'Until initiative count 20 on the next round, all inspiration dice produce their maximum
-                result when rolled, followed by the sound of a two-note chord: one root note and another
-                a fifth higher than the root.'
+                'Until initiative count 20 on the next round, all inspiration dice produce their maximum result when rolled, followed by the sound of a two-note chord: one root note and another a fifth higher than the root.'
             ),
             (
                 'bard',
                 'accompaniment',
-                'A three-piece band arrives singing your praises. Until initiative count 20 on the next
-                turn, enemies make saving throws against your magic by rolling three d20s and using the worst
-                of the three. The band has exceptionally good rhythm and world-class lute fingering, and the 
-                singer has an unusually high voice.'
+                'A three-piece band arrives singing your praises. Until initiative count 20 on the next turn, enemies make saving throws against your magic by rolling three d20s and using the worst of the three. The band has exceptionally good rhythm and world-class lute fingering, and the singer has an unusually high voice.'
             ),
             (
                 'bard',
@@ -54,15 +48,12 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'cleric',
                 'a plague upon you',
-                'All enemies within 30 feet of you must succeed on a Constitution saving throw of suffer the
-                effects of the contagion spell.'
+                'All enemies within 30 feet of you must succeed on a Constitution saving throw of suffer the effects of the contagion spell.'
             ),
             (
                 'cleric',
                 'no rest for the wicked',
-                'Shafts of golden light stab down from the sky, penetrating walls and ceilings. The beams target
-                all undead, demons and devils within 60 feet of you, even those hidden or invisible. Targets must
-                succeed on a Wisdom saving throw or be annihilated.'
+                'Shafts of golden light stab down from the sky, penetrating walls and ceilings. The beams target all undead, demons and devils within 60 feet of you, even those hidden or invisible. Targets must succeed on a Wisdom saving throw or be annihilated.'
             ),
             (
                 'cleric',
@@ -72,10 +63,7 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'druid',
                 'sea of thorns',
-                'Grasping vines rise from the ground for 1 minute. Every enemy within 60 feet must make a Dexterity
-                saving throw or be restrained for the duration, taking 3d8 piercing damage at the start of each of
-                their turns from stabbing thorns. At the end of its turn, an affected enemy can make another saving
-                throw to escape.'
+                'Grasping vines rise from the ground for 1 minute. Every enemy within 60 feet must make a Dexterity saving throw or be restrained for the duration, taking 3d8 piercing damage at the start of each of their turns from stabbing thorns. At the end of its turn, an affected enemy can make another saving throw to escape.'
             ),
             (
                 'druid',
@@ -90,16 +78,12 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'fighter',
                 'close the gap',
-                'Until initiative count 20 on the next round, any enemy who tries to cast a spell in your demesne
-                experiences searing pain. The enemy can choose another action, but if it chooses to cast the spell, 
-                it must make a DC 16 Constitution saving throw. On a failed save, it takes 1d6 force damage per level
-                of the spell, and the spell has no effect and is wasted.'
+                'Until initiative count 20 on the next round, any enemy who tries to cast a spell in your demesne experiences searing pain. The enemy can choose another action, but if it chooses to cast the spell, it must make a DC 16 Constitution saving throw. On a failed save, it takes 1d6 force damage per level of the spell, and the spell has no effect and is wasted.'
             ),
             (
                 'fighter',
                 'just like we practiced',
-                'Until the end of your next turn, you and all your allies'' weapon attacks hit automatically.
-                Roll anyway, though- you might score a crit!'
+                'Until the end of your next turn, you and all your allies'' weapon attacks hit automatically. Roll anyway, though- you might score a crit!'
             ),
             (
                 'fighter',
@@ -109,8 +93,7 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'monk',
                 'perfect form',
-                'Until initiative count 20 on the next round, your skin becomes diamond. For the duration, 
-                you are immune to all but psychic damage.'
+                'Until initiative count 20 on the next round, your skin becomes diamond. For the duration, you are immune to all but psychic damage.'
             ),
             (
                 'monk',
@@ -125,51 +108,37 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'paladin',
                 'chains of judgement',
-                'Each chaotic or evil creature (your choice) within 120 feet must succeed on a
-                Constitution saving throw or be bound by gold (anti-evil) or silver (anti-chaos)
-                chains, grappling it until it makes a Strength or Dexterity check as an action 
-                against your spell DC.'
+                'Each chaotic or evil creature (your choice) within 120 feet must succeed on a Constitution saving throw or be bound by gold (anti-evil) or silver (anti-chaos) chains, grappling it until it makes a Strength or Dexterity check as an action against your spell DC.'
             ),
             (
                 'paladin',
                 'bind to the earth',
-                'Flying creatures within 120 feet must succeed on a Constitution check against 
-                your spell save DC or immediately land. They cannot take off again for 10 minutes.'
+                'Flying creatures within 120 feet must succeed on a Constitution check against your spell save DC or immediately land. They cannot take off again for 10 minutes.'
             ),
             (
                 'paladin',
                 'armour of the gods',
-                'Choose an ally within sight to gain an AC bonus equal to your Charisma bonus, as 
-                their armour becomes gold, for 10 minutes. Each ally can be affected by this 
-                ability only once per day.'
+                'Choose an ally within sight to gain an AC bonus equal to your Charisma bonus, as their armour becomes gold, for 10 minutes. Each ally can be affected by this ability only once per day.'
             ),
             (
                 'ranger',
                 'know thy foe',
-                'Small targets appear on the vulnerable spots of nearby enemies. Until initiative 
-                count 20 on the next round, all enemies within 60 feet have vulnerability to your 
-                attacks.'
+                'Small targets appear on the vulnerable spots of nearby enemies. Until initiative count 20 on the next round, all enemies within 60 feet have vulnerability to your attacks.'
             ),
             (
                 'ranger',
                 'can''t hit what you can''t see',
-                'You summon a fog cloud in a 60-foot radius that lasts for 1 minute. You and your 
-                allies can see through this fog as though it were merely a hazy mist that did not 
-                obscure vision.'
+                'You summon a fog cloud in a 60-foot radius that lasts for 1 minute. You and your allies can see through this fog as though it were merely a hazy mist that did not obscure vision.'
             ),
             (
                 'ranger',
                 'bleed them out',
-                'Until initiative count 20 on the next turn, all of your successful attacks also 
-                cause the target to bleed. A bleeding creature take 3d8 slashing damage at the 
-                start of each of its following turns, and can make a DC 18 Constitution save at 
-                the end of each of it turns to end the bleeding.'
+                'Until initiative count 20 on the next turn, all of your successful attacks also cause the target to bleed. A bleeding creature take 3d8 slashing damage at the start of each of its following turns, and can make a DC 18 Constitution save at the end of each of it turns to end the bleeding.'
             ),
             (
                 'rogue',
                 'marked for death',
-                'All enemies within 60 feet are marked for death. For the next minute, if you 
-                hit a marked enemy, you can remove its mark to deal an extra 6d6 slashing damage.'
+                'All enemies within 60 feet are marked for death. For the next minute, if you hit a marked enemy, you can remove its mark to deal an extra 6d6 slashing damage.'
             ),
             (
                 'rogue',
@@ -179,9 +148,7 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'rogue',
                 'let the gods decide',
-                'You gain a Coin of Fate. Each time you are hit in combat, you may flip 
-                the coin. Heads, the attack misses instead. Tails, the attack hits as 
-                normal and you lose the coin.'
+                'You gain a Coin of Fate. Each time you are hit in combat, you may flip the coin. Heads, the attack misses instead. Tails, the attack hits as normal and you lose the coin.'
             ),
             (
                 'sorcerer',
@@ -191,8 +158,7 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'sorcerer',
                 'escalation',
-                'For the next minute, all of your spells are heightened, as per the heightened 
-                Metamagic effect. You cannot use sorcery points to heighten an already heightened spell.'
+                'For the next minute, all of your spells are heightened, as per the heightened Metamagic effect. You cannot use sorcery points to heighten an already heightened spell.'
             ),
             (
                 'sorcerer',
