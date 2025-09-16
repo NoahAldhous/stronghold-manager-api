@@ -30,7 +30,7 @@ def get_all_class_stronghold_actions():
 
 # GET STRONGHOLD ACTIONS BY CLASS ID 
 def get_class_stronghold_actions_by_class_id(class_id):
-    data = query(GET_ALL_CLASS_STRONGHOLD_ACTIONS, (class_id,), fetchone=False)
+    data = query(GET_STRONGHOLD_ACTIONS_BY_CLASS_ID, (class_id,), fetchone=False)
     
     if data:
         return{ "message" : "Success!", "data": data }, 200
