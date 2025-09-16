@@ -10,6 +10,7 @@ from routes.stronghold_toughness_levels_bp import stronghold_toughness_levels_bp
 from routes.stronghold_construction_levels_bp import stronghold_construction_levels_bp
 from routes.stronghold_size_levels_bp import stronghold_size_levels_bp
 from routes.stronghold_classes_bp import stronghold_classes_bp
+from routes.class_stronghold_actions_bp import class_stronghold_actions_bp
 
 app = Flask(__name__)
 #set up JWT for auth
@@ -33,8 +34,11 @@ strongholds_bp.register_blueprint(stronghold_types_bp, url_prefix="/types")
 strongholds_bp.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/toughness")
 strongholds_bp.register_blueprint(stronghold_construction_levels_bp, url_prefix="/construction")
 strongholds_bp.register_blueprint(stronghold_size_levels_bp, url_prefix="/size")
-strongholds_bp.register_blueprint(stronghold_classes_bp, url_prefix="/classes")
 app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
+
+#classes
+strongholds_bp.register_blueprint(stronghold_classes_bp, url_prefix="/classes")
+stronghold_classes_bp.register_blueprint(class_stronghold_actions_bp, url_prefix="/actions")
 
 # /users
 app.register_blueprint(users_bp, url_prefix="/users")
