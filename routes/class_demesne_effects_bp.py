@@ -19,6 +19,6 @@ def get_all_class_demesne_effects_route():
 def get_class_demesne_effects_by_class_id_route(id):
     return get_class_demesne_effects_by_class_id(id)
 
-@class_demesne_effects_bp.route("/", methods=["DELETE"])
+@class_demesne_effects_bp.route("/clear", methods=["DELETE"])
 def clear_class_demesne_effects_table_route():
     return clear_class_demesne_effects_table()
