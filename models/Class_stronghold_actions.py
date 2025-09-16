@@ -56,7 +56,7 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
                 'a plague upon you',
                 'All enemies within 30 feet of you must succeed on a Constitution saving throw of suffer the
                 effects of the contagion spell.'
-            ).
+            ),
             (
                 'cleric',
                 'no rest for the wicked',
