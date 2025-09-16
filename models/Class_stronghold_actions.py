@@ -16,14 +16,12 @@ POPULATE_CLASS_STRONGHOLD_ACTIONS_TABLE = (
             (
                 'barbarian',
                 'they should be afraid',
-                'You issue forth a might ''Yawp!'' that causes all enemies within 60
-                feet to become frightened until initiative count 20 on the next round.'
+                'You issue forth a might ''Yawp!'' that causes all enemies within 60 feet to become frightened until initiative count 20 on the next round.'
             ),
             (
                 'barbarian',
                 'feel my fury!',
-                'You rage, and your allies gain the benefits of your rage as long as those allies aren''t
-                wearing heavy armour.'
+                'You rage, and your allies gain the benefits of your rage as long as those allies aren''t wearing heavy armour.'
             ),
             (
                 'barbarian',
