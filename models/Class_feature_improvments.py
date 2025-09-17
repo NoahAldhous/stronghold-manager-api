@@ -8,7 +8,7 @@ POPULATE_CLASS_FEATURE_RESTRICTIONS_TABLE = (
         restriction_description
         ) SELECT
             restrictions.name,
-            restrictions.descripton
+            restrictions.description
         FROM (
             VALUES
                 (
@@ -64,74 +64,74 @@ POPULATE_CLASS_FEATURE_IMPROVEMENTS_TABLE = (
                 'barbarian',
                 'chieftan''s rage',
                 'Whenever you reduce an enemy to 0 hit points, you can choose to make an additional weapon attack or move up to your speed.',
-                'quantity',
+                'quantity'
             ),
             (
                 'bard',
                 'encouraging inspiration',
                 'While an ally has unspent bardic inspiration dice, their proficiency bonus increases by 1.',
-                'inspiration dice',
+                'inspiration dice'
             ),
             (
                 'cleric',
                 'manifest divinity',
                 'When you use your Channel Divinity class feature, all allies within 30 feet regain 3d8 hit points.',
-                'quantity',
+                'quantity'
             ),
             (
                 'druid',
                 'savage shape',
                 'When you assume your Wild Shape, you may assume the form of any monstrosity, fey or dragon, including those wit a flying or swimming speed. You may use this ability to transform into a creature with a Challenge Rating up to half your level, rounded up. All other Wild Shape restrictions and benefits apply (including using all of the form''s actions and abilities except legendary actions).',
-                'quantity',
+                'quantity'
             ),
             (
                 'fighter',
                 'fighting surge',
                 'Whenever you attack by using your Action Surge, you automatically score a critical hit on successful attack rolls.',
-                'action surges',
+                'action surges'
             ),
             (
                 'monk',
                 'focused ki',
                 'Whenever you are attack while you have unspent ki, you can ignore all of the attack''s effects except its damage.',
-                'quantity',
+                'quantity'
             ),
             (
                 'paladin',
                 'righteous smite',
                 'Your Divine Smite burns through enemy resistance. Enemies normally resistant to either radiant damage or your weapon damage lose it. Enemies immune to either type of damage are now resistant to it, and enemies without resistance to either radiant or your weapon damage become vulnerable.',
-                'attacks',
+                'attacks'
             ),
             (
                 'ranger',
                 'chosen enemy',
                 'Your favoured enemy has vulnerability to your attacks.',
-                'damage rolls',
+                'damage rolls'
             ),
             (
                 'rogue',
                 'vanishing strike',
                 'After you hit with a Sneak Attack, you may become invisible. Anything you are wearing or carrying is invisible as long as it is on your person. This effect lasts until the end of your next turn or until you attack or cast a spell.',
-                'quantity',
+                'quantity'
             ),
             (
                 'sorcerer',
                 'sourcer of magic',
                 'You gain bonus sorcery points equal in number to your stronghold level.',
-                'sorcery points',
+                'sorcery points'
             ),
             (
                 'warlock',
                 'master invoker',
                 'You gain an extra spell slot.',
-                'spell slot',
+                'spell slot'
             ),
             (
                 'wizard',
                 'spellmaster',
                 'You can maintain two spells with concentration at once.',
-                'quantity',
-            ),
+                'quantity'
+            )
     ) AS improvements(class, name, description, restriction)
         JOIN stronghold_classes AS classes
             ON classes.class_name = improvements.class
