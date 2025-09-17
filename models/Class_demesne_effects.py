@@ -174,7 +174,7 @@ GET_ALL_CLASS_DEMESNE_EFFECTS = (
 )
 
 GET_CLASS_DEMESNE_EFFECTS_BY_CLASS_ID = (
-    "SELECT * FROM class_demesne_effects WHERE class_id = %s;"
+    "SELECT * FROM class_demesne_effects WHERE stronghold_class_id = %s;"
 )
 
 CLEAR_CLASS_DEMESNE_EFFECTS_TABLE = (

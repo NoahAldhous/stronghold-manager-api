@@ -44,20 +44,64 @@ GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA = (
                 AND stronghold_type_id = s.stronghold_type_id
             )
         ) AS stats,
-        json_agg(
-            json_build_object(
-                'title', f.feature_name,
-                'description', f.feature_description
+        (
+            SELECT json_agg(json_build_object(
+                'title', features.feature_name,
+                'description', features.feature_description
+            ))
+            FROM stronghold_type_features AS features
+            WHERE features.stronghold_type_id = s.stronghold_type_id
+        ) AS features,
+        
+        json_build_object(
+            'name', classes.class_name,
+            'stronghold_name', classes.class_stronghold_name,
+            'description', classes.class_stronghold_description,
+            'stronghold_actions', (
+                SELECT json_agg(
+                    json_build_object(
+                        'name', actions.action_name,
+                        'description', actions.action_description
+                    )
+                ) FROM class_stronghold_actions AS actions
+                WHERE actions.stronghold_class_id = s.stronghold_class_id
+            ),
+            'demesne_effects', (
+                SELECT json_agg(
+                    json_build_object(
+                        'description', effects.effect_description
+                    )
+                ) FROM class_demesne_effects AS effects
+                WHERE effects.stronghold_class_id = s.stronghold_class_id
+            ),
+            'class_feature_improvement', (
+                json_build_object(
+                    'name', improvements.improvement_name,
+                    'description', improvements.improvement_description,
+                    'restriction', restrictions.restriction_description
+                )
             )
-        ) AS features 
+        ) AS class
         FROM strongholds s
-        LEFT JOIN stronghold_type_features f
-            ON s.stronghold_type_id = f.stronghold_type_id
         LEFT JOIN stronghold_construction_levels c
             ON s.stronghold_type_id = c.stronghold_type_id
             AND s.stronghold_level + 1 = c.stronghold_level 
+        LEFT JOIN stronghold_classes AS classes
+            ON s.stronghold_class_id = classes.id
+        LEFT JOIN class_feature_improvements AS improvements
+            ON  s.stronghold_class_id = improvements.stronghold_class_id
+        LEFT JOIN class_feature_restrictions AS restrictions
+            ON improvements.improvement_restriction_id = restrictions.id
         WHERE s.id = %s
-        GROUP BY s.id, c.cost_to_build;
+        GROUP BY 
+            s.id, 
+            c.cost_to_build, 
+            classes.class_name, 
+            classes.class_stronghold_name, 
+            classes.class_stronghold_description,
+            improvements.improvement_name,
+            improvements.improvement_description,
+            restrictions.restriction_description;
     """
 )
 
