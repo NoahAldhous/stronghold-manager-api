@@ -77,18 +77,56 @@ POPULATE_STRONGHOLD_CLASSES_TABLE = (
     """
 )
 
-GET_ALL_STRONGHOLD_CLASSES=(
+GET_ALL_STRONGHOLD_CLASSES = (
     "SELECT * FROM stronghold_classes;"
 )
 
-GET_STRONGHOLD_CLASS_BY_ID=(
+GET_ALL_STRONGHOLD_CLASSES_AND_FEATURES= (
+    """SELECT
+            classes.class_name,
+            classes.id,
+            classes.class_stronghold_name,
+            classes.class_stronghold_description,
+            (
+                SELECT json_agg(
+                    json_build_object(
+                        'name', actions.action_name,
+                        'description', actions.action_description
+                    )
+                ) FROM class_stronghold_actions AS actions
+                WHERE actions.stronghold_class_id = classes.id
+            ) AS stronghold_actions,
+            (
+                SELECT json_agg(
+                    json_build_object(
+                        'description', effects.effect_description
+                    )
+                ) FROM class_demesne_effects AS effects
+                WHERE effects.stronghold_class_id = classes.id
+            ) AS demesne_effects,
+            (
+                json_build_object(
+                    'name', improvements.improvement_name,
+                    'description', improvements.improvement_description,
+                    'restriction', restrictions.restriction_description
+                )
+            ) AS feature_improvement
+        FROM stronghold_classes as classes
+        LEFT JOIN class_feature_improvements AS improvements
+            ON  classes.id = improvements.stronghold_class_id
+        LEFT JOIN class_feature_restrictions AS restrictions
+            ON improvements.improvement_restriction_id = restrictions.id;
+    """
+)
+
+GET_STRONGHOLD_CLASS_BY_ID = (
     "SELECT * FROM stronghold_classes WHERE id = %s;"
 )
 
-GET_STRONGHOLD_CLASS_BY_CLASS_NAME=(
+GET_STRONGHOLD_CLASS_BY_CLASS_NAME = (
     "SELECT * FROM stronghold_classes WHERE class_name = %s;"
 )
 
-CLEAR_STRONGHOLD_CLASSES_TABLE=(
+CLEAR_STRONGHOLD_CLASSES_TABLE = (
     "DELETE FROM stronghold_classes;"
 )

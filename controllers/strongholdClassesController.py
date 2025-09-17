@@ -1,4 +1,4 @@
-from models.Stronghold_classes import CREATE_STRONGHOLD_CLASSES_TABLE, POPULATE_STRONGHOLD_CLASSES_TABLE, GET_ALL_STRONGHOLD_CLASSES, GET_STRONGHOLD_CLASS_BY_CLASS_NAME, GET_STRONGHOLD_CLASS_BY_ID, CLEAR_STRONGHOLD_CLASSES_TABLE
+from models.Stronghold_classes import CREATE_STRONGHOLD_CLASSES_TABLE, POPULATE_STRONGHOLD_CLASSES_TABLE, GET_ALL_STRONGHOLD_CLASSES, GET_ALL_STRONGHOLD_CLASSES_AND_FEATURES, GET_STRONGHOLD_CLASS_BY_CLASS_NAME, GET_STRONGHOLD_CLASS_BY_ID, CLEAR_STRONGHOLD_CLASSES_TABLE
 from utils.db import query, execute
 
 # CREATE STRONGHOLD CLASSES TABLE 
@@ -22,6 +22,15 @@ def populate_stronghold_classes_table():
 # GET ALL STRONGHOLD CLASSES
 def get_all_stronghold_classes():
     data = query(GET_ALL_STRONGHOLD_CLASSES, fetchone=False)
+    
+    if data:
+        return{ "message" : "Success!", "data": data }, 200
+    else:
+        return{ "message" : "Could not fetch data" }, 404
+    
+# GET ALL STRONGHOLD CLASSES AND THEIR FEATURES
+def get_all_stronghold_classes_and_features():
+    data = query(GET_ALL_STRONGHOLD_CLASSES_AND_FEATURES, fetchone=False)
     
     if data:
         return{ "message" : "Success!", "data": data }, 200

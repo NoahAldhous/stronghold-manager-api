@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.strongholdClassesController import create_stronghold_classes_table, populate_stronghold_classes_table, get_all_stronghold_classes, get_stronghold_class_by_class_name, get_stronghold_class_by_class_id, clear_stronghold_classes_table
+from controllers.strongholdClassesController import create_stronghold_classes_table, populate_stronghold_classes_table, get_all_stronghold_classes, get_all_stronghold_classes_and_features, get_stronghold_class_by_class_name, get_stronghold_class_by_class_id, clear_stronghold_classes_table
 
 stronghold_classes_bp = Blueprint("stronghold_classes", __name__)
 
@@ -14,6 +14,10 @@ def populate_stronghold_classes_table_route():
 @stronghold_classes_bp.route("/", methods=["GET"])
 def get_all_stronghold_classes_route():
     return get_all_stronghold_classes()
+
+@stronghold_classes_bp.route("/list", methods=["GET"])
+def get_all_stronghold_classes_and_features_route():
+    return get_all_stronghold_classes_and_features()
 
 @stronghold_classes_bp.route("/name/<name>", methods=["GET"])
 def get_stronghold_class_by_class_name_route(name):

@@ -52,7 +52,6 @@ GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA = (
             FROM stronghold_type_features AS features
             WHERE features.stronghold_type_id = s.stronghold_type_id
         ) AS features,
-        
         json_build_object(
             'name', classes.class_name,
             'stronghold_name', classes.class_stronghold_name,
