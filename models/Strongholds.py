@@ -3,7 +3,28 @@ CREATE_STRONGHOLDS_TABLE = (
 )
 
 INSERT_STRONGHOLD_RETURN_ID = (    
-    "INSERT INTO strongholds (user_id, stronghold_name, owner_name, stronghold_level, stronghold_type_id, created_at) VALUES (%s, %s, %s, %s, (SELECT id FROM stronghold_types WHERE type_name = %s), %s) RETURNING id;"
+    """INSERT INTO strongholds (
+        user_id, 
+        stronghold_name, 
+        owner_name, 
+        stronghold_level, 
+        stronghold_type_id,
+        stronghold_class_id, 
+        created_at
+    ) VALUES (
+        %s, 
+        %s, 
+        %s, 
+        %s, 
+        (SELECT id 
+            FROM stronghold_types 
+            WHERE type_name = %s),
+        (SELECT id
+            FROM stronghold_classes
+            WHERE class_name = %s),
+        %s
+    ) 
+    RETURNING id;"""
 )
 
 GET_STRONGHOLDS_BY_USER_ID = (
