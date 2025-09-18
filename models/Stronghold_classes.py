@@ -83,10 +83,10 @@ GET_ALL_STRONGHOLD_CLASSES = (
 
 GET_ALL_STRONGHOLD_CLASSES_AND_FEATURES= (
     """SELECT
-            classes.class_name,
+            classes.class_name AS name,
             classes.id,
-            classes.class_stronghold_name,
-            classes.class_stronghold_description,
+            classes.class_stronghold_name AS strongholdName,
+            classes.class_stronghold_description AS strongholdDescription,
             (
                 SELECT json_agg(
                     json_build_object(
@@ -95,7 +95,7 @@ GET_ALL_STRONGHOLD_CLASSES_AND_FEATURES= (
                     )
                 ) FROM class_stronghold_actions AS actions
                 WHERE actions.stronghold_class_id = classes.id
-            ) AS stronghold_actions,
+            ) AS strongholdActions,
             (
                 SELECT json_agg(
                     json_build_object(
@@ -103,14 +103,14 @@ GET_ALL_STRONGHOLD_CLASSES_AND_FEATURES= (
                     )
                 ) FROM class_demesne_effects AS effects
                 WHERE effects.stronghold_class_id = classes.id
-            ) AS demesne_effects,
+            ) AS demesneEffects,
             (
                 json_build_object(
                     'name', improvements.improvement_name,
                     'description', improvements.improvement_description,
                     'restriction', restrictions.restriction_description
                 )
-            ) AS feature_improvement
+            ) AS featureImprovement
         FROM stronghold_classes as classes
         LEFT JOIN class_feature_improvements AS improvements
             ON  classes.id = improvements.stronghold_class_id
