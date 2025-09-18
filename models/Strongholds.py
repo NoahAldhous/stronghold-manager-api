@@ -36,7 +36,7 @@ GET_STRONGHOLDS_BY_USER_ID = (
         (SELECT type_name AS "type" 
             FROM stronghold_types 
             WHERE id = stronghold_type_id
-        )
+        ),
         (SELECT 
             class_name AS "ownerClass",
             class_stronghold_name AS "classStrongholdName"
