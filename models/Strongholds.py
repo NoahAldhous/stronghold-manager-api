@@ -28,7 +28,22 @@ INSERT_STRONGHOLD_RETURN_ID = (
 )
 
 GET_STRONGHOLDS_BY_USER_ID = (
-    "SELECT id, stronghold_name, owner_name, stronghold_level, (SELECT type_name AS stronghold_type FROM stronghold_types WHERE id = stronghold_type_id) FROM strongholds WHERE user_id = %s;"
+    """SELECT 
+        id, 
+        stronghold_name AS "name", 
+        owner_name AS "ownerName", 
+        stronghold_level AS "level", 
+        (SELECT type_name AS "type" 
+            FROM stronghold_types 
+            WHERE id = stronghold_type_id
+        )
+        (SELECT 
+            class_name AS "ownerClass",
+            class_stronghold_name AS "classStrongholdName"
+            FROM stronghold_classes
+            WHERE id = stronghold_class_id
+        )
+        FROM strongholds WHERE user_id = %s;"""
 )
 
 GET_STRONGHOLD_BY_ID = (
