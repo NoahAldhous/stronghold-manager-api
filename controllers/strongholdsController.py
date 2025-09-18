@@ -20,10 +20,10 @@ def insert_stronghold():
     ownerName = data["owner_name"]
     strongholdLevel = data["stronghold_level"]
     strongholdType = data["stronghold_type"]
-    strongholdClass = data[""]
+    strongholdClass = data["stronghold_class"]
     createdAt = date.today()
     execute(CREATE_STRONGHOLDS_TABLE)
-    res = query(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, createdAt,), fetchone=True)
+    res = query(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, strongholdClass, createdAt,), fetchone=True)
     
     if res:
         return {"message" : "Success! Stronghold added", "id" : res["id"]}, 201
