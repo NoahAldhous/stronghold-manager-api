@@ -29,21 +29,20 @@ INSERT_STRONGHOLD_RETURN_ID = (
 
 GET_STRONGHOLDS_BY_USER_ID = (
     """SELECT 
-        id, 
-        stronghold_name AS "name", 
-        owner_name AS "ownerName", 
-        stronghold_level AS "level", 
-        (SELECT type_name AS "type" 
-            FROM stronghold_types 
-            WHERE id = stronghold_type_id
-        ),
-        (SELECT 
-            class_name AS "ownerClass",
-            class_stronghold_name AS "classStrongholdName"
-            FROM stronghold_classes
-            WHERE id = stronghold_class_id
+        s.id, 
+        s.stronghold_name AS "name", 
+        s.owner_name AS "ownerName", 
+        s.stronghold_level AS "level", 
+        classes.class_name AS "ownerClass",
+        classes.class_stronghold_name AS "classStrongholdName",
+        (SELECT t.type_name AS "type" 
+            FROM stronghold_types t 
+            WHERE t.id = s.stronghold_type_id
         )
-        FROM strongholds WHERE user_id = %s;"""
+        FROM strongholds s
+        LEFT JOIN stronghold_classes as classes
+            ON classes.id = s.stronghold_class_id
+        WHERE s.user_id = %s;"""
 )
 
 GET_STRONGHOLD_BY_ID = (
