@@ -1,0 +1,2 @@
+ALTER TABLE stronghold_types
+RENAME COLUMN stronghold_type_description TO type_description;
