@@ -39,6 +39,7 @@ FROM (
         jsonb_object_agg(
             'level' || stronghold_level,
             jsonb_build_object(
+                'level', stronghold_level,
                 'size', stronghold_size,
                 'toughness', toughness,
                 'fortificationBonus',fortification_morale_bonus,
