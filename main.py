@@ -13,6 +13,7 @@ from routes.stronghold_classes_bp import stronghold_classes_bp
 from routes.class_stronghold_actions_bp import class_stronghold_actions_bp
 from routes.class_demesne_effects_bp import class_demesne_effects_bp
 from routes.class_feature_improvements_bp import class_feature_improvements_bp
+from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
 
 app = Flask(__name__)
 #set up JWT for auth
@@ -31,6 +32,7 @@ def default_route():
 
 # BLUEPRINT ROUTES
 # /strongholds
+stronghold_types_bp.register_blueprint(stronghold_type_stats_bp, url_prefix="/stats")
 stronghold_types_bp.register_blueprint(stronghold_type_features_bp, url_prefix="/features")
 stronghold_classes_bp.register_blueprint(class_feature_improvements_bp, url_prefix="/features")
 stronghold_classes_bp.register_blueprint(class_stronghold_actions_bp, url_prefix="/actions")
