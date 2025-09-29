@@ -19,7 +19,16 @@ GET_STRONGHOLD_TYPE_FEATURE_BY_TYPE_ID = (
 )
 
 GET_ALL_STRONGHOLD_TYPE_FEATURES = (
-    "SELECT * FROM stronghold_type_features;"
+    """SELECT
+        f.id,
+        f.stronghold_type_id AS "typeId",
+        f.feature_name AS "featureName",
+        f.feature_description AS "featureDescription",
+        t.type_name AS "typeName"
+        FROM stronghold_type_features f
+        LEFT JOIN stronghold_types t
+            ON f.stronghold_type_id = t.id;
+    """
 )
 
 UPDATE_STRONGHOLD_TYPE_FEATURE_BY_ID = (
