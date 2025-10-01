@@ -1,6 +1,6 @@
 from models.Users import GET_ALL_USERS, CREATE_USERS_TABLE, INSERT_USER, GET_USER_BY_ID, GET_USER_BY_EMAIL, UPDATE_USER_NAME_BY_ID, UPDATE_USER_ROLE_BY_ID, UPDATE_USER_PASSWORD_BY_ID, DELETE_USER_BY_ID, DELETE_USERS_TABLE
 from utils.db import query, execute
-from flask_jwt_extended import create_access_token, get_jwt
+from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, get_jwt_identity
 from utils.auth import hash_password, verify_password
 from flask import request
 
@@ -37,8 +37,15 @@ def register_user():
     user = query(INSERT_USER, (name, email, password_hash), fetchone=True)
     
     if user:
-        token = create_access_token(identity=str(user["id"]), additional_claims={"role": user["role"], "user_name": user["user_name"]})
-        return {"access_token": token}, 201
+        access_token = create_access_token(
+            identity=str(user["id"]),
+            additional_claims={
+                "role": user["role"],
+                "user_name": user["user_name"]
+            }
+        )
+        refresh_token = create_refresh_token(identity=str(user["id"]))
+        return {"access_token": access_token, "refresh_token" : refresh_token}, 201
     else:
         return {"message": "Error, could not create user"}, 400
 
@@ -54,8 +61,21 @@ def login_user():
         return {"message" : "invalid credentials, login failed"}, 401
     
     # add claims like 'role'
-    token = create_access_token(identity=str(user["id"]), additional_claims={"role": user["role"], "user_name": user["user_name"]})
-    return {"access_token" : token}, 200
+    access_token = create_access_token(
+        identity=str(user["id"]),
+        additional_claims={
+            "role": user["role"],
+            "user_name": user["user_name"]
+        }
+    )
+    refresh_token = create_refresh_token(identity=str(user["id"]))
+    return {"access_token" : access_token, "refresh_token" : refresh_token}, 200
+
+# REFRESH TOKEN
+def refresh():
+    identity = get_jwt_identity() #pulls user id out of refresh token
+    new_access_token = create_access_token(identity=identity)
+    return {"access_token": new_access_token}, 200
 
 # WHO AM I
 def whoami():

@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-from flask_jwt_extended import get_jwt, jwt_required
+from flask_jwt_extended import (get_jwt, jwt_required)
 from flask import jsonify
 
 # Converts password into randomised string/hash for storing in db
