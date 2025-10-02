@@ -74,8 +74,19 @@ def login_user():
 # REFRESH TOKEN
 def refresh():
     identity = get_jwt_identity() #pulls user id out of refresh token
-    new_access_token = create_access_token(identity=identity)
-    return {"access_token": new_access_token}, 200
+    
+    user = query(GET_USER_BY_ID, (identity,), fetchone=True)
+    if user:
+        new_access_token = create_access_token(
+            identity=identity,
+            additional_claims={
+                "role": user["role"],
+                "user_name": user["user_name"]
+            }
+        )
+        return {"access_token": new_access_token}, 200
+    else: 
+        return {"message" : "error getting new authorisation token"}, 400
 
 # WHO AM I
 def whoami():
