@@ -55,6 +55,8 @@ GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA = (
         s.stronghold_name,
         s.owner_name,
         s.stronghold_level,
+        s.casualties,
+        s.class_feature_improvement_uses,
         c.cost_to_build as upgrade_cost,
         (
             SELECT type_name AS stronghold_type 
