@@ -1,4 +1,4 @@
-from models.Strongholds import CREATE_STRONGHOLDS_TABLE, DELETE_STRONGHOLD_BY_ID, INSERT_STRONGHOLD_RETURN_ID, GET_STRONGHOLD_BY_ID, GET_STRONGHOLDS_BY_USER_ID, DELETE_STRONGHOLDS_TABLE, GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA
+from models.Strongholds import CREATE_STRONGHOLDS_TABLE, DELETE_STRONGHOLD_BY_ID, INSERT_STRONGHOLD_RETURN_ID, GET_STRONGHOLD_BY_ID, GET_STRONGHOLDS_BY_USER_ID, DELETE_STRONGHOLDS_TABLE, UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES, GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA
 from utils.db import query, execute
 from flask import request
 from datetime import date
@@ -56,6 +56,17 @@ def get_stronghold_by_id_return_all_stronghold_data(id):
         return {"message" : "Success!", "stronghold" : data}, 200
     else:
         return {"message" : "Could not fetch data"}, 404
+    
+#UPDATE CLASS FEATURE IMPROVEMENT USES
+def update_class_feature_improvement_uses(id):
+    data = request.get_json();
+    newUses = data["uses"]
+    res = execute(UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES, (newUses, id,))
+    
+    if res:
+        return {"message" : "Successfully updated number of stronghold class feature improvement uses"}, 200
+    else: 
+        return {"message" : "Stronghold not found"}, 404
 
 #DELETE STRONGHOLD BY STRONGHOLD ID
 def delete_stronghold_by_id(id):
