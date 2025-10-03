@@ -10,7 +10,9 @@ INSERT_STRONGHOLD_RETURN_ID = (
         stronghold_level, 
         stronghold_type_id,
         stronghold_class_id, 
-        created_at
+        created_at,
+        class_feature_improvement_uses,
+        casualties
     ) VALUES (
         %s, 
         %s, 
@@ -22,7 +24,9 @@ INSERT_STRONGHOLD_RETURN_ID = (
         (SELECT id
             FROM stronghold_classes
             WHERE class_name = %s),
-        %s
+        %s,
+        %s,
+        0
     ) 
     RETURNING id;"""
 )
