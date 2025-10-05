@@ -31,11 +31,7 @@ GET_ALL_TREASURY_CURRENCY = (
 
 UPDATE_TREASURY_CURRENCY = (
     """UPDATE treasury_currency 
-        SET platinum = %s,
-        SET gold = %s,
-        SET silver = %s,
-        SET electrum = %s,
-        SET copper = %s
+        SET platinum = %s, gold = %s,silver = %s,electrum = %s, copper = %s
         WHERE stronghold_id = %s;"""
 )
 

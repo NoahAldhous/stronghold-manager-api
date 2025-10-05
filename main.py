@@ -14,6 +14,7 @@ from routes.class_stronghold_actions_bp import class_stronghold_actions_bp
 from routes.class_demesne_effects_bp import class_demesne_effects_bp
 from routes.class_feature_improvements_bp import class_feature_improvements_bp
 from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
+from routes.stronghold_treasury_bp import stronghold_treasury_bp
 
 app = Flask(__name__)
 #set up JWT for auth
@@ -38,6 +39,7 @@ stronghold_classes_bp.register_blueprint(class_feature_improvements_bp, url_pref
 stronghold_classes_bp.register_blueprint(class_stronghold_actions_bp, url_prefix="/actions")
 stronghold_classes_bp.register_blueprint(class_demesne_effects_bp, url_prefix="/demesne_effects")
 
+strongholds_bp.register_blueprint(stronghold_treasury_bp, url_prefix="/treasury")
 strongholds_bp.register_blueprint(stronghold_types_bp, url_prefix="/types")
 strongholds_bp.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/toughness")
 strongholds_bp.register_blueprint(stronghold_construction_levels_bp, url_prefix="/construction")
