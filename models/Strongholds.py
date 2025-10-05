@@ -149,6 +149,10 @@ UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES = (
     "UPDATE strongholds SET class_feature_improvement_uses = %s WHERE id = %s;"
 )
 
+UPDATE_STRONGHOLD_LEVEL = (
+    "UPDATE strongholds SET stronghold_level = %s WHERE id =%s;"
+)
+
 DELETE_STRONGHOLD_BY_ID = (
     "DELETE FROM strongholds WHERE id = %s;"
 )
