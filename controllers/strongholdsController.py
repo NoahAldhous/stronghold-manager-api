@@ -1,4 +1,5 @@
 from models.Strongholds import CREATE_STRONGHOLDS_TABLE, DELETE_STRONGHOLD_BY_ID, INSERT_STRONGHOLD_RETURN_ID, GET_STRONGHOLD_BY_ID, GET_STRONGHOLDS_BY_USER_ID, DELETE_STRONGHOLDS_TABLE, UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES, UPDATE_STRONGHOLD_LEVEL, GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA
+from models.Stronghold_treasury import INSERT_TREASURY_CURRENCY
 from utils.db import query, execute
 from flask import request
 from datetime import date
@@ -26,7 +27,12 @@ def insert_stronghold():
     res = query(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, strongholdClass, createdAt, strongholdLevel), fetchone=True)
     
     if res:
-        return {"message" : "Success! Stronghold added", "id" : res["id"]}, 201
+        strongholdId = query(INSERT_TREASURY_CURRENCY, (res["id"], 0, 0, 0, 0, 0), fetchone=True)
+    else:
+        return {"message" : "An error occured"}, 404
+    
+    if strongholdId:
+        return {"message" : "Success! Stronghold added", "id" : strongholdId["stronghold_id"]}, 201
     else:
         return {"message" : "An error occured"}, 404
 

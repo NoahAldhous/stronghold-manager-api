@@ -65,6 +65,15 @@ GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA = (
             FROM stronghold_types 
             WHERE id = s.stronghold_type_id
         ),
+        (    
+        SELECT json_build_object(
+            'pp', tc.platinum,
+            'gp', tc.gold,
+            'sp', tc.silver,
+            'ep', tc.electrum,
+            'cp', tc.copper
+        ) AS treasury FROM treasury_currency tc WHERE tc.stronghold_id = s.id
+        ),
         json_build_object(
             'toughness', (
                 SELECT toughness FROM stronghold_toughness_levels 
