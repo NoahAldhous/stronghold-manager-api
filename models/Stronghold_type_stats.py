@@ -53,3 +53,39 @@ FROM (
         GROUP BY type_name
 ) t;
 ;""")
+
+GET_STRONGHOLD_STATS_BY_TYPE_AND_LEVEL = ("""
+WITH stats AS (
+    SELECT
+    st.type_name,
+    scl.stronghold_level,
+    ssl.stronghold_size,
+    stl.toughness,
+    scl.fortification_morale_bonus,
+    scl.cost_to_build,
+    scl.time_to_build
+    FROM stronghold_construction_levels scl
+    JOIN stronghold_size_levels ssl
+        ON scl.stronghold_type_id = ssl.stronghold_type_id
+        AND scl.stronghold_level = ssl.stronghold_level
+    JOIN stronghold_toughness_levels stl
+        ON scl.stronghold_type_id = stl.stronghold_type_id
+        AND scl.stronghold_level = stl.stronghold_level
+    JOIN stronghold_types st
+        ON scl.stronghold_type_id = st.id
+    WHERE st.type_name = %s
+    AND scl.stronghold_level = %s
+)
+SELECT jsonb_build_object(
+    'type', type_name,
+    'level', stronghold_level,
+    'size', stronghold_size,
+    'toughness', toughness,
+    'fortificationBonus',fortification_morale_bonus,
+    'costToUpgrade', cost_to_build,
+    'timeToUpgrade', time_to_build
+)
+AS stats
+    FROM stats
+ t;
+;""")
