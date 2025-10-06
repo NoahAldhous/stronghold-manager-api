@@ -3,6 +3,6 @@ from controllers.strongholdTreasuryController import update_stronghold_treasury_
 
 stronghold_treasury_bp = Blueprint("stronghold_treasury", __name__)
 
-@stronghold_treasury_bp.route("/update/<id>", methods=["POST"])
+@stronghold_treasury_bp.route("/update/<id>", methods=["PATCH"])
 def update_stronghold_treasury_currency_route(id):
     return update_stronghold_treasury_currency(id)
