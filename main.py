@@ -15,6 +15,7 @@ from routes.class_demesne_effects_bp import class_demesne_effects_bp
 from routes.class_feature_improvements_bp import class_feature_improvements_bp
 from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
 from routes.stronghold_treasury_bp import stronghold_treasury_bp
+from routes.units.units_bp import units_bp
 
 app = Flask(__name__)
 #set up JWT for auth
@@ -48,6 +49,7 @@ strongholds_bp.register_blueprint(stronghold_classes_bp, url_prefix="/classes")
 
 app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
 app.register_blueprint(users_bp, url_prefix="/users")
+app.register_blueprint(units_bp, url_prefix="/units")
 
 if __name__ == "__main__":
     app.run()

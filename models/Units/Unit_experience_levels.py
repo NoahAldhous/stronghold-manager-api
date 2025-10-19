@@ -8,7 +8,7 @@ CREATE_UNIT_EXPERIENCE_LEVELS_TABLE = (
     );"""
 )
 
-POPULATE_UNIT_EXPERIENCE_LEVEL_TABLE = (
+POPULATE_UNIT_EXPERIENCE_LEVELS_TABLE = (
     """INSERT INTO unit_experience_levels (
         level_name,
         attack_bonus,
