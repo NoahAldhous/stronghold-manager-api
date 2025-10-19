@@ -1,15 +1,15 @@
 CREATE_UNIT_SIZE_LEVELS_TABLE = (
     """CREATE TABLE IF NOT EXISTS unit_size_levels (
         id SERIAL PRIMARY KEY,
-        level_name INT UNIQUE NOT NULL,
-        unit_size INT UNIQUE NOT NULL,
+        level_name INT NOT UNIQUE NULL,
+        unit_size INT NOT UNIQUE NULL,
         cost_modifier INT UNIQUE NOT NULL    
     );"""
 )
 
 POPULATE_UNIT_SIZE_LEVELS_TABLE = (
     """INSERT INTO unit_size_levels (
-        level_name.
+        level_name,
         unit_size,
         cost_modifier
     ) SELECT
@@ -45,4 +45,8 @@ POPULATE_UNIT_SIZE_LEVELS_TABLE = (
             )
     ) AS levels(name, size, modifier);
     """
+)
+
+CLEAR_UNIT_SIZE_LEVELS_TABLE = (
+    "DELETE FROM unit_size_levels;"
 )

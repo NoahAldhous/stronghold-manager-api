@@ -13,7 +13,7 @@ CREATE_UNIT_TYPES_TABLE = (
 
 POPULATE_UNIT_TYPES_TABLE = (
     """INSERT INTO unit_types (
-        type_name
+        type_name,
         attack_bonus,
         power_bonus,
         defense_bonus,

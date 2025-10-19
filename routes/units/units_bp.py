@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.units.unitsController import create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table
+from controllers.units.unitsController import create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table
 
 units_bp = Blueprint("units", __name__)
 
@@ -63,3 +63,8 @@ def populate_unit_traits_table_route():
 def populate_unit_types_table_route():
     return populate_unit_types_table()
 
+# CLEAR
+
+@units_bp.route("/size_levels/clear", methods={"DELETE"})
+def clear_unit_size_levels_table_route():
+    return clear_unit_size_levels_table()
