@@ -5,7 +5,64 @@ from models.Units.Unit_experience_levels import CREATE_UNIT_EXPERIENCE_LEVELS_TA
 from models.Units.Unit_size_levels import CREATE_UNIT_SIZE_LEVELS_TABLE, POPULATE_UNIT_SIZE_LEVELS_TABLE, CLEAR_UNIT_SIZE_LEVELS_TABLE
 from models.Units.Unit_traits import CREATE_UNIT_TRAITS_TABLE, POPULATE_UNIT_TRAITS_TABLE
 from models.Units.Unit_types import CREATE_UNIT_TYPES_TABLE, POPULATE_UNIT_TYPES_TABLE
-from utils.db import execute
+from models.Units.Units import CREATE_UNITS_TABLE, ADD_UNIT, GET_UNITS_BY_USER_ID
+from utils.db import execute, query
+from flask import request
+from datetime import date
+
+# CREATE UNITS TABLE
+def create_units_table():
+    res = execute(CREATE_UNITS_TABLE)
+    
+    if res:
+        return{ "message" : "Table created!"}, 200
+    else:
+        return{ "message" : "Could not create table" }, 404
+
+# ADD NEW UNIT
+def add_unit():
+    data = request.get_json()
+    user_id = data["user_id"]
+    unit_name = data["unit_name"]
+    stronghold_id = data["stronghold_id"]
+    ancestry = data["ancestry"]
+    experience = data["experience"]
+    equipment = data["equipment"]
+    unit_type = data["unit_type"]
+    size_level = data["size_level"]
+    casualties = data["casualties"]
+    mercenary = data["mercenary"]
+    created_at = date.today()
+    
+    res = query(
+            ADD_UNIT, 
+            (
+                user_id, 
+                unit_name, 
+                stronghold_id, 
+                ancestry, 
+                experience,
+                equipment,
+                unit_type,
+                size_level,
+                casualties,
+                mercenary,
+                created_at
+            ), fetchone=True)
+    
+    if res:
+        return {"message" : "Success! Stronghold added", "id" : res["id"]}, 201
+    else:
+        return {"message" : "An error occured"}, 404
+
+# GET UNIT BY USER ID
+def get_unit_by_user_id(id):
+    data = query(GET_UNITS_BY_USER_ID, (id,), fetchone=False)
+    
+    if data is None:
+        return {"message" : "could not fetch data"}, 404
+    else:
+        return {"message" : "Success!", "units" : data}, 200
 
 # CREATE ANCESTRY-TRAIT RELATIONS TABLE
 def create_ancestry_trait_relations_table():
