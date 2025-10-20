@@ -5,7 +5,7 @@ from models.Units.Unit_experience_levels import CREATE_UNIT_EXPERIENCE_LEVELS_TA
 from models.Units.Unit_size_levels import CREATE_UNIT_SIZE_LEVELS_TABLE, POPULATE_UNIT_SIZE_LEVELS_TABLE, CLEAR_UNIT_SIZE_LEVELS_TABLE
 from models.Units.Unit_traits import CREATE_UNIT_TRAITS_TABLE, POPULATE_UNIT_TRAITS_TABLE
 from models.Units.Unit_types import CREATE_UNIT_TYPES_TABLE, POPULATE_UNIT_TYPES_TABLE
-from models.Units.Units import CREATE_UNITS_TABLE, ADD_UNIT, GET_UNITS_BY_USER_ID
+from models.Units.Units import CREATE_UNITS_TABLE, ADD_UNIT, GET_UNITS_BY_USER_ID, GET_UNITS_BY_USER_AND_STRONGHOLD_ID
 from utils.db import execute, query
 from flask import request
 from datetime import date
@@ -56,11 +56,20 @@ def add_unit():
         return {"message" : "An error occured"}, 404
 
 # GET UNIT BY USER ID
-def get_unit_by_user_id(id):
+def get_units_by_user_id(id):
     data = query(GET_UNITS_BY_USER_ID, (id,), fetchone=False)
     
     if data is None:
         return {"message" : "could not fetch data"}, 404
+    else:
+        return {"message" : "Success!", "units" : data}, 200
+    
+# GET UNIT BY USER AND STRONGHOLD ID
+def get_units_by_user_and_stronghold_id(user_id, stronghold_id):
+    data = query(GET_UNITS_BY_USER_AND_STRONGHOLD_ID, (user_id, stronghold_id,), fetchone=False)
+    
+    if data is None: #This ensures that if the query succeeds BUT no rows are found, it still returns an empty array rather than throwing an error.
+        return {"message" : "could not fetch data"}, 404 
     else:
         return {"message" : "Success!", "units" : data}, 200
 

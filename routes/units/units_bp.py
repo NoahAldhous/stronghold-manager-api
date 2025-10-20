@@ -1,5 +1,5 @@
-from flask import Blueprint
-from controllers.units.unitsController import create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table, create_units_table, add_unit, get_unit_by_user_id
+from flask import Blueprint, request
+from controllers.units.unitsController import create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table, create_units_table, add_unit, get_units_by_user_id, get_units_by_user_and_stronghold_id
 
 units_bp = Blueprint("units", __name__)
 
@@ -14,9 +14,14 @@ def add_unit_route():
     return add_unit()
 
 @units_bp.route("/user/<user_id>", methods=["GET"])
-def get_unit_by_user_id_route(user_id):
-    return get_unit_by_user_id(user_id)
+def get_units_by_user_id_route(user_id):
+    return get_units_by_user_id(user_id)
 
+@units_bp.route("/", methods=["GET"])
+def get_units_by_user_and_stronghold_id_route():
+    user_id = request.args.get("user_id")
+    stronghold_id = request.args.get("stronghold_id")
+    return get_units_by_user_and_stronghold_id(user_id, stronghold_id)
 
 # REFERENCE TABLES
 
