@@ -79,7 +79,8 @@ GET_UNITS_BY_USER_ID = (
             'attackBonus', a.attack_bonus,
             'powerBonus', a.power_bonus,
             'defenseBonus', a.defense_bonus,
-            'toughnessBonus', a.toughness_bonus
+            'toughnessBonus', a.toughness_bonus,
+            'moraleBonus', a.morale_bonus
         ) AS ancestry,
         json_build_object(
             'name', x.level_name,
@@ -179,7 +180,8 @@ GET_UNITS_BY_USER_AND_STRONGHOLD_ID = (
             'attackBonus', a.attack_bonus,
             'powerBonus', a.power_bonus,
             'defenseBonus', a.defense_bonus,
-            'toughnessBonus', a.toughness_bonus
+            'toughnessBonus', a.toughness_bonus,
+            'moraleBonus', a.morale_bonus
         ) AS ancestry,
         json_build_object(
             'name', x.level_name,
