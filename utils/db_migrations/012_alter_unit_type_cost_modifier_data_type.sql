@@ -1,0 +1,2 @@
+ALTER TABLE unit_types
+ALTER COLUMN cost_modifier TYPE NUMERIC;
