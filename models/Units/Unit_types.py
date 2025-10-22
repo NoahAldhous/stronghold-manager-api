@@ -7,7 +7,7 @@ CREATE_UNIT_TYPES_TABLE = (
         defense_bonus INT,
         toughness_bonus INT,
         morale_bonus INT,
-        cost_modifier INT    
+        cost_modifier NUMERIC    
     );"""
 )
 
