@@ -60,3 +60,13 @@ POPULATE_UNIT_EXPERIENCE_LEVELS_TABLE = (
     ) AS levels(name, attack, toughness, morale);
     """
 )
+
+GET_ALL_UNIT_EXPERIENCE_LEVELS = (
+    """SELECT 
+        id,
+        level_name AS "levelName",
+        attack_bonus AS "attackBonus",
+        toughness_bonus AS "toughnessBonus",
+        morale_bonus AS "moraleBonus"
+    FROM unit_experience_levels;"""
+)

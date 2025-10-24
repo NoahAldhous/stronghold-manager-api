@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from controllers.units.unitsController import get_all_unit_types, create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table, create_units_table, add_unit, get_units_by_user_id, get_units_by_user_and_stronghold_id
+from controllers.units.unitsController import get_all_unit_ancestries, get_all_unit_equipment_levels, get_all_unit_experience_levels,get_all_unit_sizes, get_all_unit_types, create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table, create_units_table, add_unit, get_units_by_user_id, get_units_by_user_and_stronghold_id
 
 units_bp = Blueprint("units", __name__)
 
@@ -92,6 +92,21 @@ def populate_unit_types_table_route():
 def get_all_unit_types_route():
     return get_all_unit_types()
 
+@units_bp.route("/size_levels", methods=["GET"])
+def get_all_unit_sizes_route():
+    return get_all_unit_sizes()
+
+@units_bp.route("/experience_levels", methods=["GET"])
+def get_all_unit_experience_levels_route():
+    return get_all_unit_experience_levels()
+
+@units_bp.route("/equipment_levels", methods=["GET"])
+def get_all_unit_equipment_levels_route():
+    return get_all_unit_equipment_levels()
+
+@units_bp.route("/ancestries", methods=["GET"])
+def get_all_unit_ancestries_route():
+    return get_all_unit_ancestries()
 
 # CLEAR
 

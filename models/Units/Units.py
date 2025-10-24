@@ -107,16 +107,36 @@ GET_UNITS_BY_USER_ID = (
             'unitSize', s.unit_size,
             'costModifier', s.cost_modifier
         ) AS size,
-        COALESCE(
-            json_agg(
-                json_build_object(
-                    'traitName', tr.trait_name,
-                    'traitDescription', tr.trait_description,
-                    'cost', tr.cost
-                )
-            ) FILTER (WHERE tr.id IS NOT NULL),
-            '[]'
-        ) AS traits
+        (
+            COALESCE(
+                json_agg(
+                    json_build_object(
+                        'traitName', tr.trait_name,
+                        'traitDescription', tr.trait_description,
+                        'cost', tr.cost
+                    )
+                ) FILTER (WHERE tr.id IS NOT NULL),
+                '[]'
+            )::jsonb
+            ||
+            COALESCE(
+                (
+                    SELECT json_agg(
+                        json_build_object(
+                            'traitName', st.trait_name,
+                            'traitDescription', st.trait_description,
+                            'cost', st.cost
+                        )
+                    )
+                    FROM unit_traits st
+                    WHERE 
+                        (t.type_name = 'cavalry' AND st.trait_name = 'charge')
+                    OR 
+                        (t.type_name = 'levies' AND st.trait_name = 'always diminished')
+                ),
+                '[]'
+            )::jsonb
+        )::jsonb AS traits
         FROM units u
         LEFT JOIN unit_ancestries a
             ON a.id = u.ancestry_id
@@ -209,16 +229,36 @@ GET_UNITS_BY_USER_AND_STRONGHOLD_ID = (
             'unitSize', s.unit_size,
             'costModifier', s.cost_modifier
         ) AS size,
-        COALESCE(
-            json_agg(
-                json_build_object(
-                    'traitName', tr.trait_name,
-                    'traitDescription', tr.trait_description,
-                    'cost', tr.cost
-                )
-            ) FILTER (WHERE tr.id IS NOT NULL),
-            '[]'
-        ) AS traits
+           (
+            COALESCE(
+                json_agg(
+                    json_build_object(
+                        'traitName', tr.trait_name,
+                        'traitDescription', tr.trait_description,
+                        'cost', tr.cost
+                    )
+                ) FILTER (WHERE tr.id IS NOT NULL),
+                '[]'
+            )::jsonb
+            ||
+            COALESCE(
+                (
+                    SELECT json_agg(
+                        json_build_object(
+                            'traitName', st.trait_name,
+                            'traitDescription', st.trait_description,
+                            'cost', st.cost
+                        )
+                    )
+                    FROM unit_traits st
+                    WHERE 
+                        (t.type_name = 'cavalry' AND st.trait_name = 'charge')
+                    OR 
+                        (t.type_name = 'levies' AND st.trait_name = 'always diminished')
+                ),
+                '[]'
+            )::jsonb
+        )::jsonb AS traits
         FROM units u
         LEFT JOIN unit_ancestries a
             ON a.id = u.ancestry_id

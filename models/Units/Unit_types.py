@@ -89,5 +89,14 @@ POPULATE_UNIT_TYPES_TABLE = (
 )
 
 GET_ALL_UNIT_TYPES = (
-    "SELECT * FROM unit_types;"
+    """SELECT 
+        id,
+        type_name AS "name",
+        attack_bonus AS "attackBonus",
+        power_bonus "powerBonus", 
+        defense_bonus AS "defenseBonus",
+        toughness_bonus AS "toughnessBonus",
+        morale_bonus AS "moraleBonus",
+        cost_modifier As "costModifier" 
+    FROM unit_types;"""
 )

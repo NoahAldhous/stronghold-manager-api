@@ -41,3 +41,12 @@ POPULATE_UNIT_EQUIPMENT_LEVELS_TABLE = (
     ) AS levels(name, power, defense);
     """
 )
+
+GET_ALL_UNIT_EQUIPMENT_LEVELS = (
+    """SELECT 
+        id,
+        level_name AS "levelName",
+        power_bonus AS "powerBonus",
+        defense_bonus AS "defenseBonus"
+    FROM unit_equipment_levels;"""
+)

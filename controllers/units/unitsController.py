@@ -1,8 +1,8 @@
 from models.Units.Ancestry_trait_relations import CREATE_ANCESTRY_TRAIT_RELATIONS_TABLE, POPULATE_ANCESTRY_TRAIT_RELATIONS_TABLE
-from models.Units.Unit_ancestries import CREATE_UNIT_ANCESTRIES_TABLE, POPULATE_UNIT_ANCESTRIES_TABLE
-from models.Units.Unit_equipment_levels import CREATE_UNIT_EQUIPMENT_LEVELS_TABLE, POPULATE_UNIT_EQUIPMENT_LEVELS_TABLE
-from models.Units.Unit_experience_levels import CREATE_UNIT_EXPERIENCE_LEVELS_TABLE, POPULATE_UNIT_EXPERIENCE_LEVELS_TABLE
-from models.Units.Unit_size_levels import CREATE_UNIT_SIZE_LEVELS_TABLE, POPULATE_UNIT_SIZE_LEVELS_TABLE, CLEAR_UNIT_SIZE_LEVELS_TABLE
+from models.Units.Unit_ancestries import CREATE_UNIT_ANCESTRIES_TABLE, POPULATE_UNIT_ANCESTRIES_TABLE, GET_ALL_UNIT_ANCESTRIES
+from models.Units.Unit_equipment_levels import CREATE_UNIT_EQUIPMENT_LEVELS_TABLE, POPULATE_UNIT_EQUIPMENT_LEVELS_TABLE, GET_ALL_UNIT_EQUIPMENT_LEVELS
+from models.Units.Unit_experience_levels import CREATE_UNIT_EXPERIENCE_LEVELS_TABLE, POPULATE_UNIT_EXPERIENCE_LEVELS_TABLE, GET_ALL_UNIT_EXPERIENCE_LEVELS
+from models.Units.Unit_size_levels import CREATE_UNIT_SIZE_LEVELS_TABLE, POPULATE_UNIT_SIZE_LEVELS_TABLE, CLEAR_UNIT_SIZE_LEVELS_TABLE, GET_ALL_UNIT_SIZES
 from models.Units.Unit_traits import CREATE_UNIT_TRAITS_TABLE, POPULATE_UNIT_TRAITS_TABLE
 from models.Units.Unit_types import CREATE_UNIT_TYPES_TABLE, POPULATE_UNIT_TYPES_TABLE, GET_ALL_UNIT_TYPES
 from models.Units.Units import CREATE_UNITS_TABLE, ADD_UNIT, GET_UNITS_BY_USER_ID, GET_UNITS_BY_USER_AND_STRONGHOLD_ID
@@ -79,6 +79,39 @@ def get_all_unit_types():
     
     if data:
         return{ "message" : "Success!", "types" : data}, 200
+    else:
+        return{ "message" : "Could not fetch data"}, 404
+    
+# GET ALL UNIT SIZES
+def get_all_unit_sizes():
+    data = query(GET_ALL_UNIT_SIZES, fetchone=False)
+        
+    if data:
+        return{ "message" : "Success!", "sizes" : data}, 200
+    else:
+        return{ "message" : "Could not fetch data"}, 404
+    
+def get_all_unit_experience_levels():
+    data = query(GET_ALL_UNIT_EXPERIENCE_LEVELS, fetchone=False)
+        
+    if data:
+        return{ "message" : "Success!", "experience_levels" : data}, 200
+    else:
+        return{ "message" : "Could not fetch data"}, 404
+    
+def get_all_unit_equipment_levels():
+    data = query(GET_ALL_UNIT_EQUIPMENT_LEVELS, fetchone=False)
+        
+    if data:
+        return{ "message" : "Success!", "equipment_levels" : data}, 200
+    else:
+        return{ "message" : "Could not fetch data"}, 404
+    
+def get_all_unit_ancestries():
+    data = query(GET_ALL_UNIT_ANCESTRIES, fetchone=False)
+        
+    if data:
+        return{ "message" : "Success!", "ancestries" : data}, 200
     else:
         return{ "message" : "Could not fetch data"}, 404
 

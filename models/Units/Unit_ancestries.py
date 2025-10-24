@@ -183,3 +183,36 @@ POPULATE_UNIT_ANCESTRIES_TABLE = (
     ) AS ancestries(name, attack, power, defense, toughness, morale);
     """
 )
+
+GET_ALL_UNIT_ANCESTRIES = (
+    """SELECT 
+        a.ancestry_name AS "name",
+        a.attack_bonus AS "attackBonus",
+        a.power_bonus AS "powerBonus",
+        a.defense_bonus AS "defenseBonus",
+        a.toughness_bonus AS "toughnessBonus",
+        a.morale_bonus AS "moraleBonus",
+        COALESCE(
+            json_agg(
+                json_build_object(
+                    'traitName', tr.trait_name,
+                    'traitDescription', tr.trait_description,
+                    'cost', tr.cost
+                )
+            ) FILTER (WHERE tr.id IS NOT NULL),
+            '[]'
+        ) AS traits
+        FROM unit_ancestries a
+        LEFT JOIN ancestry_trait_relations r
+            ON r.ancestry_id = a.id
+        LEFT JOIN unit_traits tr
+            ON tr.id = r.trait_id
+        GROUP BY 
+            a.ancestry_name,
+            a.attack_bonus,
+            a.power_bonus,
+            a.defense_bonus,
+            a.toughness_bonus,
+            a.morale_bonus;
+    """
+)
