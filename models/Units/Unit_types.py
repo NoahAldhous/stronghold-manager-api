@@ -87,3 +87,7 @@ POPULATE_UNIT_TYPES_TABLE = (
     ) AS types(name, attack, power, defense, toughness, morale, cost);
     """
 )
+
+GET_ALL_UNIT_TYPES = (
+    "SELECT * FROM unit_types;"
+)
