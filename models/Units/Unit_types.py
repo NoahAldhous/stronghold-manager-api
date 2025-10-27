@@ -90,13 +90,40 @@ POPULATE_UNIT_TYPES_TABLE = (
 
 GET_ALL_UNIT_TYPES = (
     """SELECT 
-        id,
-        type_name AS "name",
-        attack_bonus AS "attackBonus",
-        power_bonus "powerBonus", 
-        defense_bonus AS "defenseBonus",
-        toughness_bonus AS "toughnessBonus",
-        morale_bonus AS "moraleBonus",
-        cost_modifier As "costModifier" 
-    FROM unit_types;"""
+        t.id,
+        t.type_name AS "name",
+        t.attack_bonus AS "attackBonus",
+        t.power_bonus "powerBonus", 
+        t.defense_bonus AS "defenseBonus",
+        t.toughness_bonus AS "toughnessBonus",
+        t.morale_bonus AS "moraleBonus",
+        t.cost_modifier As "costModifier",
+        COALESCE(
+            (
+                SELECT json_agg(
+                    json_build_object(
+                        'traitName', st.trait_name,
+                        'traitDescription', st.trait_description,
+                        'cost', st.cost
+                    )
+                )
+                FROM unit_traits st
+                WHERE 
+                    (t.type_name = 'cavalry' AND st.trait_name = 'charge')
+                OR 
+                    (t.type_name = 'levies' AND st.trait_name = 'always diminished')
+            ),
+            '[]'
+        )::jsonb AS traits
+    FROM unit_types t
+    GROUP BY 
+    t.id,
+    t.type_name,
+    t.attack_bonus,
+    t.power_bonus, 
+    t.defense_bonus,
+    t.toughness_bonus,
+    t.morale_bonus,
+    t.cost_modifier
+    ;"""
 )
