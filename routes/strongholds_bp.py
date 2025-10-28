@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.strongholdsController import create_strongholds_table, insert_stronghold, get_strongholds_by_user_id, get_stronghold_by_id, get_stronghold_by_id_return_all_stronghold_data, update_class_feature_improvement_uses, update_stronghold_level, delete_stronghold_by_id,delete_strongholds_table
+from controllers.strongholdsController import create_strongholds_table, insert_stronghold, get_strongholds_by_user_id, get_stronghold_names_by_user_id, get_stronghold_by_id, get_stronghold_by_id_return_all_stronghold_data, update_class_feature_improvement_uses, update_stronghold_level, delete_stronghold_by_id,delete_strongholds_table
 
 strongholds_bp = Blueprint("strongholds", __name__)
 
@@ -14,6 +14,10 @@ def insert_stronghold_route():
 @strongholds_bp.route("/user/<user_id>/", methods=["GET"])
 def get_strongholds_by_user_id_route(user_id):
     return get_strongholds_by_user_id(user_id)
+
+@strongholds_bp.route("/names/<user_id>", methods=["GET"])
+def get_stronghold_names_by_user_id_route(user_id):
+    return get_stronghold_names_by_user_id(user_id)
 
 @strongholds_bp.route("/<stronghold_id>", methods=["GET"])
 def get_stronghold_by_id_route(stronghold_id):

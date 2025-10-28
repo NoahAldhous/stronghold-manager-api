@@ -1,4 +1,4 @@
-from models.Strongholds import CREATE_STRONGHOLDS_TABLE, DELETE_STRONGHOLD_BY_ID, INSERT_STRONGHOLD_RETURN_ID, GET_STRONGHOLD_BY_ID, GET_STRONGHOLDS_BY_USER_ID, DELETE_STRONGHOLDS_TABLE, UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES, UPDATE_STRONGHOLD_LEVEL, GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA
+from models.Strongholds import CREATE_STRONGHOLDS_TABLE, DELETE_STRONGHOLD_BY_ID, INSERT_STRONGHOLD_RETURN_ID, GET_STRONGHOLD_NAMES_BY_USER_ID, GET_STRONGHOLD_BY_ID, GET_STRONGHOLDS_BY_USER_ID, DELETE_STRONGHOLDS_TABLE, UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES, UPDATE_STRONGHOLD_LEVEL, GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA
 from models.Stronghold_treasury import INSERT_TREASURY_CURRENCY
 from utils.db import query, execute
 from flask import request
@@ -35,6 +35,15 @@ def insert_stronghold():
         return {"message" : "Success! Stronghold added", "id" : strongholdId["stronghold_id"]}, 201
     else:
         return {"message" : "An error occured"}, 404
+
+#GET STRONGHOLD NAMES BY USER ID
+def get_stronghold_names_by_user_id(id):
+    data = query(GET_STRONGHOLD_NAMES_BY_USER_ID, (id,), fetchone=False)
+    
+    if data is None: # Only respond with 404 if request failed - if empty array, respond with success
+        return {"message" : "Could not fetch data"}, 404
+    else:
+        return {"message" : "Success!", "strongholds" : data}, 200
 
 #GET STRONGHOLDS BY USER ID
 def get_strongholds_by_user_id(id):

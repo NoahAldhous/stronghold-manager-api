@@ -53,6 +53,15 @@ GET_STRONGHOLD_BY_ID = (
     "SELECT * FROM strongholds WHERE id = %s;"
 )
 
+GET_STRONGHOLD_NAMES_BY_USER_ID = (
+    """SELECT
+        id,
+        stronghold_name as "name"
+        FROM strongholds
+        WHERE user_id = %s;
+    """
+)
+
 GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA = (
     """SELECT
         s.id,
