@@ -309,3 +309,7 @@ GET_UNITS_BY_USER_AND_STRONGHOLD_ID = (
             s.cost_modifier;
     """
 )
+
+DELETE_UNIT_BY_ID = (
+    """DELETE FROM units WHERE id = %s"""
+)
