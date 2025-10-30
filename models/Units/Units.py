@@ -67,7 +67,7 @@ ADD_UNIT = (
 
 GET_UNITS_BY_USER_ID = (
     """SELECT
-        u.id AS "unit_id",
+        u.id,
         u.unit_name AS "name",
         u.stronghold_id,
         u.user_id,
@@ -189,7 +189,7 @@ GET_UNITS_BY_USER_ID = (
 
 GET_UNITS_BY_USER_AND_STRONGHOLD_ID = (
     """SELECT
-        u.id AS "unit_id",
+        u.id,
         u.unit_name AS "name",
         u.stronghold_id,
         u.user_id,
