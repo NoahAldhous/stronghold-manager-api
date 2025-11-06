@@ -5,7 +5,7 @@ from models.Units.Unit_experience_levels import CREATE_UNIT_EXPERIENCE_LEVELS_TA
 from models.Units.Unit_size_levels import CREATE_UNIT_SIZE_LEVELS_TABLE, POPULATE_UNIT_SIZE_LEVELS_TABLE, CLEAR_UNIT_SIZE_LEVELS_TABLE, GET_ALL_UNIT_SIZES
 from models.Units.Unit_traits import CREATE_UNIT_TRAITS_TABLE, POPULATE_UNIT_TRAITS_TABLE
 from models.Units.Unit_types import CREATE_UNIT_TYPES_TABLE, POPULATE_UNIT_TYPES_TABLE, GET_ALL_UNIT_TYPES
-from models.Units.Units import CREATE_UNITS_TABLE, ADD_UNIT, GET_UNITS_BY_USER_ID, GET_UNITS_BY_USER_AND_STRONGHOLD_ID, DELETE_UNIT_BY_ID
+from models.Units.Units import CREATE_UNITS_TABLE, ADD_UNIT, GET_UNITS_BY_USER_ID, GET_UNITS_BY_USER_AND_STRONGHOLD_ID, EDIT_UNIT_BY_ID, DELETE_UNIT_BY_ID
 from utils.db import execute, query
 from flask import request
 from datetime import date
@@ -72,6 +72,25 @@ def get_units_by_user_and_stronghold_id(user_id, stronghold_id):
         return {"message" : "could not fetch data"}, 404 
     else:
         return {"message" : "Success!", "units" : data}, 200
+    
+# EDIT UNIT BY ID
+def edit_unit_by_id(id):
+    data = request.get_json()
+    unit_name = data["name"]
+    stronghold_id = data["stronghold_id"]
+    ancestry = data["ancestry"]
+    experience = data["experience"]
+    equipment = data["equipment"]
+    unit_type = data["unit_type"]
+    size_level = data["size_level"]
+    casualties = data["casualties"]
+    mercenary = data["mercenary"]
+    res = execute(EDIT_UNIT_BY_ID, (unit_name, stronghold_id, ancestry, experience, equipment, unit_type, size_level, casualties, mercenary, id,))
+    
+    if res:
+        return {"message" : "Successfully updated unit"}, 200
+    else:
+        return {"message" : "Error- could not update unit"}, 404
     
 # DELETE UNIT BY ID
 def delete_unit_by_id(id):

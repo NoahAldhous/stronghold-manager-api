@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from controllers.units.unitsController import delete_unit_by_id, get_all_unit_ancestries, get_all_unit_equipment_levels, get_all_unit_experience_levels,get_all_unit_sizes, get_all_unit_types, create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table, create_units_table, add_unit, get_units_by_user_id, get_units_by_user_and_stronghold_id
+from controllers.units.unitsController import edit_unit_by_id, delete_unit_by_id, get_all_unit_ancestries, get_all_unit_equipment_levels, get_all_unit_experience_levels,get_all_unit_sizes, get_all_unit_types, create_ancestry_trait_relations_table, create_unit_ancestries_table, create_unit_equipment_levels_table, create_unit_experience_levels_table, create_unit_size_levels_table, create_unit_traits_table, create_unit_types_table, populate_ancestry_trait_relations_table, populate_unit_ancestries_table, populate_unit_equipment_levels_table, populate_unit_experience_levels_table, populate_unit_size_levels_table, populate_unit_traits_table, populate_unit_types_table, clear_unit_size_levels_table, create_units_table, add_unit, get_units_by_user_id, get_units_by_user_and_stronghold_id
 
 units_bp = Blueprint("units", __name__)
 
@@ -107,6 +107,11 @@ def get_all_unit_equipment_levels_route():
 @units_bp.route("/ancestries", methods=["GET"])
 def get_all_unit_ancestries_route():
     return get_all_unit_ancestries()
+
+# UPDATE
+@units_bp.route("/edit/<unit_id>", methods=["PATCH"])
+def edit_unit_by_id_route(unit_id):
+    return edit_unit_by_id(unit_id)
 
 # CLEAR
 

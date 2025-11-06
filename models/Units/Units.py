@@ -310,6 +310,52 @@ GET_UNITS_BY_USER_AND_STRONGHOLD_ID = (
     """
 )
 
+EDIT_UNIT_BY_ID = (
+    """UPDATE units 
+        SET (
+            unit_name,
+            stronghold_id,
+            ancestry_id,
+            experience_id,
+            equipment_id,
+            type_id,
+            size_id,
+            casualties,
+            mercenary
+        ) = (
+            %s,
+            %s,
+            (
+                SELECT id
+                    FROM unit_ancestries
+                    WHERE ancestry_name = %s
+            ),
+            (
+                SELECT id
+                    FROM unit_experience_levels
+                    WHERE level_name = %s
+            ),
+            (
+                SELECT id
+                    FROM unit_equipment_levels
+                    WHERE level_name = %s
+            ),
+            (
+                SELECT id 
+                    FROM unit_types
+                    WHERE type_name = %s
+            ),
+            (
+                SELECT id
+                    FROM unit_size_levels
+                    WHERE level_name = %s
+            ),
+            %s,
+            %s
+        ) WHERE id = %s;
+    """
+)
+
 DELETE_UNIT_BY_ID = (
     """DELETE FROM units WHERE id = %s"""
 )
