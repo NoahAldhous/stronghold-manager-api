@@ -85,7 +85,7 @@ def get_units_by_user_and_stronghold_id(user_id, stronghold_id):
 # EDIT UNIT BY ID
 def edit_unit_by_id(id):
     data = request.get_json()
-    unit_name = data["name"]
+    unit_name = data["unit_name"]
     stronghold_id = data["stronghold_id"]
     ancestry = data["ancestry"]
     experience = data["experience"]
