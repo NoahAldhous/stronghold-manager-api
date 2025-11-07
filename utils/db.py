@@ -19,19 +19,33 @@ connection_pool = psycopg2.pool.SimpleConnectionPool(
 def query(sql, params=None, fetchone=False):
     # Run an SQL query and return results as dictionaries
     connection = connection_pool.getconn()
-    with connection:
+    try:
         with connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
             cursor.execute(sql, params or ())
             if fetchone:
-                return cursor.fetchone()
+                result = cursor.fetchone()
             else:
-                return cursor.fetchall()
+                result = cursor.fetchall()
+        connection.commit()
+        return result
+    except Exception as e:
+        connection.rollback()
+        raise e
+    finally:
+        connection_pool.putconn(connection)
 
 #re-usable database INSERT, UPDATE, DELETE function          
 def execute(sql, params=None):
-    connection = connection_pool.getconn()
     # Run an SQL query that doesn't return rows
-    with connection:
+    connection = connection_pool.getconn()
+    try:
         with connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
             cursor.execute(sql, params or ())
-            return cursor.rowcount
+        connection.commit()
+        return cursor.rowcount
+    except Exception as e:
+        connection.rollback()
+        raise e
+    finally:
+        connection_pool.putconn(connection)
+            
