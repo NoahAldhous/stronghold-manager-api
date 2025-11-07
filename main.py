@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from utils import config
+from utils.db import connection_pool
 from routes.users_bp import users_bp
 from routes.strongholds_bp import strongholds_bp
 from routes.stronghold_types_bp import stronghold_types_bp
@@ -31,6 +32,11 @@ CORS(app, origins=[
 @app.get("/")
 def default_route():
     return "hello world!"
+
+@app.teardown_appcontext
+def close_connection_pool(exception):
+    if connection_pool:
+        connection_pool.closeall()
 
 # BLUEPRINT ROUTES
 # /strongholds

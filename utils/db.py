@@ -14,7 +14,6 @@ connection_pool = psycopg2.pool.SimpleConnectionPool(
     dsn = config.DB_URL
 )
 
-
 #re-usable database query function
 def query(sql, params=None, fetchone=False):
     # Run an SQL query and return results as dictionaries
