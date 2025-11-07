@@ -44,4 +44,12 @@ def execute(sql, params=None):
         raise e
     finally:
         connection_pool.putconn(connection)
-            
+
+# helper to close the pool cleanly
+def close_pool():
+    try:
+        if connection_pool:
+            connection_pool.closeall()
+            print("connection pool closed.")
+    except Exception as e:
+        print("error closing pool:", e)

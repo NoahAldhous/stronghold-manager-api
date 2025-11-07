@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from utils import config
-from utils.db import connection_pool
+from utils.db import close_pool
 from routes.users_bp import users_bp
 from routes.strongholds_bp import strongholds_bp
 from routes.stronghold_types_bp import stronghold_types_bp
@@ -17,32 +17,25 @@ from routes.class_feature_improvements_bp import class_feature_improvements_bp
 from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
 from routes.stronghold_treasury_bp import stronghold_treasury_bp
 from routes.units.units_bp import units_bp
+import atexit
 
 app = Flask(__name__)
 
-@app.before_first_request
-def init_pool():
-    print("connection pool established.")
+atexit.register(close_pool)
     
 @app.teardown_appcontext
-def close_connection_pool(exception):
-    if app.config.get("SHUTTING_DOWN", False):
-        print("Closing all DB connections...")
-        try:
-            connection_pool.closeall()
-        except Exception as e:
-            print(f"Error closing pool: {e}")
+def on_teardown(exception):
+    print("Teardown with eexception", exception)
 
     
+# Dev-only manual shutdown route- avoid in prod
 @app.route("/shutdown")
 def shutdown():
-    """Manual shutdown route, for local debug, not production"""
-    app.config["SHUTTING_DOWN"] = True
     try:   
-        connection_pool.closeall()
-        print("connection pool closed manually.")
+        close_pool()
     except Exception as e:
         print(f"Error closing pool manually: {e}")
+        
     func = request.environ.get("werkzeug.server.shutdown")
     if func:
         func()
