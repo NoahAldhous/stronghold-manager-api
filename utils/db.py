@@ -7,7 +7,7 @@ from psycopg2 import pool
 #This connection has been replaced with the connection_pool below. Keeping it here for now case it's needed again.
 # connection = psycopg2.connect(config.DB_URL)
 
-#connection pool 
+#global connection pool that is shared for the lifetime of the app
 connection_pool = psycopg2.pool.SimpleConnectionPool(
     minconn = 1,
     maxconn = 10,
@@ -21,10 +21,7 @@ def query(sql, params=None, fetchone=False):
     try:
         with connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
             cursor.execute(sql, params or ())
-            if fetchone:
-                result = cursor.fetchone()
-            else:
-                result = cursor.fetchall()
+            result = cursor.fetchone() if fetchone else cursor.fetchall()
         connection.commit()
         return result
     except Exception as e:

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from utils import config
@@ -19,6 +19,26 @@ from routes.stronghold_treasury_bp import stronghold_treasury_bp
 from routes.units.units_bp import units_bp
 
 app = Flask(__name__)
+@app.teardown_appcontext
+def close_connection_pool(exception):
+    if app.config.get("SHUTTING DOWN", False):
+        print("Closing all DB connections...")
+        connection_pool.closeall()
+
+@app.before_first_request
+def init_pool():
+    print("connection pool established.")
+    
+@app.route("/shutdown")
+def shutdown():
+    """Manual shutdown route, for local debug, not production"""
+    app.config["SHUTTING_DOWN"] = True
+    connection_pool.closeall()
+    func = request.environ.get("werkzeug.server.shutdown")
+    if func:
+        func()
+    return "Server shutting down..."
+      
 #set up JWT for auth
 app.config["JWT_SECRET_KEY"] = config.JWT_SECRET_KEY
 jwt = JWTManager(app)
@@ -33,10 +53,6 @@ CORS(app, origins=[
 def default_route():
     return "hello world!"
 
-@app.teardown_appcontext
-def close_connection_pool(exception):
-    if connection_pool:
-        connection_pool.closeall()
 
 # BLUEPRINT ROUTES
 # /strongholds
