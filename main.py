@@ -17,6 +17,7 @@ from routes.class_feature_improvements_bp import class_feature_improvements_bp
 from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
 from routes.stronghold_treasury_bp import stronghold_treasury_bp
 from routes.units.units_bp import units_bp
+from routes.stronghold_benefits.raising_units_bp import raising_units_bp
 import atexit
 
 app = Flask(__name__)
@@ -25,7 +26,7 @@ atexit.register(close_pool)
     
 @app.teardown_appcontext
 def on_teardown(exception):
-    print("Teardown with eexception", exception)
+    print("Teardown with exception", exception)
 
     
 # Dev-only manual shutdown route- avoid in prod
@@ -70,6 +71,7 @@ strongholds_bp.register_blueprint(stronghold_toughness_levels_bp, url_prefix="/t
 strongholds_bp.register_blueprint(stronghold_construction_levels_bp, url_prefix="/construction")
 strongholds_bp.register_blueprint(stronghold_size_levels_bp, url_prefix="/size")
 strongholds_bp.register_blueprint(stronghold_classes_bp, url_prefix="/classes")
+strongholds_bp.register_blueprint(raising_units_bp, url_prefix="/raising_units")
 
 app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
 app.register_blueprint(users_bp, url_prefix="/users")
