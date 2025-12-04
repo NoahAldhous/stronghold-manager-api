@@ -10,6 +10,25 @@ CREATE_RAISING_UNITS_TABLE = (
     );"""
 )
 
+CREATE_UNITS_RAISED_TABLE = (
+    """CREATE TABLE IF NOT EXISTS units_raised (
+        id SERIAL PRIMARY KEY,
+        stronghold_id INT NOT NULL REFERENCES strongholds(id) ON DELETE CASCADE,
+        unit_id INT NOT NULL REFERENCES units(id) ON DELETE CASCADE,
+        raising_unit_id INT NOT NULL REFERENCES raising_units(id)
+    );"""
+)
+
+CREATE_STRONGHOLD_RAISING_UNITS_STATUS_TABLE = (
+    """CREATE TABLE IF NOT EXISTS stronghold_raising_units_status (
+        id SERIAL PRIMARY KEY,
+        stronghold_id INT UNIQUE NOT NULL REFERENCES strongholds(id) ON DELETE CASCADE,
+        current_units INT NOT NULL,
+        max_units INT NOT NULL,
+        has_raised_all_units BOOLEAN    
+    );"""
+)
+
 POPULATE_RAISING_UNITS_TABLE = (
     """INSERT INTO raising_units (
         low_number,

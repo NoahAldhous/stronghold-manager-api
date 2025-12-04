@@ -30,6 +30,8 @@ def insert_stronghold():
         strongholdId = query(INSERT_TREASURY_CURRENCY, (res["id"], 0, 0, 0, 0, 0), fetchone=True)
     else:
         return {"message" : "An error occured"}, 404
+
+    
     
     if strongholdId:
         return {"message" : "Success! Stronghold added", "id" : strongholdId["stronghold_id"]}, 201
