@@ -24,6 +24,7 @@ def insert_stronghold():
     strongholdType = data["stronghold_type"]
     strongholdClass = data["stronghold_class"]
     createdAt = date.today()
+
     execute(CREATE_STRONGHOLDS_TABLE)
     res = query(INSERT_STRONGHOLD_RETURN_ID, (userId, strongholdName, ownerName, strongholdLevel, strongholdType, strongholdClass, createdAt, strongholdLevel), fetchone=True)
     
@@ -32,12 +33,18 @@ def insert_stronghold():
     else:
         return {"message" : "An error occured"}, 404
 
-    if strongholdId and (strongholdType == "keep"):
-        keepStatus = execute(INSERT_STRONGHOLD_RAISING_UNITS_STATUS, (strongholdId, 0, (strongholdLevel + 2), False))
-    else:
-        notKeep = True
+    keepStatus = None
+    notKeep = False
     
-    if (strongholdId and keepStatus) or (strongholdId and notKeep):
+    if strongholdId:
+        if strongholdType == "keep":
+            keepStatus = execute(INSERT_STRONGHOLD_RAISING_UNITS_STATUS, (strongholdId["stronghold_id"], 0, (strongholdLevel + 2), False))
+        else:
+            notKeep = True
+    else:
+        return {"message" : "An error occured"}, 404
+    
+    if keepStatus or notKeep:
         return {"message" : "Success! Stronghold added", "id" : strongholdId["stronghold_id"]}, 201
     else:
         return {"message" : "An error occured"}, 404
