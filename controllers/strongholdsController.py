@@ -1,5 +1,6 @@
 from models.Strongholds import CREATE_STRONGHOLDS_TABLE, DELETE_STRONGHOLD_BY_ID, INSERT_STRONGHOLD_RETURN_ID, GET_STRONGHOLD_NAMES_BY_USER_ID, GET_STRONGHOLD_BY_ID, GET_STRONGHOLDS_BY_USER_ID, DELETE_STRONGHOLDS_TABLE, UPDATE_STRONGHOLD_CLASS_FEATURE_IMPROVEMENT_USES, UPDATE_STRONGHOLD_LEVEL, GET_STRONGHOLD_BY_ID_RETURN_ALL_STRONGHOLD_DATA
 from models.Stronghold_treasury import INSERT_TREASURY_CURRENCY
+from models.Stronghold_benefits.Raising_units import INSERT_STRONGHOLD_RAISING_UNITS_STATUS
 from utils.db import query, execute
 from flask import request
 from datetime import date
@@ -31,7 +32,8 @@ def insert_stronghold():
     else:
         return {"message" : "An error occured"}, 404
 
-    
+    if strongholdId & (strongholdType == "keep"):
+        keepRes = execute(INSERT_STRONGHOLD_RAISING_UNITS_STATUS, (strongholdId, 0, (strongholdLevel + 2), False))
     
     if strongholdId:
         return {"message" : "Success! Stronghold added", "id" : strongholdId["stronghold_id"]}, 201

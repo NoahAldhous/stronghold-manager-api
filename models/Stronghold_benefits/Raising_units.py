@@ -29,6 +29,25 @@ CREATE_STRONGHOLD_RAISING_UNITS_STATUS_TABLE = (
     );"""
 )
 
+INSERT_STRONGHOLD_RAISING_UNITS_STATUS = (
+    """INSERT INTO stronghold_raising_units_status (
+        stronghold_id,
+        current_units,
+        max_units,
+        has_raised_all_units    
+        ) VALUES (
+            %s,
+            %s,
+            %s,
+            %s
+        );
+    """
+)
+
+GET_STRONGHOLD_RAISING_UNITS_STATUS_BY_STRONGHOLD_ID = (
+    """SELECT * FROM stronghold_raising_units_status WHERE stronghold_id = %s;"""
+)
+
 POPULATE_RAISING_UNITS_TABLE = (
     """INSERT INTO raising_units (
         low_number,

@@ -1,4 +1,4 @@
-from models.Stronghold_benefits.Raising_units import CREATE_RAISING_UNITS_TABLE, CREATE_UNITS_RAISED_TABLE, CREATE_STRONGHOLD_RAISING_UNITS_STATUS_TABLE, POPULATE_RAISING_UNITS_TABLE, GET_UNITS_RAISED_BY_KEEP_TYPE
+from models.Stronghold_benefits.Raising_units import CREATE_RAISING_UNITS_TABLE, CREATE_UNITS_RAISED_TABLE, CREATE_STRONGHOLD_RAISING_UNITS_STATUS_TABLE, GET_STRONGHOLD_RAISING_UNITS_STATUS_BY_STRONGHOLD_ID, POPULATE_RAISING_UNITS_TABLE, GET_UNITS_RAISED_BY_KEEP_TYPE
 from utils.db import query, execute
 # from flask import request
 # from datetime import date
@@ -31,6 +31,14 @@ def create_stronghold_raising_units_status_table():
     else: 
         return {"message" : "Oops, an error occured"}, 404
     
+# GET STATUS BY STRONGHOLD
+def get_stronghold_raising_units_status_by_stronghold_id(stronghold_id):
+    data = query(GET_STRONGHOLD_RAISING_UNITS_STATUS_BY_STRONGHOLD_ID, (stronghold_id,), fetchone=True)
+    
+    if data:
+        return{ "message" : "Success", "status": data}, 200
+    else: 
+        return{ "message" : "Could not fetch status" }, 404
     
 # POPULATE RAISING UNITS TABLE
 def populate_raising_units_table():
