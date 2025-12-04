@@ -32,10 +32,12 @@ def insert_stronghold():
     else:
         return {"message" : "An error occured"}, 404
 
-    if strongholdId & (strongholdType == "keep"):
-        keepRes = execute(INSERT_STRONGHOLD_RAISING_UNITS_STATUS, (strongholdId, 0, (strongholdLevel + 2), False))
+    if strongholdId and (strongholdType == "keep"):
+        keepStatus = execute(INSERT_STRONGHOLD_RAISING_UNITS_STATUS, (strongholdId, 0, (strongholdLevel + 2), False))
+    else:
+        notKeep = True
     
-    if strongholdId:
+    if (strongholdId and keepStatus) or (strongholdId and notKeep):
         return {"message" : "Success! Stronghold added", "id" : strongholdId["stronghold_id"]}, 201
     else:
         return {"message" : "An error occured"}, 404
