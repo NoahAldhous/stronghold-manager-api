@@ -19,6 +19,19 @@ CREATE_UNITS_RAISED_TABLE = (
     );"""
 )
 
+ADD_UNIT_RAISED = (
+    """INSERT INTO units_raised (
+        stronghold_id,
+        unit_id,
+        raising_unit_id
+    ) VALUES (
+        %s,
+        %s,
+        %s     
+    ) RETURNING id;
+    """
+)
+
 CREATE_STRONGHOLD_RAISING_UNITS_STATUS_TABLE = (
     """CREATE TABLE IF NOT EXISTS stronghold_raising_units_status (
         id SERIAL PRIMARY KEY,
@@ -42,6 +55,19 @@ INSERT_STRONGHOLD_RAISING_UNITS_STATUS = (
             %s
         );
     """
+)
+
+UPDATE_STRONGHOLD_RAISING_UNITS_STATUS_BY_STRONGHOLD_ID = (
+    """UPDATE stronghold_raising_units_status 
+        SET (
+            current_units,
+            has_raised_all_units
+        ) = (
+            %s,
+            %s
+        ) WHERE stronghold_id = %s
+        RETURNING *;
+        """
 )
 
 GET_STRONGHOLD_RAISING_UNITS_STATUS_BY_STRONGHOLD_ID = (
