@@ -66,7 +66,7 @@ def update_stronghold_raising_units_status_by_stronghold_id(stronghold_id):
         return{"message" : "Success", "updatedRow" : res}, 200
     else:
         return{"message" : "Error, could not updated"}, 404
-         
+     
 # POPULATE RAISING UNITS TABLE
 def populate_raising_units_table():
     res = execute(POPULATE_RAISING_UNITS_TABLE)
