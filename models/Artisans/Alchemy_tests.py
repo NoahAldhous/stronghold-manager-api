@@ -63,7 +63,7 @@ POPULATE_ALCHEMY_TESTS_TABLE = (
                 12,
                 '0'
             )
-    ) AS tests(organ, item, crafted, dc_base, dc_modifier)
+    ) AS tests(organ, item, crafted, dc_base, dc_bonus)
         JOIN artisan_shops as shops
             ON tests.crafted = shops.artisan_name
     """
