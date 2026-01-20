@@ -67,7 +67,7 @@ def default_route():
 stronghold_artisans_bp.register_blueprint(alchemy_tests_bp, url_prefix="/alchemy_tests")
 stronghold_artisans_bp.register_blueprint(artisan_bonuses_bp, url_prefix="/bonuses")
 stronghold_artisans_bp.register_blueprint(artisan_shops_bp, url_prefix="/shops")
-stronghold_artisans_bp.register_blueprint(artisan_upgrade_costs_bp, url_prefix="/upgade_costs")
+stronghold_artisans_bp.register_blueprint(artisan_upgrade_costs_bp, url_prefix="/upgrade_costs")
 
 # /strongholds
 stronghold_types_bp.register_blueprint(stronghold_type_stats_bp, url_prefix="/stats")
