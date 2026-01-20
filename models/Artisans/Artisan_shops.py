@@ -83,7 +83,7 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
             ),
             (
                 'tailor',
-                'shop',
+                'atelier',
                 'With a tailor in your retinue, you can, as a reaction, replace the result of any Charisma check with a 12 (before adding bonuses). This can be done a number of times equal to your tailor''s shop level, after which you must take an extended rest to refresh this ability.',
                 true
             )
