@@ -18,7 +18,12 @@ from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
 from routes.stronghold_treasury_bp import stronghold_treasury_bp
 from routes.units.units_bp import units_bp
 from routes.stronghold_benefits.raising_units_bp import raising_units_bp
-from routes.artisans import alchemy_tests_bp, artisan_bonuses_bp, artisan_shops_bp, artisan_upgrade_costs_bp, stronghold_artisans_bp
+from routes.artisans.alchemy_tests_bp import alchemy_tests_bp
+from routes.artisans.artisan_bonuses_bp import artisan_bonuses_bp
+from routes.artisans.artisan_shops_bp import artisan_shops_bp
+from routes.artisans.artisan_upgrade_costs_bp import artisan_upgrade_costs_bp
+from routes.artisans.stronghold_artisans_bp import stronghold_artisans_bp
+
 import atexit
 
 app = Flask(__name__)
