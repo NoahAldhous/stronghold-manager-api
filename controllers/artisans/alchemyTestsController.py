@@ -6,15 +6,15 @@ def create_alchemy_tests_table():
     res = execute(CREATE_ALCHEMY_TESTS_TABLE)
     
     if res:
-        return {"message" : "table created"}, 200
+        return { "message" : "table created" }, 200
     else: 
-        return {"message" : "error, could not create table"}, 404
+        return { "message" : "error, could not create table" }, 404
 
 # POPULARE ALCHEMY TESTS TABLE    
 def populate_alchemy_tests_table():
     res = execute(POPULATE_ALCHEMY_TESTS_TABLE)
     
     if res:
-        return {"message" : "table populated"}, 200
+        return { "message" : "table populated" }, 200
     else: 
-        return {"message" : "error, could not populate table"}, 404
+        return { "message" : "error, could not populate table" }, 404
