@@ -24,13 +24,13 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
             (
                 'alchemist',
                 'laboratory',
-                'The laboratory allows your alchemist to craft potions 10% cheaper and faster than normal per level of the laboratory. The alchemist is not a wizard or sorcerer but understands the principles of magic well enough to duplicate their effects. The kinds of potions your alchemist can make depend on the monster organs you bring them!',
+                'The laboratory allows your alchemist to craft potions 10%% cheaper and faster than normal per level of the laboratory. The alchemist is not a wizard or sorcerer but understands the principles of magic well enough to duplicate their effects. The kinds of potions your alchemist can make depend on the monster organs you bring them!',
                 1
             ),
             (
                 'blacksmith',
                 'smithy',
-                'Your blacksmith can forge magic arms and armour. Like with the alchemist, this requires the blacksmith to have some knowledge of the nature of magic, but they don''t need to be a wizard, thanks to the incredibly potent arcane power held within a creature''s blood. The smithy allows your blacksmith to craft magic arms and armour 10% cheaper and faster than normal per level of the smithy. What items your smith can forge depends on which organs you bring!',
+                'Your blacksmith can forge magic arms and armour. Like with the alchemist, this requires the blacksmith to have some knowledge of the nature of magic, but they don''t need to be a wizard, thanks to the incredibly potent arcane power held within a creature''s blood. The smithy allows your blacksmith to craft magic arms and armour 10%% cheaper and faster than normal per level of the smithy. What items your smith can forge depends on which organs you bring!',
                 1
             ),
             (
@@ -42,7 +42,7 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
             (
                 'carpenter',
                 'shop',
-                'Carpenters lower the cost to build and upkeep siege engines by 10% per level of their shop, and they let you improve your stronghold 10% faster per level of the shop.',
+                'Carpenters lower the cost to build and upkeep siege engines by 10%% per level of their shop, and they let you improve your stronghold 10%% faster per level of the shop.',
                 1
             ),
             (
@@ -54,7 +54,7 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
             (
                 'mason',
                 'quarry',
-                'If you attract a mason, there must be a quarry somewhere nearby. This is the equivalent of the artisan''s shop. The quarry starts at 1st level, and the lord can improve it like any other shop. Having a mason on staff means you pay nothing to repair your stronghold after a siege. Your mason will make free repairs worth 250 gp per quarry level per week. A 3rd-level quarry therefore makes free repairs worth 750 gp per week (250 x 3 per week). Masons decrease the cost required to improve your stronghold by 10% per quarry level. This time decrease can be combined with the carpenter''s benefit.',
+                'If you attract a mason, there must be a quarry somewhere nearby. This is the equivalent of the artisan''s shop. The quarry starts at 1st level, and the lord can improve it like any other shop. Having a mason on staff means you pay nothing to repair your stronghold after a siege. Your mason will make free repairs worth 250 gp per quarry level per week. A 3rd-level quarry therefore makes free repairs worth 750 gp per week (250 x 3 per week). Masons decrease the cost required to improve your stronghold by 10%% per quarry level. This time decrease can be combined with the carpenter''s benefit.',
                 1
             ),
             (
@@ -72,7 +72,7 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
             (
                 'scribe',
                 'tannery',
-                'Magical scrolls require rare and unique chemicals to make inks as well as special tanning techniques to cure the vellum in a tannery. All parchment is made from cured animal hide, but vellum is especially durable, resistant to both flame and water, and well suited to holding the unique inks used in a magical scroll without running or fading over time. A scribe would never consider inking onto paper. A paper scroll wouldn''t survive long in the conditions the typical adventuring lord is used to. If a spellcaster of appropriate level is present for at least an hour, a scribe can craft a magic scroll in a fraction of the time it would take a wizard or sorcerer to do it alone. The time and cost are both reduced by 10% per level of the tannery.',
+                'Magical scrolls require rare and unique chemicals to make inks as well as special tanning techniques to cure the vellum in a tannery. All parchment is made from cured animal hide, but vellum is especially durable, resistant to both flame and water, and well suited to holding the unique inks used in a magical scroll without running or fading over time. A scribe would never consider inking onto paper. A paper scroll wouldn''t survive long in the conditions the typical adventuring lord is used to. If a spellcaster of appropriate level is present for at least an hour, a scribe can craft a magic scroll in a fraction of the time it would take a wizard or sorcerer to do it alone. The time and cost are both reduced by 10%% per level of the tannery.',
                 1
             ),
             (
