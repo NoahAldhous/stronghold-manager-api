@@ -33,7 +33,7 @@ POPULATE_ARTISAN_BONUSES_TABLE = (
                 'alchemy',
                 10,
                 'shop_level',
-                'The laboratory allows your alchemist to craft potions 10% cheaper and faster than normal per level of the laboratory.',
+                'The laboratory allows your alchemist to craft potions 10%% cheaper and faster than normal per level of the laboratory.',
                 false
             ),
             (
@@ -41,7 +41,7 @@ POPULATE_ARTISAN_BONUSES_TABLE = (
                 'crafting',
                 10,
                 'shop_level',
-                'The smithy allows your blacksmith to craft magic arms and armor 10% cheaper and faster than normal per level of the smithy. What items your smith can forge depends on which organs you bring!',
+                'The smithy allows your blacksmith to craft magic arms and armor 10%% cheaper and faster than normal per level of the smithy. What items your smith can forge depends on which organs you bring!',
                 false
             ),
             (
@@ -57,7 +57,7 @@ POPULATE_ARTISAN_BONUSES_TABLE = (
                 'siege_unit_cost',
                 10,
                 'shop_level',
-                'Carpenters lower the cost to build and upkeep siege engines by 10% per level of their shop',
+                'Carpenters lower the cost to build and upkeep siege engines by 10%% per level of their shop',
                 false
             ),
             (
@@ -65,7 +65,7 @@ POPULATE_ARTISAN_BONUSES_TABLE = (
                 'stronghold_upgrade_time',
                 10,
                 'shop_level',
-                'Carpenters let you improve your stronghold 10% faster per level of their shop.',
+                'Carpenters let you improve your stronghold 10%% faster per level of their shop.',
                 false
             ),
             (
@@ -89,7 +89,7 @@ POPULATE_ARTISAN_BONUSES_TABLE = (
                 'stronghold_upgrade_cost',
                 10,
                 'shop_level',
-                'Masons decrease the cost required to improve your stronghold by 10% per quarry level. This time decrease can be combined with the carpenter''s benefit.',
+                'Masons decrease the cost required to improve your stronghold by 10%% per quarry level. This time decrease can be combined with the carpenter''s benefit.',
                 false
             ),
             (
@@ -137,7 +137,7 @@ POPULATE_ARTISAN_BONUSES_TABLE = (
                 'scroll_crafting',
                 10,
                 'shop_level',
-                'If a spellcaster of appropriate level is present for at least an hour, a scribe can craft a magic scroll in a fraction of the time it would take a wizard or sorcerer to do it alone. The time and cost are both reduced by 10% per level of the tannery.',
+                'If a spellcaster of appropriate level is present for at least an hour, a scribe can craft a magic scroll in a fraction of the time it would take a wizard or sorcerer to do it alone. The time and cost are both reduced by 10%% per level of the tannery.',
                 false
             ),
             (
