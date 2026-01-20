@@ -15,6 +15,6 @@ def populate_artisan_shops_table():
     res = execute(POPULATE_ARTISAN_SHOPS_TABLE)
     
     if res:
-        return { "message" : "table populated" }
+        return { "message" : "table populated" }, 200
     else:
-        return { "message" : "error, could not populate table" }
+        return { "message" : "error, could not populate table" }, 404
