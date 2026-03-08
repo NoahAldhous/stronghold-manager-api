@@ -15,3 +15,39 @@ CREATE_STRONGHOLD_ARTISANS_TABLE = (
         tailor INT CHECK (tailor BETWEEN 0 AND 5)  
     );"""
 )
+
+INSERT_INITIAL_STRONGHOLD_ARTISANS = (
+    """INSERT INTO stronghold_artisans (
+        stronghold_id,
+        alchemist,
+        blacksmith,
+        captain,
+        carpenter,
+        farmer,
+        mason,
+        miner,
+        sage,
+        scribe,
+        spy,
+        tailor    
+    ) VALUES (
+        %s,
+        %s,
+        %s,
+        %s,
+        %s,
+        %s,    
+        %s,
+        %s,
+        %s,
+        %s,
+        %s,
+        %s    
+    ) RETURNING stronghold_id;"""
+)
+
+# This should be updated to create a proper JSON object taking from the other artisan tables, with associated costs, shop names and benefits. 
+GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID = (
+    """SELECT * FROM stronghold_artisans WHERE stronghold_id = %s;"""
+)
+
