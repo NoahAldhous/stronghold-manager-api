@@ -90,3 +90,7 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
     ) AS shops(artisan, name, description, upgradeable);
     """
 )
+
+GET_ARTISAN_SHOPS = (
+    """SELECT * FROM artisan_shops;"""
+)
