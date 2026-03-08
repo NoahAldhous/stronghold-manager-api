@@ -94,3 +94,7 @@ POPULATE_ARTISAN_SHOPS_TABLE = (
 GET_ARTISAN_SHOPS = (
     """SELECT * FROM artisan_shops;"""
 )
+
+GET_ARTISAN_SHOP_BY_NAME = (
+    """SELECT * FROM artisan_shops WHERE artisan_name = %s;"""
+)
