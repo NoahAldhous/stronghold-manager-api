@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.artisans.strongholdArtisans import create_stronghold_artisans_table, get_all_artisans_by_stronghold_id, delete_stronghold_artisans_table, insert_stronghold_artisan, update_stronghold_artisan
+from controllers.artisans.strongholdArtisansController import create_stronghold_artisans_table, get_all_artisans_by_stronghold_id, delete_stronghold_artisans_table, insert_stronghold_artisan, update_stronghold_artisan
 
 stronghold_artisans_bp = Blueprint("stronghold_artisans", __name__)
 
