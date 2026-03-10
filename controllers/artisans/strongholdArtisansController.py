@@ -51,7 +51,7 @@ def get_all_artisans_by_stronghold_id(stronghold_id):
     
 # DELETE STRONGHOLD ARTISAN TABLE
 def delete_stronghold_artisans_table():
-    res = query(DELETE_STRONGHOLD_ARTISANS_TABLE)
+    res = execute(DELETE_STRONGHOLD_ARTISANS_TABLE)
     
     if res:
             return { "message" : "table delete" }, 200
