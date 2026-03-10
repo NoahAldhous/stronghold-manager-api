@@ -48,9 +48,9 @@ GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID = (
             'upgradeable', a.upgradeable
         ) AS shop
         FROM stronghold_artisans s 
-        WHERE stronghold_id = %s
         LEFT JOIN artisan_shops a
         ON a.id = s.artisan_id;
+        WHERE stronghold_id = %s
         """
 )
 
