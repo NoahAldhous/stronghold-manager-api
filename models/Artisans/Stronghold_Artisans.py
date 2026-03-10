@@ -37,7 +37,21 @@ UPDATE_STRONGHOLD_ARTISAN = (
 )
 
 GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID = (
-    """SELECT * FROM stronghold_artisans WHERE stronghold_id = %s;"""
+    """SELECT
+        s.stronghold_id AS "strongholdId",
+        a.artisan_name AS "name",
+        a.artisan_id AS "artisanId",
+        json_build_object(
+            'level', s.shop_level,
+            'name', a.shop_name,
+            'description', a.shop_description,
+            'upgradeable', a.upgradeable
+        ) AS shop
+        FROM stronghold_artisans s 
+        WHERE stronghold_id = %s
+        LEFT JOIN artisan_shops a
+        ON a.id = s.artisan_id;
+        """
 )
 
 # Delete table
