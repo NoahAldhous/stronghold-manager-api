@@ -17,7 +17,7 @@
 # )
 
 CREATE_STRONGHOLD_ARTISANS_TABLE = (
-    """CREATE TABLE IF NOT EXISTS stronghold_artisans (]
+    """CREATE TABLE IF NOT EXISTS stronghold_artisans (
         id SERIAL PRIMARY KEY,
         stronghold_id INT NOT NULL REFERENCES strongholds(id) ON DELETE CASCADE,
         artisan_id INT NOT NULL REFERENCES artisan_shops(id) ON DELETE CASCADE,
