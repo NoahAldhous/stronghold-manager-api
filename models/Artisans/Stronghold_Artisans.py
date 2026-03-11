@@ -27,7 +27,7 @@ INSERT_STRONGHOLD_ARTISAN = (
 
 UPDATE_STRONGHOLD_ARTISAN = (
     """UPDATE stronghold_artisans s
-        SET s.level = %s
+        SET s.shop_level = %s
         FROM artisan_shops a
         WHERE s.artisan_id = a.id
         AND s.stronghold_id = %s
