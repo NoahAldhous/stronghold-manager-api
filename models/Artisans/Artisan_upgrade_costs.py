@@ -34,3 +34,7 @@ POPULATE_ARTISAN_UPGRADE_COSTS_TABLE = (
     ) AS costs(level, cost);
     """
 )
+
+GET_ARTISAN_UPGRADE_COSTS = (
+    """SELECT * FROM artisan_upgrade_costs_table;"""
+)
