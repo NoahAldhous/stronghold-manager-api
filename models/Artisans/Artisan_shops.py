@@ -96,5 +96,33 @@ GET_ARTISAN_SHOPS = (
 )
 
 GET_ARTISAN_SHOP_BY_NAME = (
-    """SELECT * FROM artisan_shops WHERE artisan_name = %s;"""
+    """SELECT 
+        a.artisan_name AS "artisanName",
+        a.shop_name AS "shopName",
+        a.shop_description AS "shopDescription",
+        a.upgradeable AS "upgradeable",
+        (
+            COALESCE(
+                json_agg(
+                    json_build_object(
+                        'bonusName', b.bonus_name,
+                        'numericalBonus', b.numerical_bonus,
+                        'bonusMultiplier', b.bonus_multiplier,
+                        'bonusDescription', b.bonus_description,
+                        'requiresExtendedRest', b.requires_extended_rest
+                    )
+                )
+            )::jsonb
+        )::jsonb AS bonuses
+        FROM artisan_shops a
+        LEFT JOIN artisan_bonuses b
+            ON a.id = b.artisan_id
+        WHERE a.artisan_name = %s
+        GROUP BY
+            a.artisan_name,
+            a.shop_name,
+            a.shop_description,
+            a.upgradeable
+        ;
+    """
 )
