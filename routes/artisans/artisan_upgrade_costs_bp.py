@@ -11,6 +11,6 @@ def create_artisan_upgrade_costs_table_route():
 def populate_artisan_upgrade_costs_table_route():
     return populate_artisan_upgrade_costs_table()
 
-@artisan_upgrade_costs_bp("/", methods=["GET"])
+@artisan_upgrade_costs_bp.route("/", methods=["GET"])
 def get_all_artisan_upgrade_costs_route():
     return get_all_artisan_upgrade_costs()
