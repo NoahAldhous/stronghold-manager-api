@@ -115,6 +115,7 @@ GET_ARTISAN_SHOPS = (
         LEFT JOIN artisan_bonuses b
             ON a.id = b.artisan_id
         GROUP BY
+            a.id,
             a.artisan_name,
             a.shop_name,
             a.shop_description,
@@ -148,6 +149,7 @@ GET_ARTISAN_SHOP_BY_NAME = (
             ON a.id = b.artisan_id
         WHERE a.artisan_name = %s
         GROUP BY
+            a.id,
             a.artisan_name,
             a.shop_name,
             a.shop_description,
