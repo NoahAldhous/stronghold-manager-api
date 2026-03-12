@@ -97,6 +97,7 @@ GET_ARTISAN_SHOPS = (
 
 GET_ARTISAN_SHOP_BY_NAME = (
     """SELECT 
+        a.id AS "id",
         a.artisan_name AS "artisanName",
         a.shop_name AS "shopName",
         a.shop_description AS "shopDescription",
