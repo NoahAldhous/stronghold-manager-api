@@ -13,7 +13,7 @@ CREATE_RETAINER_SPELLS_TABLE = (
         dice_quantity INT,
         dice_size INT,
         damage_type TEXT,
-        save_attribute TEXT
+        save_ability TEXT
         )"""
 )
 
@@ -31,7 +31,7 @@ POPULATE_RETAINER_SPELL_SPELLS_TABLE = (
         dice_quantity,
         dice_size,
         damage_type,
-        save_attribute
+        save_ability
     ) SELECT 
         spells.name,
         spells.level,
