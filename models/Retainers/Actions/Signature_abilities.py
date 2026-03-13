@@ -519,6 +519,10 @@ POPULATE_SIGNATURE_ABILITIES_TABLE = (
                     0,
                     'cold'
                 )
-        )
+        ) AS abilities(name, type, retainer, range, hit, average, quantity, dice_size, damage_mod, damage_type)
+            JOIN ability_ranges AS ranges
+                ON abilities.range = ranges.range_type
+            JOIN retainers AS retainers
+                ON abilities.retainer = retainers.retainer_name;
         """
 )
