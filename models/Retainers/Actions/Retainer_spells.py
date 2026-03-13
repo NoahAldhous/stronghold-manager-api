@@ -1,0 +1,173 @@
+CREATE_RETAINER_SPELLS_TABLE = (
+    """CREATE TABLE IF NOT EXISTS retainer_spells (
+        id SERIAL PRIMARY KEY,
+        spell_name TEXT UNIQUE NOT NULL,
+        spell_level INT NOT NULL CHECK (spell_level BETWEEN 0 AND 9),
+        is_attack BOOLEAN,
+        spell_school TEXT NOT NULL,
+        casting_time TEXT NOT NULL,
+        spell_range INT NOT NULL,
+        spell_components TEXT NOT NULL,
+        spell_duration TEXT NOT NULL,
+        spell_description TEXT NOT NULL,
+        dice_quantity INT,
+        dice_size INT,
+        damage_type TEXT,
+        save_attribute TEXT
+        )"""
+)
+
+POPULATE_RETAINER_SPELL_SPELLS_TABLE = (
+    """INSERT INTO retainer_spells (
+        spell_name,
+        spell_level,
+        is_attack,
+        spell_school,
+        casting_time,
+        spell_range,
+        spell_components,
+        spell_duration,
+        spell_description,
+        dice_quantity,
+        dice_size,
+        damage_type,
+        save_attribute
+    ) SELECT 
+        spells.name,
+        spells.level,
+        spells.attack,
+        spells.school,
+        spells.cast_time,
+        spells.range,
+        spells.components,
+        spells.duration,
+        spells.description,
+        spells.dice_no,
+        spells.dice_size,
+        spells.damage,
+        spells.save
+    FROM (
+        VALUES
+            (
+                'sacred flame',
+                0,
+                false,
+                'evocation',
+                '1 action',
+                60,
+                'v,s',
+                'instantaneous',
+                'Flame-like radiance descends upon a creature that you can see within range. The target must succeed on a Dexterity saving throw or takes 1d8 damage. The target gains no benefit from cover for this saving throw.',
+                1,
+                8,
+                'radiant',
+                'dexterity' 
+            ),
+            (
+                'poison spray',
+                0,
+                false,
+                'conjuration',
+                '1 action',
+                10,
+                'v,s',
+                'instantaneous',
+                'You extend your hand toward a creature you can see within range and project a puff of noxious gas from your palm. The creature must succeed on a Constitution saving throw or take 1d12 poison damage.',
+                1,
+                12,
+                'poison',
+                'constitution'
+            ),
+            (
+                'fire bolt',
+                0,
+                true,
+                'evocation',
+                '1 action',
+                120,
+                'v,s',
+                'instantaneous',
+                'You hurl a mote of fire at a creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 fire damage. A flammable object hit by this spell ignites if it isn''t being worn or carried.',
+                1,
+                10,
+                'fire',
+                ''
+            ),
+            (
+                'eldritch blast',
+                0,
+                true,
+                'evocation',
+                '1 action',
+                120,
+                'v,s',
+                'instantaneous',
+                'A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage.',
+                1,
+                10,
+                'force',
+                ''
+            ),
+            (
+                'acid splash',
+                0,
+                false,
+                'conjuration',
+                '1 action',
+                60,
+                'v,s',
+                'instantaneous',
+                'You hurl a bubble of acid. Choose one or two creatures you can see within ranged. If you choose two, they must be within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage.',
+                1,
+                6,
+                'acid',
+                'dexterity'
+            ),
+            (
+                'shocking grasp',
+                0,
+                true,
+                'evocation',
+                '1 action',
+                0,
+                'v,s',
+                'instantaneous',
+                '',
+                1,
+                8,
+                'lightning',
+                'Lightning springs from your hand to deliver a shock to a creature you try to touch. Makke a melee spell attack against the target. You have advantage on the attack roll if the target is wearing armour made of metal. On a hit, the target takes 1d8 lightning damage, and it can''t take reactions until the start of its next turn.'
+            ),
+            (
+                'ray of frost',
+                0,
+                true,
+                'evocation',
+                '1 action',
+                60,
+                'v,s',
+                'instantaneous',
+                'A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn.',
+                1,
+                8,
+                'cold',
+                ''
+            ),
+            (
+                'chill touch',
+                0,
+                true,
+                'necromancy',
+                '1 action',
+                120,
+                'v,s',
+                '1 round',
+                'You create a ghostly, skeletal hand in the space of a creature within range. Make a ranged spell attack against the creature to assail it with the chill of the grave. On a hit, the target takes 1d8 necrotic damage, and it can''t regain hit points until the start of your next turn. Until then, the hand clings to the target. If you hit an undead target, it also has disadvantage on attacks rolls against you until the end of your next turn.',
+                1,
+                8,
+                'necrotic',
+                ''
+            )
+    ) AS spells(name, level, attack, school, cast_time, range, components, duration, description, dice_no, dice_size, damage, save);
+    """
+)
