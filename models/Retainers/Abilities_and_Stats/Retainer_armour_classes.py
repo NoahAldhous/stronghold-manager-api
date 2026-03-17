@@ -16,15 +16,15 @@ POPULATE_RETAINER_ARMOUR_CLASSES_TABLE = (
     FROM (
         VALUES
             (
-                'light armour',
+                'light',
                 12
             ),
             (
-                'medium armour',
+                'medium',
                 15
             ),
             (
-                'heavy armour',
+                'heavy',
                 18
             )
     ) AS armour(type, cost);

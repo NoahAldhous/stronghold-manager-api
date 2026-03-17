@@ -1,4 +1,4 @@
-CREATE_RETAINER_ABILITIES_TABLE = (
+CREATE_ABILITIES_TABLE = (
     """CREATE TABLE IF NOT EXISTS abilities (
         id SERIAL PRIMARY KEY,
         ability_name TEXT UNIQUE NOT NULL,
@@ -6,7 +6,7 @@ CREATE_RETAINER_ABILITIES_TABLE = (
         );"""
 )
 
-POPULATE_RETAINER_ABILITES_TABLE = (
+POPULATE_ABILITES_TABLE = (
     """INSERT INTO abilities (
         ability_name,
         abbreviation
