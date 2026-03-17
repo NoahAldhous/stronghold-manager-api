@@ -1,5 +1,5 @@
-ABILITY_RANGES_TABLE = (
-    """CREATE TABLE IF NOT EXISTS ability_ranges (
+CREATE_SIGNATURE_ABILITY_RANGES_TABLE = (
+    """CREATE TABLE IF NOT EXISTS signature_ability_ranges (
         id SERIAL PRIMARY KEY,
         range_type TEXT NOT NULL,
         reach INT,
@@ -8,7 +8,7 @@ ABILITY_RANGES_TABLE = (
     )"""
 )
 
-POPULATE_ABILITY_RANGES_TABLE = (
+POPULATE_SIGNATURE_ABILITY_RANGES_TABLE = (
     """INSERT INTO ability_ranges (
         range_type,
         reach,

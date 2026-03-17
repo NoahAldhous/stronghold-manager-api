@@ -4,7 +4,7 @@ CREATE_SIGNATURE_ABILITIES_TABLE = (
         ability_name TEXT NOT NULL,
         ability_type TEXT NOT NULL,
         retainer_id INT NOT NULL REFERENCES retainers(id) ON DELETE CASCADE,
-        range_id INT REFERENCES weapon_attack_ranges(id) ON DELETE CASCADE,
+        range_id INT REFERENCES signature_ability_ranges(id) ON DELETE CASCADE,
         hit_dc INT NOT NULL,
         average_damage INT NOT NULL,
         dice_quantity INT NOT NULL,
@@ -520,7 +520,7 @@ POPULATE_SIGNATURE_ABILITIES_TABLE = (
                     'cold'
                 )
         ) AS abilities(name, type, retainer, range, hit, average, quantity, dice_size, damage_mod, damage_type)
-            JOIN ability_ranges AS ranges
+            JOIN signature_ability_ranges AS ranges
                 ON abilities.range = ranges.range_type
             JOIN retainers AS retainers
                 ON abilities.retainer = retainers.retainer_name;
