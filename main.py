@@ -4,25 +4,35 @@ from flask_jwt_extended import JWTManager
 from utils import config
 from utils.db import close_pool
 from routes.users_bp import users_bp
+#Stronghold Routes
 from routes.strongholds_bp import strongholds_bp
 from routes.stronghold_types_bp import stronghold_types_bp
 from routes.stronghold_type_features_bp import stronghold_type_features_bp
 from routes.stronghold_toughness_levels_bp import stronghold_toughness_levels_bp
 from routes.stronghold_construction_levels_bp import stronghold_construction_levels_bp
 from routes.stronghold_size_levels_bp import stronghold_size_levels_bp
+from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
+from routes.stronghold_benefits.raising_units_bp import raising_units_bp
+#Classes Routes
 from routes.stronghold_classes_bp import stronghold_classes_bp
 from routes.class_stronghold_actions_bp import class_stronghold_actions_bp
 from routes.class_demesne_effects_bp import class_demesne_effects_bp
 from routes.class_feature_improvements_bp import class_feature_improvements_bp
-from routes.stronghold_type_stats_bp import stronghold_type_stats_bp
+#Treasury Routes
 from routes.stronghold_treasury_bp import stronghold_treasury_bp
+#Unit Routes
 from routes.units.units_bp import units_bp
-from routes.stronghold_benefits.raising_units_bp import raising_units_bp
+#Artisan Routes
 from routes.artisans.alchemy_tests_bp import alchemy_tests_bp
 from routes.artisans.artisan_bonuses_bp import artisan_bonuses_bp
 from routes.artisans.artisan_shops_bp import artisan_shops_bp
 from routes.artisans.artisan_upgrade_costs_bp import artisan_upgrade_costs_bp
 from routes.artisans.stronghold_artisans_bp import stronghold_artisans_bp
+#Retainer Routes
+from routes.retainers.abilities_and_stats import abilities_bp, classes_bp, retainer_ancestries_bp, retainer_armour_classes_bp, retainer_class_ability_relations_bp, retainer_class_saves_relations_bp
+from routes.retainers.actions import retainer_spells_bp, signature_ability_ranges_bp, special_actions_bp, signature_abilities_bp
+from routes.retainers import retainers_bp
+from routes.retainers import stronghold_retainers_bp
 
 import atexit
 
@@ -63,6 +73,20 @@ def default_route():
 
 
 # BLUEPRINT ROUTES
+# /signature ability ranges
+signature_abilities_bp.register_blueprint(signature_ability_ranges_bp, url_prefix="/ranges")
+
+# /retainers
+retainers_bp.register_blueprint(abilities_bp, url_prefix="/abilities")
+retainers_bp.register_blueprint(classes_bp, url_prefix="/classes")
+retainers_bp.register_blueprint(retainer_ancestries_bp, url_prefix="/ancestries")
+retainers_bp.register_blueprint(retainer_armour_classes_bp, url_prefix="/armour_classes")
+retainers_bp.register_blueprint(retainer_class_ability_relations_bp, url_prefix="/ability_relations")
+retainers_bp.register_blueprint(retainer_class_saves_relations_bp, url_prefix="/saves_relations")
+retainers_bp.register_blueprint(signature_abilities_bp, url_prefix="/signature_abilities")
+retainers_bp.register_blueprint(special_actions_bp, url_prefix="/special_actions")
+retainers_bp.register_blueprint(retainer_spells_bp, url_prefix="/spells")
+
 # /artisans
 stronghold_artisans_bp.register_blueprint(alchemy_tests_bp, url_prefix="/alchemy_tests")
 stronghold_artisans_bp.register_blueprint(artisan_bonuses_bp, url_prefix="/bonuses")
@@ -84,10 +108,12 @@ strongholds_bp.register_blueprint(stronghold_size_levels_bp, url_prefix="/size")
 strongholds_bp.register_blueprint(stronghold_classes_bp, url_prefix="/classes")
 strongholds_bp.register_blueprint(raising_units_bp, url_prefix="/raising_units")
 strongholds_bp.register_blueprint(stronghold_artisans_bp, url_prefix="/artisans")
+strongholds_bp.register_blueprint(stronghold_retainers_bp, url_prefix="/retainers")
 
 app.register_blueprint(strongholds_bp, url_prefix="/strongholds")
 app.register_blueprint(users_bp, url_prefix="/users")
 app.register_blueprint(units_bp, url_prefix="/units")
+app.register_blueprint(retainers_bp, url_prefix="/retainers")
 
 if __name__ == "__main__":
     app.run()
