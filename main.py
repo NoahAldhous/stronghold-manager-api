@@ -29,10 +29,18 @@ from routes.artisans.artisan_shops_bp import artisan_shops_bp
 from routes.artisans.artisan_upgrade_costs_bp import artisan_upgrade_costs_bp
 from routes.artisans.stronghold_artisans_bp import stronghold_artisans_bp
 #Retainer Routes
-from routes.retainers.abilities_and_stats import abilities_bp, classes_bp, retainer_ancestries_bp, retainer_armour_classes_bp, retainer_class_ability_relations_bp, retainer_class_saves_relations_bp
-from routes.retainers.actions import retainer_spells_bp, signature_ability_ranges_bp, special_actions_bp, signature_abilities_bp
-from routes.retainers import retainers_bp
-from routes.retainers import stronghold_retainers_bp
+from routes.retainers.abilities_and_stats.abilities_bp import abilities_bp
+from routes.retainers.abilities_and_stats.classes_bp import classes_bp
+from routes.retainers.abilities_and_stats.retainer_ancestries_bp import retainer_ancestries_bp
+from routes.retainers.abilities_and_stats.retainer_armour_classes_bp import retainer_armour_classes_bp
+from routes.retainers.abilities_and_stats.retainer_class_ability_relations_bp import retainer_class_ability_relations_bp
+from routes.retainers.abilities_and_stats.retainer_class_saves_relations_bp import retainer_class_saves_relations_bp
+from routes.retainers.actions.retainer_spells_bp import retainer_spells_bp
+from routes.retainers.actions.signature_ability_ranges_bp import signature_ability_ranges_bp
+from routes.retainers.actions.special_actions_bp import special_actions_bp
+from routes.retainers.actions.signature_abilities_bp import signature_abilities_bp
+from routes.retainers.retainers_bp import retainers_bp
+from routes.retainers.stronghold_retainers_bp import stronghold_retainers_bp
 
 import atexit
 
