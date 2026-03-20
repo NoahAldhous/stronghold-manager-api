@@ -234,7 +234,7 @@ POPULATE_SIGNATURE_ABILITIES_TABLE = (
                 (
                     'melee weapon attack',
                     'weapon attack',
-                    'acolyte of the way'
+                    'acolyte of the way',
                     'melee',
                     6,
                     9,
@@ -450,7 +450,7 @@ POPULATE_SIGNATURE_ABILITIES_TABLE = (
                 (
                     'ray of frost',
                     'spell',
-                    'evoker'
+                    'evoker',
                     'spell 60',
                     6,
                     4,

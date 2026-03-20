@@ -3,7 +3,7 @@ CREATE_SPECIAL_ACTIONS_TABLE = (
         id SERIAL PRIMARY KEY,
         action_name TEXT NOT NULL,
         action_description TEXT NOT NULL,
-        action_level INT CHECK (level BETWEEN 0 AND 7) 
+        action_level INT CHECK (action_level BETWEEN 0 AND 7) 
     )"""
 )
 
@@ -20,7 +20,7 @@ POPULATE_SPECIAL_ACTIONS_TABLE = (
         VALUES
             (
                 'orison',
-                'as an action, choose an ally a healer can see within 30 feet. On its next attack roll or saving throw, roll a d4 and add the result to the ally's result.',
+                'as an action, choose an ally a healer can see within 30 feet. On its next attack roll or saving throw, roll a d4 and add the result to the ally''s result.',
                 0
             )
     ) AS actions(name, description, level);

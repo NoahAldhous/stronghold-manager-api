@@ -9,7 +9,7 @@ CREATE_SIGNATURE_ABILITY_RANGES_TABLE = (
 )
 
 POPULATE_SIGNATURE_ABILITY_RANGES_TABLE = (
-    """INSERT INTO ability_ranges (
+    """INSERT INTO signature_ability_ranges (
         range_type,
         reach,
         short_range,

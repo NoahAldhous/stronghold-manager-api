@@ -79,7 +79,6 @@ POPULATE_RETAINER_CLASS_ABILITY_RELATIONS_TABLE = (
             JOIN abilities 
                 ON relations.ability = abilities.ability_name
             JOIN classes
-                ON relations.class = classes.class_name
-        );
+                ON relations.class = classes.class_name;
         """
 )

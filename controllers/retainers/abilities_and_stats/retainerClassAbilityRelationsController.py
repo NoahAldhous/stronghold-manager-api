@@ -15,7 +15,7 @@ def populate_retainer_class_ability_relations_table():
     res = execute(POPULATE_RETAINER_CLASS_ABILITY_RELATIONS_TABLE)
     
     if res:
-            return { "message" : "table populated" }, 200
+        return { "message" : "table populated" }, 200
     else:
         return { "message" : "error, could not populate table" }, 404
     

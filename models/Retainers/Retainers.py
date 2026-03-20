@@ -220,8 +220,8 @@ POPULATE_RETAINERS_TABLE = (
             )   
     ) AS retainers(class, name, armour)
         JOIN retainer_armour_classes AS armour
-            ON retainer.armour = armour.armour_type
+            ON retainers.armour = armour.armour_type
         JOIN classes
-            ON retainer.class = classes.class_name
+            ON retainers.class = classes.class_name
     ;"""
 )

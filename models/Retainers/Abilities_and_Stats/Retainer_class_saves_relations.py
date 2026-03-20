@@ -20,7 +20,7 @@ POPULATE_RETAINER_CLASS_SAVES_RELATIONS_TABLE = (
                 'strength'
             ),
             (
-                'barbarian'.
+                'barbarian',
                 'constitution'
             ),
             (

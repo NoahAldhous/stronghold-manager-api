@@ -11,7 +11,7 @@ POPULATE_ABILITIES_TABLE = (
         ability_name,
         abbreviation
     ) SELECT
-        abilities.ability
+        abilities.ability,
         abilities.abbreviation
     FROM (
         VALUES
@@ -32,11 +32,11 @@ POPULATE_ABILITIES_TABLE = (
                 'int'
             ),
             (
-                'wisdom'
+                'wisdom',
                 'wis'
             ),
             (
-                'charisma'
+                'charisma',
                 'cha'
             )
     ) AS abilities(ability, abbreviation);

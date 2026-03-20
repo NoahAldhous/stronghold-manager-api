@@ -7,6 +7,6 @@ retainer_class_saves_relations_bp = Blueprint("retainer_class_saves_relations", 
 def create_retainer_class_saves_relations_table_route():
     return create_retainer_class_saves_relations_table()
 
-@retainer_class_saves_relations_bp.route("/", methods=["POST"])
+@retainer_class_saves_relations_bp.route("/populate", methods=["POST"])
 def populate_retainer_class_saves_relations_table_route():
     return populate_retainer_class_saves_relations_table()

@@ -76,6 +76,6 @@ POPULATE_RETAINER_ANCESTRIES_TABLE =(
                 30,
                 60
             )
-    );
+    ) AS ancestries(name, size, speed, darkvision);
     """
 )
