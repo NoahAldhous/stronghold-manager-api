@@ -6,7 +6,7 @@ CREATE_ABILITIES_TABLE = (
         );"""
 )
 
-POPULATE_ABILITES_TABLE = (
+POPULATE_ABILITIES_TABLE = (
     """INSERT INTO abilities (
         ability_name,
         abbreviation
