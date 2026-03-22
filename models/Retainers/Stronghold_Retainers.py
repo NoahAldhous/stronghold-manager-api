@@ -9,3 +9,30 @@ CREATE_STRONGHOLD_RETAINERS_TABLE = (
         health_levels_lost INT NOT NULL CHECK (health_levels_lost BETWEEN 0 AND retainer_level)
         )"""
 )
+
+ADD_STRONGHOLD_RETAINER = (
+    """INSERT INTO stronghold_retainers (
+        individual_name,
+        stronghold_id,
+        retainer_id,
+        ancestry_id,
+        retainer_level,
+        health_levels_lost
+    ) VALUES (
+        %s,
+        %s,
+        (
+            SELECT id
+                FROM retainers
+                WHERE retainer_name = %s
+        ),
+        (
+            SELECT id
+                FROM retainer_ancestries
+                WHERE ancestry_name = %s
+        ),
+        %s,
+        %s
+    ) RETURNING id;
+    """
+)
