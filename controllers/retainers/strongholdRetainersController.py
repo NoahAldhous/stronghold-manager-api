@@ -1,4 +1,4 @@
-from models.Retainers.Stronghold_Retainers import CREATE_STRONGHOLD_RETAINERS_TABLE, ADD_STRONGHOLD_RETAINER, GET_RETAINERS_BY_STRONGHOLD_ID
+from models.Retainers.Stronghold_Retainers import CREATE_STRONGHOLD_RETAINERS_TABLE, ADD_STRONGHOLD_RETAINER, GET_RETAINERS_BY_STRONGHOLD_ID, GET_STRONGHOLD_RETAINER_BY_ID
 from utils.db import query, execute
 from flask import request
 
@@ -36,3 +36,11 @@ def get_stronghold_retainers_by_stronghold_id(stronghold_id):
         return {"message" : "success!", "retainers" : data}, 200
     else:
         return {"message" : "could not fetch stronghold retainers"}, 404
+
+def get_stronghold_retainer_by_id(retainer_id):
+    data = query(GET_STRONGHOLD_RETAINER_BY_ID, (retainer_id,), fetchone=True)
+    
+    if data:
+        return {"message" : "success!", "retainer" : data}, 200
+    else:
+        return {"message" : "could not find stronghold retainer"}, 404

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.retainers.strongholdRetainersController import create_stronghold_retainers_table, add_stronghold_retainer, get_stronghold_retainers_by_stronghold_id
+from controllers.retainers.strongholdRetainersController import create_stronghold_retainers_table, add_stronghold_retainer, get_stronghold_retainers_by_stronghold_id, get_stronghold_retainer_by_id
 
 stronghold_retainers_bp = Blueprint("stronghold_retainers", __name__)
 
@@ -11,6 +11,10 @@ def create_stronghold_retainers_table_route():
 def add_stronghold_retainer_route():
     return add_stronghold_retainer()
 
-@stronghold_retainers_bp.route("/<stronghold_id>", methods=["GET"])
+@stronghold_retainers_bp.route("/all/<stronghold_id>", methods=["GET"])
 def get_stronghold_retainers_by_stronghold_id_route(stronghold_id):
     return get_stronghold_retainers_by_stronghold_id(stronghold_id)
+
+@stronghold_retainers_bp.route("/<id>", methods=["GET"])
+def get_stronghold_retainer_by_id_route(id):
+    return get_stronghold_retainer_by_id(id)
