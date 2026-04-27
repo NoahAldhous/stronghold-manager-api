@@ -44,10 +44,7 @@ def update_stronghold_artisan():
 def get_all_artisans_by_stronghold_id(stronghold_id):
     data = query(GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID, (stronghold_id,), fetchone=False)
         
-    if data:
-        return {"message" : "Success!", "artisans" : data}, 200
-    else:
-        return {"message" : "could not fetch data"}, 404
+    return {"message" : "Success!", "artisans" : data or []}, 200
 
 # DELETE STRONGHOLD ARTISAN
 def delete_stronghold_artisan(artisan_id):
