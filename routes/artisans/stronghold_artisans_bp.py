@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.artisans.strongholdArtisansController import create_stronghold_artisans_table, get_all_artisans_by_stronghold_id, delete_stronghold_artisans_table, insert_stronghold_artisan, update_stronghold_artisan
+from controllers.artisans.strongholdArtisansController import create_stronghold_artisans_table, get_all_artisans_by_stronghold_id, delete_stronghold_artisans_table, insert_stronghold_artisan, update_stronghold_artisan, delete_stronghold_artisan
 
 stronghold_artisans_bp = Blueprint("stronghold_artisans", __name__)
 
@@ -22,3 +22,7 @@ def update_stronghold_artisan_route():
 @stronghold_artisans_bp.route("/delete_table", methods=["DELETE"])
 def delete_stronghold_artisans_table_route():
     return delete_stronghold_artisans_table()
+
+@stronghold_artisans_bp.route("/delete/<id>", methods=["DELETE"])
+def delete_stronghold_artisan_route(id):
+    return delete_stronghold_artisan(id)

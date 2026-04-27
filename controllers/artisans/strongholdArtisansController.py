@@ -1,4 +1,4 @@
-from models.Artisans.Stronghold_Artisans import CREATE_STRONGHOLD_ARTISANS_TABLE, GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID, INSERT_STRONGHOLD_ARTISAN, UPDATE_STRONGHOLD_ARTISAN, DELETE_STRONGHOLD_ARTISANS_TABLE
+from models.Artisans.Stronghold_Artisans import CREATE_STRONGHOLD_ARTISANS_TABLE, GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID, INSERT_STRONGHOLD_ARTISAN, UPDATE_STRONGHOLD_ARTISAN, DELETE_STRONGHOLD_ARTISANS_TABLE, DELETE_STRONGHOLD_ARTISAN
 from utils.db import query, execute
 from flask import request
 
@@ -48,6 +48,15 @@ def get_all_artisans_by_stronghold_id(stronghold_id):
         return {"message" : "Success!", "artisans" : data}, 200
     else:
         return {"message" : "could not fetch data"}, 404
+
+# DELETE STRONGHOLD ARTISAN
+def delete_stronghold_artisan(artisan_id):
+    data = query(DELETE_STRONGHOLD_ARTISAN, (artisan_id,), fetchone=True)
+    
+    if data:
+        return {"message" : "Success!", "artisanId" : data}, 200
+    else:
+        return {"message" : "could not delete artisan"}, 404
     
 # DELETE STRONGHOLD ARTISAN TABLE
 def delete_stronghold_artisans_table():

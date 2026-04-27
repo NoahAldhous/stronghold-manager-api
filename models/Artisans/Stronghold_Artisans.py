@@ -54,6 +54,14 @@ GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID = (
         """
 )
 
+# Delete Stronghold Artisan
+DELETE_STRONGHOLD_ARTISAN = (
+    """DELETE FROM stronghold_artisans
+        WHERE id = %s
+        RETURNING id;
+    """
+)
+
 # Delete table
 DELETE_STRONGHOLD_ARTISANS_TABLE = (
     """DROP TABLE IF EXISTS stronghold_artisans;"""
