@@ -38,10 +38,11 @@ UPDATE_STRONGHOLD_ARTISAN = (
 
 GET_STRONGHOLD_ARTISANS_BY_STRONGHOLD_ID = (
     """SELECT
+        s.id AS "strongholdArtisanId",
         s.stronghold_id AS "strongholdId",
         a.artisan_name AS "name",
-        s.artisan_id AS "artisanId",
         json_build_object(
+            'shopId', s.artisan_id,
             'level', s.shop_level,
             'name', a.shop_name,
             'description', a.shop_description,

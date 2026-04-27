@@ -54,7 +54,7 @@ def delete_stronghold_artisan(artisan_id):
     data = query(DELETE_STRONGHOLD_ARTISAN, (artisan_id,), fetchone=True)
     
     if data:
-        return {"message" : "Success!", "artisanId" : data}, 200
+        return {"message" : "Success!", "deletedArtisanId" : data["id"]}, 200
     else:
         return {"message" : "could not delete artisan"}, 404
     

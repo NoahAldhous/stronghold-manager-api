@@ -23,6 +23,7 @@ def update_stronghold_artisan_route():
 def delete_stronghold_artisans_table_route():
     return delete_stronghold_artisans_table()
 
-@stronghold_artisans_bp.route("/delete/<id>", methods=["DELETE"])
-def delete_stronghold_artisan_route(id):
-    return delete_stronghold_artisan(id)
+@stronghold_artisans_bp.route("/delete/<artisan_id>", methods=["DELETE"])
+def delete_stronghold_artisan_route(artisan_id):
+    print(artisan_id)
+    return delete_stronghold_artisan(artisan_id)
